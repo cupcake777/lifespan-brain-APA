@@ -1,0 +1,15 @@
+# Generated figures and local configuration
+outputs/
+config/paths.local.sh
+
+# R/Python artifacts
+.Rhistory
+.RData
+__pycache__/
+*.py[cod]
+
+# Scheduler and temporary files
+*.out
+*.err
+*.log
+.DS_Store

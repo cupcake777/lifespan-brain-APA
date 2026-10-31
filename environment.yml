@@ -1,0 +1,31 @@
+name: lifespan-apa-figures
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - r-base=4.3
+  - r-data.table
+  - r-mass
+  - r-ggplot2
+  - r-patchwork
+  - r-ggrastr
+  - r-ggrepel
+  - r-ggbeeswarm
+  - r-ggtext
+  - r-ggh4x
+  - r-scales
+  - r-scattermore
+  - r-systemfonts
+  - r-readxl
+  - r-ragg
+  - r-cowplot
+  - r-jsonlite
+  - r-png
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - pillow
+  - pip
+  - pip:
+      - dna-features-viewer
