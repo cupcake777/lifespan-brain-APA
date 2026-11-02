@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# From 3UTR/DaPars2 v2.1 commit fb81c6c; GNU GPL v2, see LICENSE.DaPars2.
+# Local changes dated 2026-10-31 are formatting only.
 
 import os
 import sys, getopt

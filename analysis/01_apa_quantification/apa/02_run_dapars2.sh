@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# DaPars2 APA quantification: coverage, inputs, per-chromosome runs, merge.
+# Run DaPars2 independently for the chromosomes listed in CHR_LIST_FILE.
 set -euo pipefail
 
 : "${APA_ROOT:?source config/paths.local.sh}"
@@ -7,15 +7,23 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUT="${APA_ROOT}/data/01_quant/apa"
 CHR_LIST_FILE="${CHR_LIST_FILE:-${APA_ROOT}/ref/chrList.txt}"
 N_JOBS="${N_JOBS:-5}"
-export SAMPLE_LIST="${SAMPLE_LIST:-${APA_ROOT}/raw/bam/sample_list.txt}"
+PYTHON_BIN="${PYTHON_BIN:-python}"
+CONFIG_FILE="${OUT}/dapars2_config.txt"
+DAPARS_SCRIPT="${SCRIPT_DIR}/DaPars2_Multi_Sample.py"
 
-bash "${SCRIPT_DIR}/00_bam_to_wig.sh"
-bash "${SCRIPT_DIR}/prep_apa_inputs.sh"
+[[ -s "${CONFIG_FILE}" ]] || { echo "[ERROR] missing ${CONFIG_FILE}; run 01_prepare_inputs.sh" >&2; exit 1; }
+[[ -s "${CHR_LIST_FILE}" ]] || { echo "[ERROR] missing chromosome list: ${CHR_LIST_FILE}" >&2; exit 1; }
+[[ "${N_JOBS}" =~ ^[1-9][0-9]*$ ]] || { echo "[ERROR] N_JOBS must be a positive integer" >&2; exit 1; }
 
-(cd "${OUT}" && WORKDIR="${OUT}" CHR_LIST_FILE="${CHR_LIST_FILE}" \
-    CONFIG_FILE="${OUT}/dapars2_config.txt" DAPARS_SCRIPT="${SCRIPT_DIR}/Dapars2_Multi_Sample.py" \
-    N_JOBS="${N_JOBS}" bash "${SCRIPT_DIR}/dapars2_by_chr.sh")
+mapfile -t chromosomes < <(awk 'NF && $1 !~ /^#/ {print $1}' "${CHR_LIST_FILE}")
+[[ ${#chromosomes[@]} -gt 0 ]] || { echo "[ERROR] no chromosomes in ${CHR_LIST_FILE}" >&2; exit 1; }
 
-WORKDIR="${OUT}" FINAL_OUTPUT="${OUT}/all.apa.count" bash "${SCRIPT_DIR}/dapars2_merge.sh"
+printf '%s\n' "${chromosomes[@]}" | xargs -r -n1 -P "${N_JOBS}" \
+    bash -c "\"\${1}\" \"\${2}\" \"\${3}\" \"\${4}\"" _ "${PYTHON_BIN}" "${DAPARS_SCRIPT}" "${CONFIG_FILE}"
 
-echo "DaPars2 workflow complete: ${OUT}/all.apa.count"
+for chromosome in "${chromosomes[@]}"; do
+    result="${OUT}/Dapars2_out_${chromosome}/Dapars2_result_temp.${chromosome}.txt"
+    [[ -s "${result}" ]] || { echo "[ERROR] missing DaPars2 result: ${result}" >&2; exit 1; }
+done
+
+echo "DaPars2 chromosome runs complete: ${#chromosomes[@]} chromosomes"

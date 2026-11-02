@@ -1,3 +1,5 @@
+# Derived from 3UTR/DaPars2 v2.1 commit fb81c6c; GNU GPL v2, see LICENSE.DaPars2.
+# Modified 2026-10-31: use spawn and a main guard for multiprocessing portability.
 import numpy as np
 import os
 import sys

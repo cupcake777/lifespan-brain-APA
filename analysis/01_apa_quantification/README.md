@@ -20,6 +20,8 @@ The Python components called by these wrappers are:
 - `apa/extract_3utr.py` — derive transcript-level 3′UTR intervals;
 - `apa/read_depth.py` — collect mapped-read depth for DaPars2 normalization.
 
+The first two files are derived from DaPars2 v2.1 commit `fb81c6c` and remain under GNU GPL v2; see `apa/LICENSE.DaPars2`. The numbered shell scripts are study-specific workflow code.
+
 ### Cohort harmonization
 
 5. `01_batch_correction.R` — compare ComBat, limma and RUV correction strategies.

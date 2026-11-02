@@ -73,7 +73,7 @@ The principal variables are:
 - `APA_FIGURE_DIR`: output directory for rendered figures;
 - `APA_FONT_DIR`: optional publication-font directory.
 
-Cluster-scale scripts also document the external tools they call. Third-party packages and pipelines are linked rather than copied into this repository.
+Cluster-scale scripts also document the external tools they call. Third-party packages and pipelines are linked rather than copied, except for the two DaPars2-derived source files documented in `analysis/01_apa_quantification/README.md`.
 
 ## Figure generation
 

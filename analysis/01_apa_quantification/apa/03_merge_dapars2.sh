@@ -10,7 +10,7 @@ first=1
 for i in {1..22}; do
   chr_file="${WORKDIR}/Dapars2_out_chr${i}/Dapars2_result_temp.chr${i}.txt"
   if [[ "${first}" -eq 1 ]]; then
-    read -r gene fit_value predicted loci rest < <(head -n 1 "${chr_file}")
+    rest="$(head -n 1 "${chr_file}" | cut -f5-)"
     header="Gene\tfit_value\tPredicted_Proximal_APA\tLoci"
     for sample_path in ${rest}; do
       sample_name=$(basename "${sample_path}")
