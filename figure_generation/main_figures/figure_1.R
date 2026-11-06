@@ -330,12 +330,12 @@ pe_ <- ggplot(mx, aes(cls, lab)) +
   scale_fill_gradientn(colours = HEAT_CONTINUOUS, limits = c(-3, 3), breaks = c(-3, 0, 3),
                        labels = c("1/8", "1", "8"), name = "Fisher OR (sig.)  ", na.value = "#FFFFFF") +
   scale_colour_identity() +
-  scale_x_discrete(position = "top", labels = c("C1-specific" = "C1-spec.", "Bidirectional" = "Bidirectional", "C2-specific" = "C2-spec.")) +
+  scale_x_discrete(position = "top", labels = c("C1-specific" = "C1-spec.", "Bidirectional" = "Bidirect.", "C2-specific" = "C2-spec.")) +
   scale_y_discrete(expand = c(0, 0), position = "right") +
   coord_cartesian(xlim = c(0.5, 3.5), clip = "off") +
   labs(x = NULL, y = NULL) +
   theme(axis.line = element_blank(), axis.ticks = element_blank(),
-        axis.text.x.top = element_text(face = "bold", size = 7, colour = CLS[c("C1-specific", "Bidirectional", "C2-specific")]),
+        axis.text.x.top = element_text(face = "bold", size = 6, colour = CLS[c("C1-specific", "Bidirectional", "C2-specific")]),
         axis.text.y = element_text(size = 6, colour = INK),
         legend.position = "bottom", legend.key.width = unit(4.5, "mm"), legend.key.height = unit(1.5, "mm"),
         legend.title = element_text(size = 5.8), legend.text = element_text(size = 5.4), plot.margin = margin(1, 1, 1, 14, "mm"))
@@ -349,12 +349,12 @@ mt <- fread(file.path(D2, "11_loeuf_adj_models_outputs.tsv")); b <- mt[term == "
 pef <- function(x) { e <- floor(log10(x)); m <- round(x / 10^e, 1); sprintf("%.1f %%*%% 10^\"%s\"", m, sub("-", MINUS, sprintf("%d", e), fixed = TRUE)) }
 
 pf1 <- ggplot(gl, aes(grp, loeuf)) +
-  geom_violin(aes(fill = grp), colour = NA, scale = "width", width = 0.85, trim = TRUE) +
-  geom_boxplot(aes(colour = grp), width = 0.2, outlier.shape = NA, coef = 0, fill = "#FFFFFF", linewidth = 0.4) +
-  annotate("segment", x = 1, xend = 2, y = 2.7, yend = 2.7, linewidth = 0.25, colour = INK) +
-  annotate("segment", x = 1, xend = 1, y = 2.45, yend = 2.7, linewidth = 0.25, colour = INK) +
-  annotate("segment", x = 2, xend = 2, y = 2.45, yend = 2.7, linewidth = 0.25, colour = INK) +
-  annotate("text", x = 1.5, y = 2.82, vjust = 0, size = 5.6 / .pt, colour = INK,
+  geom_violin(aes(fill = grp), colour = NA, scale = "width", width = 0.65, trim = TRUE) +
+  geom_boxplot(aes(colour = grp), width = 0.16, outlier.shape = NA, coef = 0, fill = "#FFFFFF", linewidth = 0.4) +
+  annotate("segment", x = 1, xend = 2, y = 2.8, yend = 2.8, linewidth = 0.25, colour = INK) +
+  annotate("segment", x = 1, xend = 1, y = 2.5, yend = 2.8, linewidth = 0.25, colour = INK) +
+  annotate("segment", x = 2, xend = 2, y = 2.5, yend = 2.8, linewidth = 0.25, colour = INK) +
+  annotate("text", x = 1.5, y = 3.4, vjust = 0, size = 5.6 / .pt, colour = INK,
            label = paste0("beta == \"", sub("-", MINUS, sprintf("%.3f", b$estimate), fixed = TRUE), "\"*','~FDR == ", pef(b$fdr)), parse = TRUE) +
   scale_fill_manual(values = GRP_FILL, guide = "none") +
   scale_colour_manual(values = GRP_COL, guide = "none") +
