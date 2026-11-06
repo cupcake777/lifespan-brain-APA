@@ -76,14 +76,14 @@ pb <- tg(pb, "b")
 
 # --- c: AD trajectory gene sets, both backgrounds, with and without APOE ---
 tr <- fread(file.path(DF, "magma_traj_sum_EUR_AD2.tsv"))
-tr[, set := factor(c(traj_C1_specific = "C1", traj_C2_specific = "C2", traj_Shared = "Shared")[set_name], c("C1", "C2", "Shared"))]
+tr[, set := factor(c(traj_C1_specific = "C1", traj_C2_specific = "C2", traj_Shared = "Bidirectional")[set_name], c("C1", "C2", "Bidirectional"))]
 tr[, rowl := paste0(set, fifelse(apoe_excluded == "T", " \u2212APOE", ""))]
-tr[, rowl := factor(rowl, rev(c("Shared", "Shared \u2212APOE", "C2", "C2 \u2212APOE", "C1", "C1 \u2212APOE")))]
+tr[, rowl := factor(rowl, rev(c("Bidirectional", "Bidirectional \u2212APOE", "C2", "C2 \u2212APOE", "C1", "C1 \u2212APOE")))]
 tr[, bg := factor(fifelse(background == "default", "Genome", "APA-tested"), c("Genome", "APA-tested"))]
 tr[, lp := -log10(p)]
 stopifnot(nrow(tr) == 12, !anyNA(tr$rowl))
 wc <- dcast(tr, rowl + set ~ bg, value.var = "lp")
-ccol <- CLUSTER_COLORS[c("C1", "C2", "Shared")]
+ccol <- setNames(CLUSTER_COLORS[c("C1", "C2", "Shared")], c("C1", "C2", "Bidirectional"))
 pc <- ggplot(tr, aes(lp, rowl)) +
   geom_vline(xintercept = -log10(0.05), linetype = 2, linewidth = 0.3, colour = MUTED) +
   geom_segment(data = wc, aes(x = `Genome`, xend = `APA-tested`, y = rowl, yend = rowl, colour = set),

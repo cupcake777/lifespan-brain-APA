@@ -100,7 +100,7 @@ pb <- ggplot(db, aes(OR, yv, colour = colr)) +
                      breaks = c("Raw", "Expr.-matched")) +
   facet_wrap(~grp, ncol = 3) +
   scale_x_log10(limits = c(0.2, 32), breaks = c(0.3, 1, 3, 10, 30), labels = c("0.3", "1", "3", "10", "30")) +
-  scale_y_continuous(breaks = 1:3, labels = c("C1-spec", "C2-spec", "Shared"), expand = expansion(add = 0.7)) +
+  scale_y_continuous(breaks = 1:3, labels = c("C1-spec", "C2-spec", "Bidirectional"), expand = expansion(add = 0.7)) +
   labs(x = "Adjusted odds ratio (log)", y = NULL) +
   theme(strip.text = element_text(size = 5.8, margin = margin(b = 1)),
         strip.clip = "off",   # \"Brain-expressed\" overflows its facet; the gap is empty there

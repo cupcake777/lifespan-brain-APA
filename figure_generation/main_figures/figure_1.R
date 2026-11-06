@@ -14,10 +14,9 @@ OTHER_COLOR  <- "#C8C8C8"
 INK          <- "#2A2A2A"
 MUTED        <- "#6B7280"
 LINE_COL     <- "#E0E0E0"
-CLS  <- c("C1-specific" = C1_COLOR, "Shared" = SHARED_COLOR, "C2-specific" = C2_COLOR)
-TINT <- c("C1-specific" = scales::alpha(C1_COLOR, 0.22),
-          "Shared"      = scales::alpha(SHARED_COLOR, 0.28),
-          "C2-specific" = scales::alpha(C2_COLOR, 0.22))
+CLS  <- c("C1-specific" = C1_COLOR, "Bidirectional" = SHARED_COLOR, "C2-specific" = C2_COLOR)
+GRP_FILL <- c("Bidirectional" = scales::alpha(SHARED_COLOR, 0.28), "Unidirectional" = scales::alpha(NEUTRAL, 0.22))
+GRP_COL  <- c("Bidirectional" = SHARED_COLOR, "Unidirectional" = NEUTRAL)
 SEXC <- c(Male = "#3E434A", Female = "#A8ADB5")
 OMC  <- c(Transcriptome = C1_COLOR, Genotype = SHARED_COLOR, Proteome = C2_COLOR)
 
@@ -249,9 +248,9 @@ pc2 <- pc2 +
         legend.margin = margin(3, 0, 0, 0, "mm"), legend.title = element_text(size = 5.8, vjust = 0.8),
         legend.text = element_text(size = 5.4), plot.margin = margin(0, 1, 1, 1, "mm"))
 
-# --- d: gene-set overlap (C1-specific, shared, C2-specific) ---
+# --- d: gene-set overlap (C1-specific, bidirectional, C2-specific) ---
 g  <- fread(file.path(D2, "05_gene_aggregation.tsv"))
-g[, cls := factor(fcase(gene_state == "C1-spec", "C1-specific", gene_state == "C2-spec", "C2-specific", membership == "Shared", "Shared"), names(CLS))]
+g[, cls := factor(fcase(gene_state == "C1-spec", "C1-specific", gene_state == "C2-spec", "C2-specific", membership == "Shared", "Bidirectional"), names(CLS))]
 g <- g[!is.na(cls)]
 ng <- g[, .N, by = cls]
 
@@ -262,8 +261,8 @@ lens <- rbind(CA[(x - 0.55)^2 + y^2 <= 1][order(atan2(y, x - (-0.55)))],
 lens <- lens[order(atan2(y, x))]
 
 ngv <- setNames(ng$N, as.character(ng$cls))
-vt <- data.table(x = c(-1.0, 0, 1.0), cls = c("C1-specific", "Shared", "C2-specific"),
-                 lab = c("C1-spec.", "Shared", "C2-spec."))
+vt <- data.table(x = c(-1.0, 0, 1.0), cls = c("C1-specific", "Bidirectional", "C2-specific"),
+                 lab = c("C1-spec.", "Bidirectional", "C2-spec."))
 vt[, n := ngv[cls]]
 
 pdv <- ggplot() +
@@ -297,7 +296,7 @@ setnames(two, "odds_ratio", "fisher_odds_ratio")
 TERMS <- data.table(term = c(de$term, "Alzheimers Disease"), lab = c(de$lab, "AD risk genes"),
                     blk = c(ifelse(de$cls == "C1-specific", "C1 terms", "C2 terms"), "Disease"))
 mx <- two[term %in% TERMS$term & ((level == "Five-state" & gene_set %in% c("C1-spec", "C2-spec")) | (level == "Directional membership" & gene_set == "Shared"))]
-mx[, cls := factor(c("C1-spec" = "C1-specific", "C2-spec" = "C2-specific", "Shared" = "Shared")[gene_set], names(CLS))]
+mx[, cls := factor(c("C1-spec" = "C1-specific", "C2-spec" = "C2-specific", "Shared" = "Bidirectional")[gene_set], names(CLS))]
 mx <- merge(mx, TERMS, by = "term")
 adr <- ea[source_group == "GWAS/HPO" & level == "Membership" & gene_set == "Shared" & term == "Alzheimers Disease"]
 adjs <- rbind(ea[adjusted_fdr < 0.05, .(term, gs = gene_set)])
@@ -313,7 +312,7 @@ CLS_TBL <- rbindlist(lapply(c("C1spec", "C2spec"), function(gn)
   fread(file.path(D2, sprintf("T1_term_clusters_%s_fdr10.tsv", gn)))))
 CLU_LAB <- c(C1spec_01 = "Translation", C1spec_02 = "GPCR", C2spec_01 = "Energy", C2spec_08 = "Ligase", C2spec_14 = "Proteasome")
 mx[, cat := {cid <- CLS_TBL$cluster_id[match(term, CLS_TBL$term)]; ifelse(is.na(cid), "Disease", CLU_LAB[cid])}]
-BAND_CLS <- c(Translation = "C1-specific", GPCR = "C1-specific", Energy = "C2-specific", Proteasome = "C2-specific", Ligase = "C2-specific", Disease = "Shared")
+BAND_CLS <- c(Translation = "C1-specific", GPCR = "C1-specific", Energy = "C2-specific", Proteasome = "C2-specific", Ligase = "C2-specific", Disease = "Bidirectional")
 bands <- unique(mx[, .(lab, cat, cls = BAND_CLS[cat])])[, y := as.integer(lab)][, .(y0 = min(y) - 0.5, y1 = max(y) + 0.5), by = .(cat, cls)]
 
 mx[, fill_val := ifelse(star, l2, NA_real_)]
@@ -331,35 +330,35 @@ pe_ <- ggplot(mx, aes(cls, lab)) +
   scale_fill_gradientn(colours = HEAT_CONTINUOUS, limits = c(-3, 3), breaks = c(-3, 0, 3),
                        labels = c("1/8", "1", "8"), name = "Fisher OR (sig.)  ", na.value = "#FFFFFF") +
   scale_colour_identity() +
-  scale_x_discrete(position = "top", labels = c("C1-specific" = "C1-spec.", "Shared" = "Shared", "C2-specific" = "C2-spec.")) +
+  scale_x_discrete(position = "top", labels = c("C1-specific" = "C1-spec.", "Bidirectional" = "Bidirectional", "C2-specific" = "C2-spec.")) +
   scale_y_discrete(expand = c(0, 0), position = "right") +
   coord_cartesian(xlim = c(0.5, 3.5), clip = "off") +
   labs(x = NULL, y = NULL) +
   theme(axis.line = element_blank(), axis.ticks = element_blank(),
-        axis.text.x.top = element_text(face = "bold", size = 7, colour = CLS[c("C1-specific", "Shared", "C2-specific")]),
+        axis.text.x.top = element_text(face = "bold", size = 7, colour = CLS[c("C1-specific", "Bidirectional", "C2-specific")]),
         axis.text.y = element_text(size = 6, colour = INK),
         legend.position = "bottom", legend.key.width = unit(4.5, "mm"), legend.key.height = unit(1.5, "mm"),
         legend.title = element_text(size = 5.8), legend.text = element_text(size = 5.4), plot.margin = margin(1, 1, 1, 14, "mm"))
 
-# --- f: LOEUF by gene set ---
+# --- f: LOEUF, bidirectional vs unidirectional genes ---
 ld <- unique(fread(file.path(D2, "ed4c_loeuf.tsv"))[, .(gene_id_base, loeuf)])
 gl <- merge(g, ld, by = "gene_id_base")[!is.na(loeuf)]
+gl[, grp := factor(ifelse(cls == "Bidirectional", "Bidirectional", "Unidirectional"), c("Bidirectional", "Unidirectional"))]
 # current LOEUF model (refit; supersedes the root-level copy)
 mt <- fread(file.path(D2, "11_loeuf_adj_models_outputs.tsv")); b <- mt[term == "membershipShared"]
 pef <- function(x) { e <- floor(log10(x)); m <- round(x / 10^e, 1); sprintf("%.1f %%*%% 10^\"%s\"", m, sub("-", MINUS, sprintf("%d", e), fixed = TRUE)) }
 
-pf1 <- ggplot(gl, aes(cls, loeuf)) +
-  geom_violin(aes(fill = cls), colour = NA, scale = "width", width = 0.85, trim = TRUE) +
-  geom_boxplot(aes(colour = cls), width = 0.2, outlier.shape = NA, coef = 0, fill = "#FFFFFF", linewidth = 0.4) +
-  annotate("segment", x = c(1, 3, 1), xend = c(1, 3, 3), y = c(2.45, 2.45, 2.7), yend = c(2.7, 2.7, 2.7), linewidth = 0.25, colour = INK) +
-  annotate("segment", x = 2, xend = 2, y = 2.7, yend = 2.95, linewidth = 0.25, colour = INK) +
-  annotate("text", x = 2, y = 4.35, vjust = 0, size = 5.6 / .pt, colour = INK, label = "Shared vs specific") +
-  annotate("text", x = 2, y = 3.08, vjust = 0, size = 5.6 / .pt, colour = INK,
+pf1 <- ggplot(gl, aes(grp, loeuf)) +
+  geom_violin(aes(fill = grp), colour = NA, scale = "width", width = 0.85, trim = TRUE) +
+  geom_boxplot(aes(colour = grp), width = 0.2, outlier.shape = NA, coef = 0, fill = "#FFFFFF", linewidth = 0.4) +
+  annotate("segment", x = 1, xend = 2, y = 2.7, yend = 2.7, linewidth = 0.25, colour = INK) +
+  annotate("segment", x = 1, xend = 1, y = 2.45, yend = 2.7, linewidth = 0.25, colour = INK) +
+  annotate("segment", x = 2, xend = 2, y = 2.45, yend = 2.7, linewidth = 0.25, colour = INK) +
+  annotate("text", x = 1.5, y = 2.82, vjust = 0, size = 5.6 / .pt, colour = INK,
            label = paste0("beta == \"", sub("-", MINUS, sprintf("%.3f", b$estimate), fixed = TRUE), "\"*','~FDR == ", pef(b$fdr)), parse = TRUE) +
-  scale_fill_manual(values = TINT, guide = "none") +
-  scale_colour_manual(values = CLS, guide = "none") +
+  scale_fill_manual(values = GRP_FILL, guide = "none") +
+  scale_colour_manual(values = GRP_COL, guide = "none") +
   scale_y_log10(breaks = c(0.2, 0.5, 1, 2)) +
-  scale_x_discrete(labels = c("C1-specific" = "C1-spec.", "Shared" = "Shared", "C2-specific" = "C2-spec.")) +
   coord_cartesian(ylim = c(0.15, 5.7), clip = "on") +
   labs(x = NULL, y = "LOEUF") +
   theme(axis.text.x = element_text(size = 5.8, face = "bold"))
