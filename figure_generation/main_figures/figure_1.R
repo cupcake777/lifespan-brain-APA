@@ -174,27 +174,33 @@ toras_cont <- function(A) {
   matrix(HEAT_CONTINUOUS[idx], nrow = nrow(A))
 }
 
+# no-donor interval: last supported grid age before the gap to the first supported grid age after it
+GAP_LO <- max(age_all[supp & age_all > 0 & age_all < 5])
+GAP_HI <- min(age_all[supp & age_all > 5])
+UNS_XC <- c(x_of_age(GAP_LO), x_of_age(GAP_HI))
+
 # solid = directly supported grid ages; dashed = interpolated span not used in modelling
 dsp <- seq(1, ncol(M_z), by = 3)
 supp_dsp <- supp[dsp]
 pts_solid <- dsp[supp_dsp]
 pts_uns   <- dsp[!supp_dsp]
-if (length(pts_uns) && min(pts_uns) > 1) pts_uns <- c(pts_solid[max(which(pts_solid < min(pts_uns)))], pts_uns)
+# 灰带两侧最后一个/第一个有直接采样的 grid index，用于断开实线
+UNS_GI <- c(pts_solid[max(which(pts_solid < min(pts_uns)))], pts_solid[min(which(pts_solid > max(pts_uns)))])
+# 虚线段首尾各加一个 solid anchor 点，衔接两侧实线端点
+if (length(pts_uns) && min(pts_uns) > 1) pts_uns <- c(UNS_GI[1], pts_uns)
+if (length(pts_uns) && max(pts_uns) < ncol(M_z)) pts_uns <- c(pts_uns, UNS_GI[2])
 L <- rbind(
   data.table(cl = rep(ifelse(cl == 1, "C1", "C2"), times = length(pts_solid)),
-             x = rep(xa[pts_solid], each = nrow(M_z)), interp = FALSE,
+             x = rep(xa[pts_solid], each = nrow(M_z)), interp = FALSE, gi = rep(pts_solid, each = nrow(M_z)),
              z = as.vector(M_z[, pts_solid, drop = FALSE])),
   data.table(cl = rep(ifelse(cl == 1, "C1", "C2"), times = length(pts_uns)),
-             x = rep(xa[pts_uns], each = nrow(M_z)), interp = TRUE,
+             x = rep(xa[pts_uns], each = nrow(M_z)), interp = TRUE, gi = rep(pts_uns, each = nrow(M_z)),
              z = as.vector(M_z[, pts_uns, drop = FALSE])))
 S <- L[, .(med = median(z), q25 = unname(quantile(z, .25)), q75 = unname(quantile(z, .75))),
-       by = .(cl, interp, x)]
-setorder(S, cl, x)
-S[, seg := paste(cl, interp, sep = "_")]
-# no-donor interval: last supported grid age before the gap to the first supported grid age after it
-GAP_LO <- max(age_all[supp & age_all > 0 & age_all < 5])
-GAP_HI <- min(age_all[supp & age_all > 5])
-UNS_XC <- c(x_of_age(GAP_LO), x_of_age(GAP_HI))
+       by = .(cl, interp, gi, x)]
+setorder(S, cl, interp, gi)
+# solid 段在无采样区间两侧断开（按 grid index 切）：灰带内只由虚线连接
+S[, seg := paste(cl, interp, fifelse(interp, "i", fifelse(gi <= UNS_GI[1], "a", "b")), sep = "_")]
 
 pc1 <- ggplot(S, aes(x, med)) +
   annotate("rect", xmin = UNS_XC[1], xmax = UNS_XC[2], ymin = -Inf, ymax = Inf, fill = "#F1EFEA") +
