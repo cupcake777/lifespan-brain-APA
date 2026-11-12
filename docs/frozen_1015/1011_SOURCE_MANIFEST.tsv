@@ -1,0 +1,30 @@
+destination	source	snapshot
+00_genotype_qc_imputation/preprocess	1010/preprocess	working tree 2026-10-15
+01_rnaseq_apa_quant/apa_quant	1010/preprocess/apa_quant	working tree 2026-10-15
+01_rnaseq_apa_quant/batch_correction.R	1010/batch/00_batch_correction_v2.R	working tree 2026-10-15
+01_rnaseq_apa_quant/bridge_method_selection.R	1010/batch/01_bridge_method_selection.R	working tree 2026-10-15
+01_rnaseq_apa_quant/rna_pre_step01.r	1010/preprocess/rna_pre_step01_v2.r	working tree 2026-10-15
+01_rnaseq_apa_quant/rna_pre_step02.r	1010/preprocess/rna_pre_step02.r	working tree 2026-10-15
+01_rnaseq_apa_quant/rna_quant.sh	1010/preprocess/rna_quant_v2.sh	working tree 2026-10-15
+02_lifespan_trajectories/data	external controlled inputs	not copied
+02_lifespan_trajectories/outputs	generated analysis outputs	not copied
+03_multiomics_uncoupling/scripts	1010/protein/scripts	working tree 2026-10-15
+03_multiomics_uncoupling/run_protein_validation.sh	1010/protein/scripts/run_protein_validation.sh	working tree 2026-10-15
+04_stage_specific_apaqtl/QTL	1010/QTL	working tree 2026-10-15
+04_stage_specific_apaqtl/QTL/qtl_pipe.sh	${APA_HPC_HOME}/project/scripts/qtl_pipe.sh	working tree 2026-10-15
+04_stage_specific_apaqtl/eqtl	1010/eqtl	working tree 2026-10-15
+05_gxstage_interaction/scripts	1010/interaction/scripts	working tree 2026-10-15
+05_gxstage_interaction/plot_fig.R	${APA_HPC_HOME}/project/work/apa/03_interaction/plot_fig.R	working tree 2026-10-15
+06_disease_heritability_geneset/MAGMA	1010/MAGMA	working tree 2026-10-15
+06_disease_heritability_geneset/TWAS	1010/TWAS	working tree 2026-10-15
+06_disease_heritability_geneset/sLDSC	1010/sLDSC	working tree 2026-10-15
+07_locus_colocalization_smr/SMR	1010/SMR	working tree 2026-10-15
+07_locus_colocalization_smr/coloc	1010/coloc	working tree 2026-10-15
+07_locus_colocalization_smr/coloc/input.sh	${APA_HPC_HOME}/project/work/apa/04_coloc/input.sh	working tree 2026-10-15
+07_locus_colocalization_smr/coloc/06_plot_coloc_summary.R	${APA_HPC_HOME}/project/work/apa/04_coloc/scripts/06_plot_coloc_summary.R	working tree 2026-10-15
+07_locus_colocalization_smr/func	1010/func	working tree 2026-10-15
+07_locus_colocalization_smr/func/run_analysis.sh	${APA_HPC_HOME}/project/work/apa/05_func/run_analysis.sh	working tree 2026-10-15
+07_locus_colocalization_smr/func/scripts	${APA_HPC_HOME}/project/work/apa/05_func/scripts	working tree 2026-10-15
+07_locus_colocalization_smr/func/config.yml	${APA_HPC_HOME}/project/work/apa/05_func/config.yml	working tree 2026-10-15
+07_locus_colocalization_smr/EasyColoc	https://github.com/cupcake777/EasyColoc.git	commit 850178b5c99899d3e00b8655ffda716f705aa09c
+01_rnaseq_apa_quant/rna_collapse_check.R	1014/rna_collapse_check.R	working tree 2026-10-15

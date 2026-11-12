@@ -1,0 +1,38 @@
+{
+  "ed7": {
+    "ed7c_rows_matched": 20,
+    "ed7c_max_abs_diff_n_recovered": 0,
+    "ed7c_max_abs_diff_frac": 0.0,
+    "per_gene_rows_matched": 669,
+    "per_gene_rows_ref": 669,
+    "per_gene_exact_count": 669
+  },
+  "apaqtl_totals": {
+    "totals": [
+      {
+        "stage": "prenatal",
+        "apaqtl_genes": 669,
+        "significant_pairs": 59761
+      },
+      {
+        "stage": "postnatal",
+        "apaqtl_genes": 2249,
+        "significant_pairs": 261336
+      }
+    ],
+    "expected": {
+      "prenatal_genes": 669,
+      "postnatal_genes": 2249,
+      "prenatal_pairs": 59761,
+      "postnatal_pairs": 261336
+    }
+  },
+  "mediation": {
+    "n_pairs": 772,
+    "n_mediated_rule": 162,
+    "frac_mediated_rule": 0.20984455958549222,
+    "summary_rows_both": 7,
+    "summary_N_exact": 7,
+    "summary_rows_total": 7
+  }
+}

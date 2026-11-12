@@ -1,0 +1,159 @@
+path	superseded_by	reason
+1014/figure/_archive/00_theme_config_pre1018.R	00_theme_config.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1_composite_v2.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1_composite_v3.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1_composite_v4.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1_composite_v5.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1_composite_v6.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1a_study_design.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1b_apa_landscape.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1c_trajectory_ribbon.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1d_gene_classes.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1e_enrichment_lollipop.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/_archive/fig1_iterations/fig1f_loeuf_ad.R	fig1_composite_v8.R	Archived iteration or backup kept for provenance
+1014/figure/data/Supplementary_Tables_draft.xlsx	(kept, not copied as file)	Whole workbook includes S_samples sheet; only three summary sheets exported
+1014/figure/data/Supplementary_Tables_v22_submission.xlsx	(kept, not superseded)	Not copied: whole workbook includes S_samples sheet (sample-level metadata). Identical MAGMA and replication sheets to draft (checked)
+1014/figure/data/_Supplementary_Tables_draft_pre1019.xlsx	1014/figure/data/Supplementary_Tables_draft.xlsx	Pre-1019 workbook (ED6/ED9 read the current draft)
+1014/figure/data/fig2_inputs/fig2d_pair_null_summary_100sets.tsv	1014/figure/data/fig2_inputs/fig2d_pair_null_summary_v4.tsv	Pre-v4 null summary
+1014/figure/data/fig2_inputs/fig2d_qq_quantiles.tsv	1014/figure/data/fig2_inputs/fig2d_qq_quantiles_v4.tsv	Pre-v4 quantiles
+1014/figure/data/s22_out_v4	1014/figure/data/s22_out_v4_df2	df = 3 outputs; superseded by df = 2 run
+1014/figure/ed1_composite_v1.R	ed1_composite_v2.R	Earlier iteration of the same figure
+1014/figure/ed3_composite_v1.R	ed3_composite_v2.R	Earlier iteration of the same figure
+1014/figure/ed4_composite_v1.R	ed4_composite_v2.R	Earlier iteration of the same figure
+1014/figure/ed6_composite_v1.R	ed6_composite_v2.R	Earlier iteration of the same figure
+1014/figure/ed8_composite_v1.R	ed8_composite_v2.R	Earlier iteration of the same figure
+1014/figure/ed9_composite_v1.R	ed9_composite_v2.R	Earlier iteration of the same figure
+1014/figure/fig1_composite_v7.R	fig1_composite_v8.R	Earlier iteration of the same figure
+1014/figure/fig2_composite_v1.R	fig2_composite_v4.R	Earlier iteration of the same figure
+1014/figure/fig2_composite_v2.R	fig2_composite_v4.R	Earlier iteration of the same figure
+1014/figure/fig2_composite_v3.R	fig2_composite_v4.R	Earlier iteration of the same figure
+1014/figure/fig3_composite_v1.R	fig3_composite_v4.R	Earlier iteration of the same figure
+1014/figure/fig3_composite_v2.R	fig3_composite_v4.R	Earlier iteration of the same figure
+1014/figure/fig3_composite_v3.R	fig3_composite_v4.R	Earlier iteration of the same figure
+1014/figure/fig4_composite_v1.R	fig4_composite_v6.R	Earlier iteration of the same figure
+1014/figure/fig4_composite_v2.R	fig4_composite_v6.R	Earlier iteration of the same figure
+1014/figure/fig4_composite_v3.R	fig4_composite_v6.R	Earlier iteration of the same figure
+1014/figure/fig4_composite_v4.R	fig4_composite_v6.R	Earlier iteration of the same figure
+1014/figure/fig4_composite_v5.R	fig4_composite_v6.R	Earlier iteration of the same figure
+1014/figure/fig5_composite_v1.R	fig5_composite_v3.R	Earlier iteration of the same figure
+1014/figure/fig5_composite_v2.R	fig5_composite_v3.R	Earlier iteration of the same figure
+1014/figure/fig6_composite_v1.R	fig6_composite_v3.R	Earlier iteration of the same figure
+1014/figure/fig6_composite_v2.R	fig6_composite_v3.R	Earlier iteration of the same figure
+1014/figure/pdf/ED1_composite_v1.pdf	ed1_composite_v2 render	Older render of the same figure; superseded
+1014/figure/pdf/ED3_composite_v1.pdf	ed3_composite_v2 render	Older render of the same figure; superseded
+1014/figure/pdf/ED4_composite_v1.pdf	ed4_composite_v2 render	Older render of the same figure; superseded
+1014/figure/pdf/ED6_composite_v1.pdf	ed6_composite_v2 render	Older render of the same figure; superseded
+1014/figure/pdf/ED8_composite_v1.pdf	ed8_composite_v2 render	Older render of the same figure; superseded
+1014/figure/pdf/ED9_composite_v1.pdf	ed9_composite_v2 render	Older render of the same figure; superseded
+1014/figure/pdf/Fig2_composite_v2.pdf	fig2_composite_v4 render	Older render of the same figure; superseded
+1014/figure/pdf/Fig2_composite_v3.pdf	fig2_composite_v4 render	Older render of the same figure; superseded
+1014/figure/pdf/Fig3_composite_v2.pdf	fig3_composite_v4 render	Older render of the same figure; superseded
+1014/figure/pdf/Fig3_composite_v3.pdf	fig3_composite_v4 render	Older render of the same figure; superseded
+1014/figure/pdf/Fig4_composite_v3.pdf	fig4_composite_v6 render	Older render of the same figure; superseded
+1014/figure/pdf/Fig4_composite_v4.pdf	fig4_composite_v6 render	Older render of the same figure; superseded
+1014/figure/pdf/Fig4_composite_v5.pdf	fig4_composite_v6 render	Older render of the same figure; superseded
+1014/figure/pdf/Fig5_composite_v2.pdf	fig5_composite_v3 render	Older render of the same figure; superseded
+1014/figure/pdf/Fig6_composite_v2.pdf	fig6_composite_v3 render	Older render of the same figure; superseded
+1014/figure/png/ED1_composite_v1.png	ed1_composite_v2 render	Older render of the same figure; superseded
+1014/figure/png/ED3_composite_v1.png	ed3_composite_v2 render	Older render of the same figure; superseded
+1014/figure/png/ED4_composite_v1.png	ed4_composite_v2 render	Older render of the same figure; superseded
+1014/figure/png/ED6_composite_v1.png	ed6_composite_v2 render	Older render of the same figure; superseded
+1014/figure/png/ED8_composite_v1.png	ed8_composite_v2 render	Older render of the same figure; superseded
+1014/figure/png/ED9_composite_v1.png	ed9_composite_v2 render	Older render of the same figure; superseded
+1014/figure/png/Fig1_composite_v7.png	fig1_composite_v8 render	Older render of the same figure; superseded
+1014/figure/png/Fig2_composite_v1.png	fig2_composite_v4 render	Older render of the same figure; superseded
+1014/figure/png/Fig2_composite_v2.png	fig2_composite_v4 render	Older render of the same figure; superseded
+1014/figure/png/Fig2_composite_v3.png	fig2_composite_v4 render	Older render of the same figure; superseded
+1014/figure/png/Fig3_composite_v1.png	fig3_composite_v4 render	Older render of the same figure; superseded
+1014/figure/png/Fig3_composite_v2.png	fig3_composite_v4 render	Older render of the same figure; superseded
+1014/figure/png/Fig3_composite_v3.png	fig3_composite_v4 render	Older render of the same figure; superseded
+1014/figure/png/Fig4_composite_v1.png	fig4_composite_v6 render	Older render of the same figure; superseded
+1014/figure/png/Fig4_composite_v2.png	fig4_composite_v6 render	Older render of the same figure; superseded
+1014/figure/png/Fig4_composite_v3.png	fig4_composite_v6 render	Older render of the same figure; superseded
+1014/figure/png/Fig4_composite_v4.png	fig4_composite_v6 render	Older render of the same figure; superseded
+1014/figure/png/Fig4_composite_v5.png	fig4_composite_v6 render	Older render of the same figure; superseded
+1014/figure/png/Fig5_composite_v1.png	fig5_composite_v3 render	Older render of the same figure; superseded
+1014/figure/png/Fig5_composite_v2.png	fig5_composite_v3 render	Older render of the same figure; superseded
+1014/figure/png/Fig6_composite_v1.png	fig6_composite_v3 render	Older render of the same figure; superseded
+1014/figure/png/Fig6_composite_v2.png	fig6_composite_v3 render	Older render of the same figure; superseded
+1014/figure/png/_final_Fig5_composite_v2.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_final_Fig6_composite_v2.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_prev5v3.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_prev5v3b.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_prev6v3.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_preview_fig5.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_preview_fig5b.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_preview_fig6.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_qa5d_gene.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_qa5e_gene.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_qa6_gene_tracks.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_qa6_mphosph9.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_qa_all_gene_tracks_v3.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_qa_atp_mtrfr_v3.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/_qa_denr_wide.png		QA, preview or scratch render; not a manuscript output
+1014/figure/png/ed5d_neurite_soma_overlap.png	ed5_composite_v1 render	Older render of the same figure; superseded
+1014/figure/png/fig2a_dpdui_vs_drna.png	fig2_composite_v4 render	Older render of the same figure; superseded
+1014/figure/producers/S5_coupling_producer_from_lineage.py	fig2a_prep_event_coupling.py (release/figures/producers/)	Not called by any final script; fig2a prep reproduces this logic (documented in that header)
+1014/figure/producers/s22_supplement_v2_fig2v4.R	producers/s22_supplement_v2_fig2v4_df2.R	Non-df2 variant (df = 3). Chosen as superseded on the basis of the 1014 record that df = 2 reproduces manuscript S1 numbers; not re-tested in this pass against the 366-donor RNA matrix (open reviewer finding)
+1014/figure/round1_panels/ed1a_sample_flow.R	ed1_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed1b_donor_density.R	ed1_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed1c_polyasite_distance.R	ed1_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed2a_batch_structure.R	ed2_composite_v1.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed3a_threshold_sensitivity.R	ed3_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed3b_stability.R	ed3_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed3c_brainspan_concordance.R	ed3_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed4a_enrichment_full.R	ed4_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed4b_brain_background.R	ed4_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed4c_loeuf_five_state.R	ed4_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed5a_rna_protein_age.R	ed5_composite_v1.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed5b_apa_protein_clusters.R	ed5_composite_v1.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed5c_protein_beyond_vs_dpdui.R	ed5_composite_v1.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed5d_neurite_soma_overlap.R	ed5_composite_v1.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed6a_braingvex_pi1.R	ed6_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed6b_cell_composition.R	ed6_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed7a_effect_sizes.R	ed7_composite_v1.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed7b_mashr_sharing.R	ed7_composite_v1.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed7c_subset_recovery.R	ed7_composite_v1.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed8a_sldsc_all.R	ed8_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed8a_tau_star.R	ed8_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed8b_magma_condition.R	ed8_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/ed8c_magma_traj_apoe.R	ed8_composite_v2.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig2a_dpdui_vs_drna.R	fig2_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig2b_apa_rna_pairs.R	fig2_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig2c_element_rate_ratios.R	fig2_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig2d_apa_protein_excess.R	fig2_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig2e_pik3ca_trajectories.R	fig2_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig3a_apaqtl_counts_distance.R	fig3_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig3b_hexamer_pdui.R	fig3_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig3c_HID1_context_pdui.R	fig3_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig3d_coloc_mediation.R	fig3_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig3e_prenatal_specific_replication.R	fig3_composite_v4.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig4a_schematic.R	fig4_composite_v6.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig4b_pre_post_scatter.R	fig4_composite_v6.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig4c_stage_maps_by_class.R	fig4_composite_v6.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig4d_reversed_loci_forest.R	fig4_composite_v6.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig4e_adult_map_detection.R	fig4_composite_v6.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig4f_expr_change_vs_effect_change.R	fig4_composite_v6.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig4g_expr_change_by_class.R	fig4_composite_v6.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig4h_atp2b1_saturation.R	fig4_composite_v6.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig5a_sldsc_powered.R	fig5_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig5b_magma_gsa.R	fig5_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig5c_disease_gene_matrix.R	fig5_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig5d_scaf1.R	fig5_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig5e_nrbp2.R	fig5_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig6a_atp2b1_adhd.R	fig6_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig6a_atp2b1_eas_scz.R	fig6_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig6b_mtrfr_eas_scz.R	fig6_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig6b_ogfod2_int.R	fig6_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig6c_arl3_apaqtl_eas_scz.R	fig6_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/figure/round1_panels/fig6c_arl3_eqtl_track.R	fig6_composite_v3.R (rebuilt as composite)	Round-1 single-panel script; style rejected per 1014/figure README; data-prep logic reusable only
+1014/outputs/08_enrichment_two_levels.tsv	1016/08_enrichment_two_levels.tsv	Pre-refresh version; README says do not use
+figures/* (322 files: pre-v25 composite scripts, panel drafts, renders)	figures/README.md (v25 final set)	superseded 2026-10-26; moved out of the release to figure_archive_20261026/ (file list in its MANIFEST.md)
+release/figures/fig6_composite_v11.R	fig6_composite_v12.R	Moved to figure_archive_20261028/ (repaired coloc run)
+release/figures/_fig5c_preview.R	fig5_v11_abc.R	Preview helper; moved to figure_archive_20261028/
+release/figures/docs/ED8_figure_legend.md	manuscript v27 legend	Stale legend draft; moved to figure_archive_20261028/
+release/figures/docs/ED8_composite_v6_preview.png	ED8_composite_v9.R	Preview; moved to figure_archive_20261028/
+release/figures/docs/ED8_composite_v7_preview.png	ED8_composite_v9.R	Preview; moved to figure_archive_20261028/
+figure_archive_20261028/fig5_composite_v10.R	fig5_composite_v11.R	v25/v26 Fig 5 (d SCAF1, e NRBP2); replaced 2026-10-29 by v27 Fig 5 (e KLC1)
+figure_archive_20261028/fig5_v10_abc.R	fig5_v11_abc.R	v25/v26 Fig 5 (d SCAF1, e NRBP2); replaced 2026-10-29 by v27 Fig 5 (e KLC1)
+figure_archive_20261028/fig5_v7_de.R	fig5_v8_de.R	v25/v26 Fig 5 (d SCAF1, e NRBP2); replaced 2026-10-29 by v27 Fig 5 (e KLC1)

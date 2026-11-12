@@ -1,0 +1,14 @@
+path	reason
+1013/collect/apa.sample.Prenatal.final; apa.sample.Postnatal.final; apa.sample.interaction.final; exp.sample.*.final	sample lists (forbidden category)
+1016/handoff_apa_function_1016/covariates_with_cell_proportions.prenatal.txt; .postnatal.txt	per-sample covariate matrices (sample IDs as columns)
+1014/figure/data/fig4b_example_pdui_LOCAL_ONLY.tsv	file name marks LOCAL_ONLY; per-sample PDUI
+1018/handoff_fig_data_1017/R2a_PRDX6_sample_data.tsv	per-sample data (R2a sample-data pattern)
+1018/handoff_fig_data_1017/R2b_selected_bam_samples.tsv	sample selection list (BAM samples)
+1018/handoff_fig_data_1017/.R4_Exc_matches.tsv; .R4_Ast_matches.tsv	hidden scratch match tables; not referenced by any summary; not copied
+1014/apa_after_combat.tsv; 1014/expr_after_combat*.tsv; 1014/p12_fixed/rna_matched_fixed.rds; 1014/12_protein/raw/*_matched.rds; raw/*	individual-level or controlled per-sample matrices
+1016/followup_1011/tmp_verify/*	temporary verification copies (duplicates of r4 and ed7 outputs)
+1014/outputs/08_braingvex_event_replication.tsv (36 MB), 1014/outputs/06_cross_layer_*.tsv, 1013/collect/cell_qtl_residual_associations.tsv.gz, 1014/figure/data/ed5d_adjusted_or.tsv	not assigned to a registry row of modules 00-04; not copied
+1016/followup_1011/07_locus_colocalization_smr/arl3/vcf_geno_keysnps.py (and 05/06/07 follow-ups)	belong to other tracks (05, 06, 07); not copied here
+1015/handoff_eqtl_1015/03_sldsc_tau_star.tsv; sldsc_apa_eqtl_comparison.tsv	belong to module 06 (sLDSC); left to that track
+1014/outputs/01_support_prediction.tsv (copied, not-rerun)	copied; listed here only for transparency: not reproduced
+1014/outputs/01_individual_qc.tsv	copied (summary counts only: n_profiles 815, n_individuals 750)

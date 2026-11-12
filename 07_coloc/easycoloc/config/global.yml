@@ -1,0 +1,108 @@
+project_root: ".."
+output_dir: "results"
+temp_dir: "temp"
+sig_threshold: 0.8  # Legacy fallback for coloc_settings.pp4_threshold
+use_parallel: true
+n_cores: 2
+random_seed: 20240326  # Global seed for reproducibility (SuSiE, parallel processing)
+
+# Public, portable defaults.
+# Replace these with project-local paths, or keep the same layout under `refs/`.
+plink_hg19: "refs/plink/hg19/1kg_hg19_filtered"
+plink_hg38: "refs/plink/hg38/1kg_hg38_filtered"
+plink_keep:                                    # map: pop code -> PLINK --keep file; recommended format: two columns FID IID; one-column IID is accepted and converted at runtime
+  EAS: "refs/plink/keep/EAS.sample"
+  EUR: "refs/plink/keep/EUR.sample"
+hash_table_dir: ""
+recom:                                         # map: pop code -> HapMap file prefix (dir/PopName)
+  EAS: "refs/recomb/hg38/CHB/CHB"
+  EUR: "refs/recomb/hg38/CEU/CEU"
+gene_anno: "refs/annotation/gencode.v40.annotation.gtf.gz"
+ref_genome_hg19: "refs/genome/GRCh37.fa.gz"
+ref_genome_hg38: "refs/genome/GRCh38.fa.gz"
+1kg_af: "refs/af"
+dbsnp_hg19: "refs/dbsnp/dbsnp_hg19.gz"
+dbsnp_hg38: "refs/dbsnp/dbsnp_hg38.gz"
+harmonize_dir: "harmony"
+
+clump:
+  p1: 1e-7
+  p2: 1e-7
+  r2: 0.2
+  kb: 1000
+
+coloc_settings:
+  pp4_threshold: 0.7
+  susie_threshold: 0.3
+  min_snps: 10
+  min_snps_susie: 10
+  top_candidates: 100
+  maf_default: 0.1
+  maf_na_replacement: 0.05
+  maf_epsilon: 1.0e-6
+  p1: 1.0e-4
+  p2: 1.0e-4
+  p12: 1.0e-5
+  pvalue_floor: 1.0e-300
+
+analysis:
+  flank_bp: 500000
+  plot_window_bp: 200000
+  prefilter_sig_pairs: true
+
+runtime:
+  enabled: true
+  resume_completed_tasks: true
+  skip_existing_locus_results: false
+  write_task_events: true
+  parallel_qtl_tasks: false
+  precompute_locus_ld: false
+  ld_plink_timeout: 120
+  execution_mode: "single"
+  shard_by: "locus"
+  shard_index: 1
+  shard_count: 1
+  task_state_flush_interval: 1
+  disk_ld_cache_dir: "temp/ld_cache"
+
+harmonization_settings:
+  liftover_chain: "refs/liftover/hg19ToHg38.over.chain.gz"
+  compress_output: true
+  chunked: true
+  chunk_min_rows: 1000000
+  chunk_parallel_jobs: 1
+
+sensitivity_analysis:
+  enabled: false
+  output_dir: "sensitivity"
+  prior_grid:
+    - {p1: 1.0e-4, p2: 1.0e-4, p12: 1.0e-5}
+    - {p1: 1.0e-3, p2: 1.0e-4, p12: 1.0e-5}
+    - {p1: 1.0e-4, p2: 1.0e-3, p12: 1.0e-5}
+    - {p1: 1.0e-3, p2: 1.0e-3, p12: 1.0e-5}
+    - {p1: 1.0e-5, p2: 1.0e-5, p12: 1.0e-6}
+  heatmap:
+    enabled: true
+    p1_values: [1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2]
+    p2_values: [1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2]
+    p12_ratio: 0.1
+
+plot_settings:
+  significance_threshold: 5.0e-8
+  plot_window_bp: 200000
+  plot_width: 7.2
+  plot_height: 5.4
+  locuscompare_backend: "auto"
+  point_size: 5
+  point_alpha: 0.85
+  title_phenotype_field: "gene"
+  r2_breaks: [0.2, 0.4, 0.6, 0.8, 1.0]
+  r2_color_scale: "viridis"
+  r2_colors:
+    - "#000080"
+    - "#87CEEB"
+    - "#008000"
+    - "#FFA500"
+    - "#FF0000"
+  lead_snp_color: "#7F3C8D"
+  credible_set_color: "#E67E22"

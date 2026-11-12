@@ -1,0 +1,2 @@
+Type,NumberRNASeqandGTSamples,allPairsTabixFilename,sigPairsTabixFilename
+example_eqtl,500,../data/qtl/example_all_pairs.txt.gz,../data/qtl/example_sig_pairs.txt.gz

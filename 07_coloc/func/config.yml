@@ -1,0 +1,718 @@
+project:
+  name: apa_05_func
+  analysis_version: framework_2026-07-25_v5
+  specification: framework.md
+  description: Significant-APA-QTL-first mechanism, consequence, mediation, and disease integration configuration.
+  analysis_chain: SNP_to_APA_to_molecular_consequence_to_disease_relevance
+  baseline_optional_extension_policy:
+    eqtl_coloc: required_primary_same_cohort_functional_support
+    external_qtl_coloc: secondary_cross_population_validation_not_primary_gate
+    protein_sample_metadata: optional_absent_use_directly_matchable_protein_columns_only
+    pfc_rbp_expression: optional_level_2_RBP_expression_available_own_cohort_TPM
+    enrichment_gene_sets: optional_absent_use_R_package_gene_sets_when_available
+    tested_apa_gene_universe: derive_from_pipeline_inputs_not_external_file
+
+conventions:
+  phenotype_id_format: "transcript_id|gene_name|3UTR_coordinates|strand"
+  beta_definition: "ALT allele effect on PDUI"
+  beta_positive_meaning: "ALT increases PDUI; 3UTR lengthening"
+  beta_negative_meaning: "ALT decreases PDUI; 3UTR shortening"
+  allele_harmonization_required: true
+  direction_blocked_when:
+    - beta_alt_PDUI_is_NaN
+    - allele_harmonized_is_false
+  strand_aware_sequence: true
+  negative_strand_requires_reverse_complement: true
+  transcript_oriented_windows: true
+  cleavage_site_origin: 0
+  dur_definition: from_phenotype_id_coordinate
+  pas_anchor_primary: phenotype_id_3UTR_coordinates
+  pas_anchor_fallback: phenotype_boundary_approximation
+
+inputs:
+  prenatal_finemapped_apaqtl:
+    description: Prenatal variant-phenotype fine-mapping table from SuSiE with PIP; signed effect is joined from prenatal_significant_apaqtl.slope when needed.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/raw/prenatal.SuSiE_summary.parquet"
+    required_columns:
+      - variant_id
+      - phenotype_id
+      - pip
+      - af
+      - cs_id
+    signed_effect_source_input: prenatal_significant_apaqtl
+  prenatal_significant_apaqtl:
+    description: Prenatal significant APA-QTL pairs with signed tensorQTL slope and allele fields.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/raw/prenatal.signif_pairs.txt.gz"
+    required_columns:
+      - chr
+      - pos
+      - ref
+      - alt
+      - phenotype_id
+      - variant_id
+      - af
+      - ma_samples
+      - ma_count
+      - pval_nominal
+      - slope
+      - slope_se
+  postnatal_finemapped_apaqtl:
+    description: Postnatal variant-phenotype fine-mapping table from SuSiE with PIP; signed effect is joined from postnatal_significant_apaqtl.slope when needed.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/raw/postnatal.SuSiE_summary.parquet"
+    required_columns:
+      - variant_id
+      - phenotype_id
+      - pip
+      - af
+      - cs_id
+    signed_effect_source_input: postnatal_significant_apaqtl
+  postnatal_significant_apaqtl:
+    description: Postnatal significant APA-QTL pairs with signed tensorQTL slope and allele fields.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/raw/postnatal.signif_pairs.txt.gz"
+    required_columns:
+      - chr
+      - pos
+      - ref
+      - alt
+      - phenotype_id
+      - variant_id
+      - af
+      - ma_samples
+      - ma_count
+      - pval_nominal
+      - slope
+      - slope_se
+  interaction_apaqtl:
+    description: GxStage significant interaction pairs from 03_interaction with b_g, b_gi, and BH FDR; cross-stage direction/class is derived downstream from b_g and b_gi.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/raw/interaction.signif_pairs.txt.gz"
+    required_columns:
+      - variant_id
+      - phenotype_id
+      - b_g
+      - b_gi
+      - pval_adj_bh
+  apa_phenotype_annotation:
+    description: APA phenotype annotation from 02_pattern; strand and event coordinates are parsed from phenotype_id when not present as separate columns.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/03_interaction/results/00_preprocess/proximal.apa.info"
+    required_columns:
+      - phenotype_id
+      - Gene
+      - fit_value
+      - Predicted_Proximal_APA
+      - Loci
+    optional_columns:
+      - proximal_pas_coordinate
+      - distal_pas_coordinate
+      - proximal_cleavage_site
+      - distal_cleavage_site
+  gwas_coloc_results:
+    description: GWAS colocalization results from 04_coloc.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/04_coloc/results/runs/20261028_full19_repaired/all_colocalization_results.csv"
+    required_for_baseline: true
+  eqtl_coloc_results:
+    description: Stage-matched same-cohort APA/eQTL sharing used as primary functional support, distinct from mediation and independent replication.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/work/coloc/internal_eqtl.tsv"
+    required_for_baseline: true
+    absent_status: stop_current_v5_pipeline
+    absent_behavior: fill_eQTL_columns_as_NA_not_available_and_exclude_from_baseline_support
+  tested_apa_gene_universe:
+    description: Pipeline-derived gene universe from all valid APA phenotype_id values available in baseline inputs.
+    derive_in_script: "07_enrichment.R"
+    output_path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/work/enrichment/tested_genes.tsv"
+    required_for_baseline: false
+    external_input_required: false
+  protein_abundance:
+    description: Matched-sample MS protein abundance table for Module D.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/MS_identified_information.txt"
+    required_for_baseline: true
+  protein_sample_metadata:
+    description: Optional sample metadata for protein abundance; baseline uses directly matchable protein abundance columns only.
+    path: ""
+    required_for_baseline: false
+    absent_status: not_available
+    absent_behavior: run_gene_level_or_matched_column_protein_support_where_possible_else_mark_unavailable
+  genotype_dosage:
+    description: ALT allele dosage matrix for candidates when Module D requires dosage-protein tests.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/raw/geno.matrix"
+    required_for_baseline: true
+  bulk_rna_tpm:
+    description: Raw bulk RNA-seq TPM matrix for sample-level cell deconvolution.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/raw_data/all.912.tpm"
+    required_for_cell_deconvolution: true
+  bulk_rna_counts:
+    description: Raw bulk RNA-seq gene counts for BisqueRNA cell deconvolution.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/raw_data/all.912.count"
+    required_for_cell_deconvolution: true
+  sample_metadata:
+    description: Sample metadata with batch, RIN, sex, age, and LifeStage.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/00_raw_data/CHB.all.meta"
+    required_for_cell_deconvolution: true
+  prenatal_qtl_samples:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/01_QTL/pre_input/sample.Prenatal.final"
+  postnatal_qtl_samples:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/01_QTL/pre_input/sample.Postnatal.final"
+  prenatal_qtl_covariates:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/01_QTL/pre_input/covariates_for_qtl.Prenatal.txt"
+  postnatal_qtl_covariates:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/01_QTL/pre_input/covariates_for_qtl.Postnatal.txt"
+  prenatal_qtl_phenotypes:
+    description: Prenatal normalized APA phenotype matrix used as the mediation mediator.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/01_QTL/pre_input/phenotype.Prenatal.bed.gz"
+    scale: inverse_normal_transformed_PDUI
+  postnatal_qtl_phenotypes:
+    description: Postnatal normalized APA phenotype matrix used as the mediation mediator.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/01_QTL/pre_input/phenotype.Postnatal.bed.gz"
+    scale: inverse_normal_transformed_PDUI
+  prenatal_mediation_covariates:
+    description: Prenatal QTL covariates augmented with stage-specific cell-composition ILR coordinates.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/work/deconvolution/covariates_with_cell_proportions.prenatal.txt"
+  postnatal_mediation_covariates:
+    description: Postnatal QTL covariates augmented with stage-specific cell-composition ILR coordinates.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/work/deconvolution/covariates_with_cell_proportions.postnatal.txt"
+  prenatal_nominal_apaqtl:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/01_QTL/nominal/prenatal.cis_qtl_pairs.txt.gz"
+  postnatal_nominal_apaqtl:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/01_QTL/nominal/postnatal.cis_qtl_pairs.txt.gz"
+  prenatal_internal_eqtl_samples:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/14_context/.staging_eqtl_rerun_20261015/pre_input/sample.Prenatal.final"
+  postnatal_internal_eqtl_samples:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/14_context/.staging_eqtl_rerun_20261015/pre_input/sample.Postnatal.final"
+  prenatal_internal_eqtl_nominal:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/effect/EXP/stage/data/nominal/prenatal.cis_qtl_pairs.txt.gz"
+  postnatal_internal_eqtl_nominal:
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/effect/EXP/stage/data/nominal/postnatal.cis_qtl_pairs.txt.gz"
+  independent_signal_assignments:
+    description: Optional conditional or ancestry-matched LD-clump assignment for significant pairs not assigned to a SuSiE credible set.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/work/prepare/signals.tsv.gz"
+    required_for_complete_signal_accounting: true
+    absent_behavior: stop_canonical_pipeline
+  gxstage_classes:
+    description: Pinned posterior classes for the 57 interaction groups whose representative pairs occur in the 05_func significant-QTL universe; values are preserved from 03_interaction and are not recalculated here.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/interaction_pattern_contract.tsv"
+    required_for_gxstage_comparison: true
+    absent_behavior: stop_canonical_pipeline
+  interaction_posterior_results:
+    description: Source 03_interaction posterior-pattern table used to validate the pinned 57-group class contract.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/03_interaction/results/02_group_eigenmt/previous115_interaction_robustness_summary.tsv"
+    required_for_gxstage_comparison: true
+    absent_behavior: stop_canonical_pipeline
+  interaction_group_results:
+    description: Current 03_interaction HC3-core group table; lead phenotype and variant identify the representative interaction pair, while group_id is the GxStage analysis unit.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/03_interaction/results/04_hc3_refit/interaction_hc3_core_groups.tsv"
+    required_for_gxstage_comparison: true
+    absent_behavior: stop_canonical_pipeline
+  sldsc_enrichment_results:
+    description: Genome-wide LD-aware disease enrichment for current APA-QTL annotations.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/09_sLDSC/output/summary/sldsc_enrichment_summary.tsv"
+  coloc_prior_sensitivity_results:
+    description: Prior-sensitivity and shared-posterior summaries for followed-up locus-level disease comparisons.
+    paths:
+      - "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/work/coloc/novel_summary.tsv"
+      - "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/work/coloc/case_summary.tsv"
+
+reference_resources:
+  genome_fasta:
+    description: Reference genome sequence used for sequence extraction and allele matching.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/hg38.fa"
+    release: GRCh38_local_refresh_reference
+  genome_fai:
+    description: FASTA index for reference genome sequence.
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/data/genomes/refresh/hg38.fa.fai"
+  chromosome_sizes:
+    description: Chromosome sizes matching the reference genome.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/hg38.chrom.sizes"
+  gene_annotation_gtf:
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/gene/gencode.v40.annotation.gtf.gz"
+    release: GENCODE_v40
+  polyadb:
+    description: PolyA_DB reference PAS and cleavage-site annotations.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/PolyA_DB_hg38.txt.gz"
+    release: release_not_recorded_use_content_sha256
+  targetscan_mirna_seed:
+    description: TargetScan mature miRNA seed reference for 8mer, 7mer-m8, and 7mer-a1 scanning.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/Summary_Counts.all_predictions.txt.zip" # Conserved_Family_Info.txt.zip was downloaded from the same source.
+    release: TargetScan_download_archive_use_content_sha256
+  mirbase_mature_fasta:
+    description: Mature human miRNA sequences used to derive 7-nt seed opportunity motifs.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/mature.fa"
+    release: miRBase_local_download_use_content_sha256
+  cisbp_rna_motifs:
+    description: CISBP-RNA RBP motif library.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/motif_databases/CISBP-RNA/Homo_sapiens.meme"
+    release: CISBP_RNA_local_meme_use_content_sha256
+  pfc_rbp_expression:
+    description: PFC cohort RBP expression evidence for Level 2 RBP support, from the study's own RNA-seq (all.912.tpm, 912 PFC samples), stage-matched Prenatal/Postnatal.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/pfc_rbp_expression.tsv.gz"
+    required_for_baseline: false
+    absent_status: available
+    absent_behavior: level_2_expression_supported_RBP_evidence_requires_own_cohort_stage_matched_mean_TPM_at_or_above_min_mean_tpm
+    release: own_cohort_all.912.tpm_912_PFC_samples_RNA_seq
+  postar3_clip_peaks:
+    description: POSTAR3 CLIP peaks for Level 3 RBP support.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/postar3_all_RBPs_data"
+    release: POSTAR3
+  phastcons_bigwig:
+    description: phastCons conservation scores.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/hg38.phastCons100way.bw"
+    release: hg38_phastCons100way
+  aparent_model:
+    description: APARENT model or scoring resource.
+    path: "/gpfs/hpc/home/chenchao/liyc/bin/aparent"
+    release: local_APARENT_install_use_path_and_mtime
+  viennarna_rnafold:
+    description: ViennaRNA RNAfold executable or environment path.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/3UTR.csv" # Intron_ARE.csv is from the same reference set.
+    release: ViennaRNA_2.4.7
+  ld_reference:
+    description: LD reference panel for interaction proxy assignment; PLINK2 trio uses the current 03_interaction preprocess output prefix.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/03_interaction/results/00_preprocess/genotype.pgen"  # companion files genotype.pvar and genotype.psam are in the same directory
+    release: ChinaMAP_imputationserver_v1_ChinaMAP_phase1_v1
+    pfile_prefix: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/03_interaction/results/00_preprocess/genotype"
+    plink_version: PLINK_2.0.0_a.6.9LM_2025-01-29
+  enrichment_gene_sets:
+    description: Optional external GMT gene sets; baseline enrichment may use package-derived gene sets.
+    path: ""
+    required_for_baseline: false
+    absent_status: use_package_resources
+    fallback_sources:
+      - clusterProfiler
+      - org.Hs.eg.db
+      - msigdbr
+      - ReactomePA
+    record_source_in_run_summary: true
+  dna_features_viewer:
+    description: dna_features_viewer plotting package/resource for star-example mechanism figures.
+    path: "python_module:dna_features_viewer"
+  sc_deconvolution_reference_6class:
+    description: Benchmark-selected primary neuron-merged pseudobulk reference.
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/sc/output/ref6.tsv"
+  sc_deconvolution_reference_7class:
+    description: Exploratory excitatory/inhibitory split sensitivity reference.
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/sc/output/ref7.tsv"
+  velmeshev_scrna:
+    description: Local lifespan single-nucleus reference; prenatal raw counts are stored in raw/X.
+    h5ad: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/sc/raw/velmeshev_snRNA_seq.h5ad"
+    metadata: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/sc/raw/velmeshev_snRNA_seq.meta.tsv"
+  fullard_aging_scrna:
+    description: Local DLPFC aging single-nucleus reference; restrict to disease-normal donors for postnatal deconvolution.
+    h5ad: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/sc/raw/Fullard_2025_Aging_cohort.h5ad"
+  published_3aqtl_disease_associations:
+    description: Published single-SNP or LD-based 3'aQTL-GWAS association evidence used for novelty comparison; not a formal coloc posterior table.
+    path: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/Traits_diseases_associated_3aQTLs.txt.gz"
+  gtex_v11_brain_cortex_eqtl:
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/GTEx_v11/GTEx_Analysis_v11_eQTL/Brain_Cortex.v11.allpairs.txt.gz"
+    covariates: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/GTEx_v11/GTEx_Analysis_v11_eQTL/Brain_Cortex.v11.covariates.txt"
+  gtex_v11_brain_ba9_eqtl:
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/GTEx_v11/GTEx_Analysis_v11_eQTL/Brain_Frontal_Cortex_BA9.v11.allpairs.txt.gz"
+    covariates: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/GTEx_v11/GTEx_Analysis_v11_eQTL/Brain_Frontal_Cortex_BA9.v11.covariates.txt"
+  gtex_v11_brain_cortex_apaqtl:
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/GTEx_v11/GTEx_Analysis_v11_apaQTL/Brain_Cortex.v11.cis_apaqtl.allpairs.txt.gz"
+    covariates: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/GTEx_v11/GTEx_Analysis_v11_eQTL/Brain_Cortex.v11.covariates.txt"
+  gtex_v11_brain_ba9_apaqtl:
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/GTEx_v11/GTEx_Analysis_v11_apaQTL/Brain_Frontal_Cortex_BA9.v11.cis_apaqtl.allpairs.txt.gz"
+    covariates: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/GTEx_v11/GTEx_Analysis_v11_eQTL/Brain_Frontal_Cortex_BA9.v11.covariates.txt"
+  psychencode_fetal_eqtl:
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/psychENCODE/QTL/eQTL.mixed.nominal.90hcp.all.pairs.txt.gz"
+    sample_size: 272
+  rosmap_pqtl:
+    path: "/gpfs/hpc/home/chenchao/liyc/share_group_folder/.ref/xQTL/ROSMAP.pQTL.txt.gz"
+    sample_size: 376
+    source_build: GRCh37
+    target_build: GRCh38
+    liftover_chain: "/gpfs/hpc/home/chenchao/liyc/project/work/KGGSum/resources/liftover/hg19ToHg38.over.chain.gz"
+
+candidate_sets:
+  primary_association_universe:
+    source_inputs:
+      - prenatal_significant_apaqtl
+      - postnatal_significant_apaqtl
+    selection: all_rows
+    definition: permutation_fdr_significant_phenotype_plus_phenotype_specific_nominal_pair_threshold
+  evidence_thresholds:
+    pip_exploratory:
+      operator: strict_greater_than
+      value: 0.5
+    pip_high_confidence:
+      operator: greater_than_or_equal
+      value: 0.8
+    pp4_exploratory:
+      operator: strict_greater_than
+      value: 0.5
+    pp4_primary:
+      operator: greater_than_or_equal
+      value: 0.7
+    pp4_high_confidence:
+      operator: greater_than_or_equal
+      value: 0.8
+    credible_set_level: 0.95
+  evidence_layers_do_not_filter_universe:
+    - fine_mapping
+    - interaction_qtl
+    - sequence_mechanism
+    - mediation
+    - coloc
+    - sldsc
+
+background_sets:
+  tested_universe:
+    definition: All genes entering APA-QTL or interaction-QTL testing with valid phenotype_id.
+    source_input: tested_apa_gene_universe
+    source_type: pipeline_derived
+    derived_output: "/gpfs/hpc/home/chenchao/liyc/project/work/apa/05_func/ref/tested_apa_gene_universe.tsv"
+    use_for:
+      - line_a_descriptive_enrichment
+  non_flip_interaction:
+    definition: Formal interaction groups whose 03_interaction posterior class is not Opposing; Flip is a binary display alias for Opposing.
+    source_input: gxstage_classes
+    include_cross_stage_classes:
+      - Amplified
+      - Attenuated
+      - Uncertain
+    use_for:
+      - line_b_gxstage_contrast_enrichment
+  whole_genome_protein_coding:
+    definition: Optional sensitivity-analysis background only.
+    path: ""
+    primary_background: false
+
+parameters:
+  framework_contract:
+    qtl_universe: all_significant_pairs
+    association_unit: stage_x_phenotype_x_variant
+    signal_unit: stage_x_phenotype_x_independent_signal
+    consequence_unit: stage_x_phenotype_x_molecular_outcome
+    disease_unit: trait_x_stage_x_phenotype_x_locus
+    do_not_collapse_disease_traits: true
+    composite_total_score: disabled
+  signal_assignment:
+    preferred: conditional_or_susie_credible_set
+    fallback: ancestry_matched_ld_clumping
+    ld_reference: /gpfs/hpc/home/chenchao/liyc/project/work/apa/03_interaction/results/00_preprocess/genotype
+    ld_window_kb: 1000
+    ld_r2: 0.1
+    ld_measure: unphased_dosage_r2
+    sample_reference: stage_specific_study_genotypes
+    unassigned_policy: stop_if_reference_variant_or_genotype_missing
+  mediation:
+    mediator: normalized_stage_specific_PDUI
+    primary_outcome_scope: same_gene
+    outcome_types:
+      - rna_expression
+      - protein_abundance
+    primary_test: nonparametric_bootstrap_indirect_effect
+    bootstrap_n: 5000
+    bootstrap_seed: 20260716
+    bootstrap_pvalue_estimator: two_sided_finite_resample_plus_one
+    confidence_level: 0.95
+    secondary_test: sobel
+    sensitivity: genotype_and_covariate_adjusted_residual_association
+    multiple_testing: BH_within_stage_and_outcome_type
+    fdr: 0.05
+    minimum_complete_case_n: 50
+    multiple_signal_model: jointly_adjust_other_representative_signals
+    causal_interpretation: cross_sectional_model_consistent_not_temporal_proof
+  disease_integration:
+    preserve_all_coloc_rows: true
+    require_same_gene_molecular_support: true
+    nearby_gene_support_is_separate: true
+    coloc_prior_sensitivity_required_for_high_confidence: true
+    shared_credible_set_membership_required_for_disease_star: true
+  internal_eqtl_integration:
+    role: same_cohort_molecular_sharing
+    same_gene_mapping: exact_gencode_v40_ensembl_gene_id
+    nearby_gene_policy: context_only
+    orthogonal_evidence: false
+    primary_functional_support: exact_same_gene_PP4_gte_0.75
+    tier_eligible: exact_same_gene_primary_support_only
+    standalone_consequence_eligible: false
+    independent_replication: false
+    recommended_robustness:
+      - coloc_prior_sensitivity
+  internal_eqtl_coloc:
+    min_shared_snps: 100
+    pp4_threshold: 0.75
+    p1: 0.0001
+    p2: 0.0001
+    p12: 0.00001
+  cell_deconvolution:
+    primary_method: BisqueRNA_reference_based_stage_specific
+    sensitivity_method: CIBERSORTx_not_run_unavailable_account_and_environment
+    sensitivity_status: unavailable_not_blocking
+    prenatal_classes:
+      - Excitatory neuron
+      - Inhibitory neuron
+      - Astrocyte
+      - OPC
+      - Microglia/Immune
+      - Vascular/Mural
+      - Glial progenitor
+    postnatal_classes:
+      - Excitatory neuron
+      - Inhibitory neuron
+      - Astrocyte
+      - Oligodendrocyte
+      - OPC
+      - Microglia/Immune
+      - Vascular/Mural
+    prenatal_stage_rule: gestational_age_label_regex
+    postnatal_disease_filter: normal
+    postnatal_unknown_age_policy: exclude
+    marker_genes_per_class: 50
+    marker_min_cpm: 5
+    marker_min_detection: 0.5
+    marker_min_log2_fc: 0.5
+    synthetic_mixtures_per_donor: 3
+    benchmark_seed: 20260713
+    qtl_covariates: stage_specific_ILR_coordinates
+    proportion_pseudocount: 0.000001
+  external_qtl_coloc:
+    pp4_threshold: 0.75  # Historical Module 11 boolean; framework v2 uses the tiered fields below.
+    pp4_exploratory: 0.5
+    pp4_high_confidence: 0.8
+    min_shared_snps: 100
+    p1: 0.0001
+    p2: 0.0001
+    p12: 0.00001
+    apa_event_matching: exact_GRCh38_event_coordinate
+    same_gene_other_event_role: context_only
+    exact_event_role: secondary_cross_population_replication
+    pqtl_role: secondary_cross_population_same_gene_protein_support
+    population_relation: independent_external_population_not_matched_to_local_cohort
+  windows:
+    pas_core_hexamer_window_nt:
+      start: -50
+      end: -1
+    use_window_nt:
+      start: -100
+      end: -40
+    dse_window_nt:
+      start: 10
+      end: 50
+    aparent_window_nt: 205
+    aparent_site_inclusion_half_window_nt: 102
+  pas_hexamers:
+    - AATAAA
+    - ATTAAA
+    - AGTAAA
+    - TATAAA
+    - GATAAA
+    - CATAAA
+    - AATACA
+    - AATATA
+    - AATAGA
+    - AATGAA
+    - AAGAAA
+    - AACAAA
+    - ACTAAA
+    - TTTAAA
+    - AAAAAA
+  pas_ref_alt_classes:
+    - Gain
+    - Loss
+    - Modulation
+    - Not_supported
+  auxiliary_motif_classes:
+    - ARE
+    - GRE
+    - URE
+  mirna_site_types:
+    - 8mer
+    - 7mer-m8
+    - 7mer-a1
+  density:
+    unit_nt: 100
+    evidence_threshold: matched_background_nonzero_Q75
+    raw_count_is_mechanistic_evidence: false
+  rbp_evidence_levels:
+    level_1: CISBP_RNA_motif
+    level_2: motif_plus_PFC_or_stage_matched_RBP_expression
+    level_3: motif_plus_POSTAR3_CLIP_peak
+  rbp_expression:
+    source: own_cohort_all.912.tpm_RNA_seq_912_PFC_samples
+    stage_matched: true
+    min_mean_tpm: 1.0
+    unsupported_behavior: RBP_motif_evidence_excluded_from_v2_rbp_variant_delta_support_and_case_figures
+  rna_structure:
+    method: RNAfold
+    metric: delta_G
+    local_delta_mfe_threshold_kcal_mol: 2.0
+    standalone_strong_mechanism_evidence: false
+  conservation:
+    metrics:
+      - variant_position
+      - pas_window_mean
+      - pas_window_max
+      - dur_mean
+      - dur_max
+      - dur_top_10_percent
+    standalone_mechanism_claim: false
+  interaction:
+    cross_stage_class_source: 03_interaction
+    do_not_recalculate_cross_stage_class: true
+    analysis_unit: interaction_group_id
+    representative_pair_is_independent_signal: false
+    classes:
+      - Opposing
+      - Amplified
+      - Attenuated
+      - Uncertain
+    binary_comparison:
+      Flip: Opposing
+      non_Flip:
+        - Amplified
+        - Attenuated
+        - Uncertain
+  module_e_mechanism_comparison:
+    groups:
+      - Flip
+      - non_Flip
+    variables:
+      - PAS_disrupted
+      - RBP_high
+      - miRNA_high
+      - conservation
+    tests:
+      - Fisher
+      - chi_square
+      - logistic_regression_if_needed
+    logistic_regression_covariates:
+      - MAF
+      - DUR_length
+  enrichment:
+    line_a:
+      contrast: significant_apaqtl_genes_vs_tested_universe
+      background: tested_universe
+    fine_mapped_sensitivity:
+      contrast: high_confidence_finemapped_genes_vs_significant_apaqtl_genes
+    line_b:
+      contrast: Flip_genes_vs_non_Flip_interaction_genes
+      background: non_flip_interaction
+  protein_evidence_labels:
+    - consistent
+    - opposite
+    - no_change
+    - not_detected
+  prioritization:
+    method: ordered_evidence_tiers
+    total_score: disabled
+    mechanism_star_requirements:
+      - significant_apaqtl
+      - named_variant_pip_at_least_0.8
+      - direct_or_supported_local_snp_to_apa_mechanism
+      - resolved_allele_strand_pas_and_pdui_direction
+    disease_star_additional_requirements:
+      - pp4_at_least_0.8
+      - acceptable_prior_sensitivity
+      - proposed_variant_in_shared_credible_or_posterior_set
+      - mediation_supported
+  missing_external_resource_label: pending_resource
+
+aparent_direction_consistency:
+  delta_proximal_definition: "Delta log(Odds) of proximal PAS; 0 if variant outside +/-102 nt window"
+  delta_distal_definition: "Delta log(Odds) of distal PAS; 0 if variant outside +/-102 nt window"
+  predicted_PDUI_delta_formula: "APARENT_delta_distal - APARENT_delta_proximal"
+  correlation:
+    method: Spearman
+    x: aparent_predicted_PDUI_delta
+    y: beta_alt_PDUI
+    outputs:
+      - rho
+      - p_value
+      - n
+  skip_when:
+    - aparent_scored_site_is_none
+    - apa_direction_is_direction_blocked
+  skipped_label: APARENT_not_applicable
+
+quality_control:
+  required_before_modules:
+    - phenotype_id_parseable
+    - 3UTR_coordinate_parseable
+    - strand_parseable
+    - reference_sequence_extractable_for_sequence_analysis
+    - variant_allele_matches_reference_genome_for_allele_analysis
+    - beta_alt_PDUI_available_or_direction_blocked_labeled
+    - DUR_coordinate_resolved
+  excluded_output_fields:
+    - candidate_id
+    - variant_id
+    - phenotype_id
+    - step
+    - reason
+  do_not_silently_drop_candidates: true
+
+scripts:
+  "run.sh":
+    path: "run.sh"
+    entrypoint: true
+  "01_prepare.py":
+    path: "scripts/01_prepare.py"
+    produces:
+      - "01_significant_qtl_universe.tsv.gz"
+      - "05_excluded_or_blocked.tsv.gz"
+  "02_mechanism.py":
+    path: "scripts/02_mechanism.py"
+    produces:
+      - "02_signal_mechanisms.tsv.gz"
+  "03_deconvolution.R":
+    path: "scripts/03_deconvolution.R"
+  "04_consequence.py":
+    path: "scripts/04_consequence.py"
+    produces:
+      - "03_event_consequences.tsv.gz"
+  "05_coloc.R":
+    path: "scripts/05_coloc.R"
+  "06_disease.py":
+    path: "scripts/06_disease.py"
+    produces:
+      - "07_internal_eqtl_integration_contract.tsv.gz"
+      - "04_disease_chains.tsv.gz"
+      - "05_evidence_tiers.tsv.gz"
+  "07_enrichment.R":
+    path: "scripts/07_enrichment.R"
+    produces:
+      - "06_functional_enrichment.tsv.gz"
+  "08_plot_cases.py":
+    path: "scripts/08_plot_cases.py"
+  "09_plot.R":
+    path: "scripts/09_plot.R"
+  "10_finalize.py":
+    path: "scripts/10_finalize.py"
+
+outputs:
+  results_directory:
+    path: "results"
+  files:
+    "01_significant_qtl_universe.tsv.gz":
+      script: "01_prepare.py"
+      unit: stage_x_phenotype_x_variant
+    "02_signal_mechanisms.tsv.gz":
+      script: "02_mechanism.py"
+      unit: stage_x_phenotype_x_independent_signal
+    "03_event_consequences.tsv.gz":
+      script: "04_consequence.py"
+      unit: stage_x_phenotype_x_molecular_outcome
+    "04_disease_chains.tsv.gz":
+      script: "06_disease.py"
+      unit: trait_x_stage_x_phenotype_x_locus
+    "05_evidence_tiers.tsv.gz":
+      script: "06_disease.py"
+      description: Ordered evidence tiers with explicit mechanism, consequence, and disease labels.
+    "05_excluded_or_blocked.tsv.gz":
+      script: "01_prepare.py"
+      description: Complete parse, coordinate, reference-allele, direction, and signal-assignment accounting.
+    "06_functional_enrichment.tsv.gz":
+      script: "07_enrichment.R"
+      unit: tested_contrast_x_GO_term
+    "07_internal_eqtl_integration_contract.tsv.gz":
+      script: "06_disease.py"
+      unit: candidate_x_eGene
+
+downstream:
+  primary_consumer: cross_module_integration
+  primary_tables:
+    - "01_significant_qtl_universe.tsv.gz"
+    - "02_signal_mechanisms.tsv.gz"
+    - "03_event_consequences.tsv.gz"
+    - "04_disease_chains.tsv.gz"
+    - "05_evidence_tiers.tsv.gz"

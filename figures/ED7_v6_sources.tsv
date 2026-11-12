@@ -1,0 +1,6 @@
+panel	source
+a	1014/figure/data/ed7a_variant_gene_pairs_v2.tsv (49,957 pairs significant in both stages; statistics computed here)
+b	results_final/04_stage_specific_apaqtl/handoff_eqtl_1015/05_mash_posterior_eqtl.tsv (14,396 pairs significant in both stages, |b|/s > 1.96; statistics computed here); results_final/04_stage_specific_apaqtl/handoff_eqtl_1015/05_mash_summary.tsv (mashr pairwise sharing by magnitude, strong sets)
+c	1014/figure/data/ed7_per_gene_recovery.tsv (669 prenatal apaQTL genes; group counts 144 / 267 / 258 verified)
+d	1014/figure/data/braingvex_adult_bulk_comparison.xlsx (prenatal_specific, tests); 1014/figure/data/nan2026_comparison.xlsx (any_celltype); results_final/04_stage_specific_apaqtl/nan2026_r4/r4_nan_adjusted_p.tsv (adjusted P)
+e	1014/figure/data/ed7e_lead_distance_by_stage.tsv

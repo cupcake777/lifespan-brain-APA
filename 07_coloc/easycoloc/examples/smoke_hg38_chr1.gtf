@@ -1,0 +1,6 @@
+chr1	smoke	exon	42482663	42482920	.	+	.	gene_id "ENSGSMOKE0001"; transcript_id "ENST00000654683.1"; gene_name "CCDC30"; gene_type "protein_coding"; transcript_type "protein_coding"; exon_number "1";
+chr1	smoke	exon	42483820	42484158	.	+	.	gene_id "ENSGSMOKE0001"; transcript_id "ENST00000654683.1"; gene_name "CCDC30"; gene_type "protein_coding"; transcript_type "protein_coding"; exon_number "2";
+chr1	smoke	exon	43392040	43392480	.	-	.	gene_id "ENSGSMOKE0002"; transcript_id "ENSTSMOKE0002.1"; gene_name "SMOKEGENE2"; gene_type "protein_coding"; transcript_type "protein_coding"; exon_number "1";
+chr1	smoke	exon	43410210	43410860	.	-	.	gene_id "ENSGSMOKE0002"; transcript_id "ENSTSMOKE0002.1"; gene_name "SMOKEGENE2"; gene_type "protein_coding"; transcript_type "protein_coding"; exon_number "2";
+chr1	smoke	exon	43558010	43558540	.	+	.	gene_id "ENSGSMOKE0003"; transcript_id "ENSTSMOKE0003.1"; gene_name "SMOKEGENE3"; gene_type "protein_coding"; transcript_type "protein_coding"; exon_number "1";
+chr1	smoke	exon	43570620	43571240	.	+	.	gene_id "ENSGSMOKE0003"; transcript_id "ENSTSMOKE0003.1"; gene_name "SMOKEGENE3"; gene_type "protein_coding"; transcript_type "protein_coding"; exon_number "2";

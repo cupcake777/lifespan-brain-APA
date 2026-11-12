@@ -1,0 +1,88 @@
+results_final_path	source_path	produced_by	manuscript_items	size_bytes	individual_level
+results_final/figures/fig1/02_sites_clustered.tsv	1014/outputs/02_sites_clustered.tsv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	19262637	no
+results_final/figures/fig1/01_support.tsv	1014/outputs/01_support.tsv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	8491	no
+results_final/figures/fig1/traj_z.csv	1014/outputs/intermediates/traj_z.csv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	154877030	no
+results_final/figures/fig1/traj_logit.csv	1014/outputs/intermediates/traj_logit.csv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	145274190	no
+results_final/figures/fig1/S3_trajectory_timing_summary.tsv	1014/figure/inputs/S3_trajectory_timing_summary.tsv	release/figures/producers/S3_timing_producer_from_lineage.py	Fig 1	398	no
+results_final/figures/fig1/08_enrichment_adjusted.tsv	1014/08_enrichment_adjusted.tsv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	25793	no
+results_final/figures/fig1/08_enrichment_two_levels.tsv	1016/08_enrichment_two_levels.tsv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	7025016	no
+results_final/figures/fig1/T1_term_clusters_C1spec_fdr10.tsv	1016/handoff_enrich_hier_1016/T1_term_clusters_C1spec_fdr10.tsv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	990	no
+results_final/figures/fig1/T1_term_clusters_C2spec_fdr10.tsv	1016/handoff_enrich_hier_1016/T1_term_clusters_C2spec_fdr10.tsv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	7139	no
+results_final/figures/fig1/05_gene_aggregation.tsv	1014/outputs/05_gene_aggregation.tsv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	524236	no
+results_final/figures/fig1/11_loeuf_adjusted_data.tsv	1014/outputs/11_loeuf_adjusted_data.tsv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	738607	no
+results_final/figures/fig1/11_loeuf_adjusted_models.tsv	1014/11_loeuf_adjusted_models.tsv	release/figures/fig1_composite_v8.R  (consumer; producer not in release)	Fig 1	1556	no
+results_final/figures/fig2/fig2a_event_coupling.tsv	1014/figure/data/fig2a_event_coupling.tsv	release/figures/producers/fig2a_prep_event_coupling.py	Fig 2	8959592	no
+results_final/figures/fig2/s22c_null_reps.tsv	1014/figure/data/s22_out_v4_df2/s22c_null_reps.tsv	release/figures/producers/s22_supplement_v2_fig2v4_df2.R	Fig 2	14606	no
+results_final/figures/fig2/s22c_apa_rna_cis_vs_trans.tsv	1014/figure/data/s22_out_v4_df2/s22c_apa_rna_cis_vs_trans.tsv	release/figures/producers/s22_supplement_v2_fig2v4_df2.R	Fig 2	910	no
+results_final/figures/fig2/s22a_pair_t.tsv	1014/figure/data/s22_out_v4_df2/s22a_pair_t.tsv	release/figures/producers/s22_supplement_v2_fig2v4_df2.R	Fig 2	2034944	no
+results_final/figures/fig2/S2_aUTR_vs_cUTR_elements.tsv	1014/figure/data/fig2_inputs/S2_aUTR_vs_cUTR_elements.tsv	release/figures/fig2_composite_v4.R  (consumer; producer not in release)	Fig 2	1231	no
+results_final/figures/fig2/S2_C1C2_vs_nondynamic_elements.tsv	1014/figure/data/fig2_inputs/S2_C1C2_vs_nondynamic_elements.tsv	release/figures/fig2_composite_v4.R  (consumer; producer not in release)	Fig 2	1125	no
+results_final/figures/fig2/S2_C1C2_vs_nondynamic_clip_adj.tsv	1014/figure/data/fig2_inputs/S2_C1C2_vs_nondynamic_clip_adj.tsv	release/figures/fig2_composite_v4.R  (consumer; producer not in release)	Fig 2	690	no
+results_final/figures/fig2/S1_apa_protein_cis_vs_trans_371.tsv	1014/figure/data/fig2_inputs/S1_apa_protein_cis_vs_trans_371.tsv	release/figures/fig2_composite_v4.R  (consumer; producer not in release)	Fig 2	1314	no
+results_final/figures/fig2/S1_pair_results_371.tsv	1014/figure/data/fig2_inputs/S1_pair_results_371.tsv	release/figures/fig2_composite_v4.R  (consumer; producer not in release)	Fig 2	2814230	no
+results_final/figures/fig2/fig2d_qq_quantiles_v4.tsv	1014/figure/data/fig2_inputs/fig2d_qq_quantiles_v4.tsv	release/figures/fig2_composite_v4.R  (consumer; producer not in release)	Fig 2	1569207	no
+results_final/figures/fig2/fig2d_pair_null_summary_v4.tsv	1014/figure/data/fig2_inputs/fig2d_pair_null_summary_v4.tsv	release/figures/fig2_composite_v4.R  (consumer; producer not in release)	Fig 2	4203	no
+results_final/figures/fig3/fig3a_venn_counts_v2.tsv	1014/figure/data/fig3a_venn_counts_v2.tsv	release/figures/producers/prep_fig3_ed7_v2.py	Fig 3	83	no
+results_final/figures/fig3/fig3b_pas_candidates_v2.tsv	1014/figure/data/fig3b_pas_candidates_v2.tsv	release/figures/producers/prep_fig3_ed7_v2.py	Fig 3	3336	no
+results_final/figures/fig3/fig3c_hid1_context.tsv	1014/figure/data/fig3c_hid1_context.tsv	release/figures/producers/prep_fig3c_hid1.py	Fig 3	371	no
+results_final/figures/fig3/fig3c_hid1_genotype_summary_v2.tsv	1014/figure/data/fig3c_hid1_genotype_summary_v2.tsv	release/figures/fig3_composite_v4.R  (consumer; producer not in release)	Fig 3	608	no
+results_final/figures/fig3/fig3c_hid1_regression_v2.tsv	1014/figure/data/fig3c_hid1_regression_v2.tsv	release/figures/fig3_composite_v4.R  (consumer; producer not in release)	Fig 3	129	no
+results_final/figures/fig3/fig3c_hid1_sigqtl_v2.tsv	1014/figure/data/fig3c_hid1_sigqtl_v2.tsv	release/figures/producers/prep_fig3_ed7_v2.py	Fig 3	300	no
+results_final/figures/fig3/fig3d_coloc_pp_by_gene_v2.tsv	1014/figure/data/fig3d_coloc_pp_by_gene_v2.tsv	release/figures/producers/prep_fig3_ed7_v2.py	Fig 3	521501	no
+results_final/figures/fig3/fig3e_acsf3_group_summary_v2.tsv	1014/figure/data/fig3e_acsf3_group_summary_v2.tsv	release/figures/fig3_composite_v4.R  (consumer; producer not in release)	Fig 3	568	no
+results_final/figures/fig3/fig3e_acsf3_mediation_v2.tsv	1014/figure/data/fig3e_acsf3_mediation_v2.tsv	release/figures/fig3_composite_v4.R  (consumer; producer not in release)	Fig 3	329	no
+results_final/figures/fig4/gxstage_strict_classes_local_checks.tsv	1014/figure/source_fig4/gxstage_strict_classes_local_checks.tsv	release/figures/fig4_composite_v6.R  (consumer; producer not in release)	Fig 4	74470	no
+results_final/figures/fig4/fig4b_example_signcheck.tsv	1014/figure/data/fig4b_example_signcheck.tsv	release/figures/producers/prep_fig4b_examples.py	Fig 4	429	no
+results_final/figures/fig4/braingvex_adult_bulk_comparison.xlsx	1014/figure/source_fig4/braingvex_adult_bulk_comparison.xlsx	release/figures/fig4_composite_v6.R  (consumer; producer not in release)	Fig 4	84407	no
+results_final/figures/fig4/r4_fig4e_exact_match_models.tsv	1016/r4_nan_pvalues/r4_fig4e_exact_match_models.tsv	release/figures/fig4_composite_v6.R  (consumer; producer not in release)	Fig 4	472	no
+results_final/figures/fig5/fig5a_sldsc_plot_data.tsv	1014/figure/data/fig5a_sldsc_plot_data.tsv	release/figures/fig5_composite_v3.R  (consumer; producer not in release)	Fig 5	2809	no
+results_final/figures/fig5/fig5b_magma_plot_data.tsv	1014/figure/data/fig5b_magma_plot_data.tsv	release/figures/fig5_composite_v3.R  (consumer; producer not in release)	Fig 5	2612	no
+results_final/figures/fig5/fig5c_venn_counts.tsv	1014/figure/data/fig5c_venn_counts.tsv	release/figures/fig5_composite_v3.R  (consumer; producer not in release)	Fig 5	113	no
+results_final/figures/fig5/fig5c_gwas_counts.tsv	1014/figure/data/fig5c_gwas_counts.tsv	release/figures/fig5_composite_v3.R  (consumer; producer not in release)	Fig 5	203	no
+results_final/figures/fig5/Fig5d_SCAF1_locuscompare.json	1018/handoff_fig_data_1017/Fig5d_SCAF1_locuscompare.json	release/figures/fig5_composite_v3.R  (consumer; producer not in release)	Fig 5	402790	no
+results_final/figures/fig5/Fig5e_NRBP2_locuscompare.json	1018/handoff_fig_data_1017/Fig5e_NRBP2_locuscompare.json	release/figures/fig5_composite_v3.R  (consumer; producer not in release)	Fig 5	228596	no
+results_final/figures/fig6/fig6a_atp2b1_stage_effects.tsv	1014/figure/data/fig6a_atp2b1_stage_effects.tsv	release/figures/fig6_composite_v3.R  (consumer; producer not in release)	Fig 6	303	no
+results_final/figures/fig6/Fig6a_ATP2B1_ADHD_locuscompare.json	1016/handoff_figures_1016/Fig6a_ATP2B1_ADHD_locuscompare.json	release/figures/fig6_composite_v3.R  (consumer; producer not in release)	Fig 6	263878	no
+results_final/figures/fig6/Figure6a_ATP2B1_locuscompare.json	1016/handoff_module07_1016/figure_sources/Figure6a_ATP2B1_locuscompare.json	release/figures/fig6_composite_v3.R  (consumer; producer not in release)	Fig 6	309628	no
+results_final/figures/fig6/Figure6b_MTRFR_locuscompare.json	1016/handoff_module07_1016/figure_sources/Figure6b_MTRFR_locuscompare.json	release/figures/fig6_composite_v3.R  (consumer; producer not in release)	Fig 6	303040	no
+results_final/figures/fig6/Fig6b_OGFOD2_INT_locuscompare.json	1016/handoff_figures_1016/Fig6b_OGFOD2_INT_locuscompare.json	release/figures/fig6_composite_v3.R  (consumer; producer not in release)	Fig 6	272498	no
+results_final/figures/fig6/Figure6c_ARL3_locuscompare.json	1016/handoff_module07_1016/figure_sources/Figure6c_ARL3_locuscompare.json	release/figures/fig6_composite_v3.R  (consumer; producer not in release)	Fig 6	462476	no
+results_final/figures/fig6/Fig6c_ARL3_prenatal_locuscompare.json	1016/handoff_figures_1016/Fig6c_ARL3_prenatal_locuscompare.json	release/figures/fig6_composite_v3.R  (consumer; producer not in release)	Fig 6	461348	no
+results_final/figures/fig6/Fig6c_ARL3_eqtl_regional.tsv	1016/handoff_figures_1016/Fig6c_ARL3_eqtl_regional.tsv	release/figures/fig6_composite_v3.R  (consumer; producer not in release)	Fig 6	316535	no
+results_final/figures/ed1/ed1a_flow.tsv	1014/figure/data/ed/ed1a_flow.tsv	release/figures/ed1_composite_v2.R  (consumer; producer not in release)	ED Fig 1	227	no
+results_final/figures/ed1/01_support.tsv	1014/outputs/01_support.tsv	release/figures/ed1_composite_v2.R  (consumer; producer not in release)	ED Fig 1	8491	no
+results_final/figures/ed2/ed2a_batch_stage.tsv	1014/figure/data/ed/ed2a_batch_stage.tsv	release/figures/ed2_composite_v1.R  (consumer; producer not in release)	ED Fig 2	136	no
+results_final/figures/ed2/ed2b_method_scores.tsv	1014/figure/data/ed/ed2b_method_scores.tsv	release/figures/ed2_composite_v1.R  (consumer; producer not in release)	ED Fig 2	13446	no
+results_final/figures/ed3/ed3a_masks.tsv	1014/figure/data/ed/ed3a_masks.tsv	release/figures/ed3_composite_v2.R  (consumer; producer not in release)	ED Fig 3	2743	no
+results_final/figures/ed3/ed3b_seed.tsv	1014/figure/data/ed/ed3b_seed.tsv	release/figures/ed3_composite_v2.R  (consumer; producer not in release)	ED Fig 3	1200	no
+results_final/figures/ed3/ed3b_boot.tsv	1014/figure/data/ed/ed3b_boot.tsv	release/figures/ed3_composite_v2.R  (consumer; producer not in release)	ED Fig 3	363	no
+results_final/figures/ed3/ed3c_events.tsv	1014/figure/data/ed/ed3c_events.tsv	release/figures/ed3_composite_v2.R  (consumer; producer not in release)	ED Fig 3	42181	no
+results_final/figures/ed3/ed3c_traj.tsv	1014/figure/data/ed/ed3c_traj.tsv	release/figures/ed3_composite_v2.R  (consumer; producer not in release)	ED Fig 3	12126	no
+results_final/figures/ed4/ed4a_adjusted_sig.tsv	1014/figure/data/ed/ed4a_adjusted_sig.tsv	release/figures/ed4_composite_v2.R  (consumer; producer not in release)	ED Fig 4	5500	no
+results_final/figures/ed4/ed4b_background.tsv	1014/figure/data/ed/ed4b_background.tsv	release/figures/ed4_composite_v2.R  (consumer; producer not in release)	ED Fig 4	876	no
+results_final/figures/ed4/ed4c_loeuf.tsv	1014/figure/data/ed/ed4c_loeuf.tsv	release/figures/ed4_composite_v2.R  (consumer; producer not in release)	ED Fig 4	738607	no
+results_final/figures/ed4/T1_matched_synaptic.tsv	1016/handoff_apa_function_1016/T1_matched_synaptic.tsv	release/figures/ed4_composite_v2.R  (consumer; producer not in release)	ED Fig 4	174164	no
+results_final/figures/ed5/v18b30d1a_S1_apa_protein_cis_vs_trans_371.tsv	artifact_store/02616fb2-a1d9-4184-b323-e439ade11d21/v18b30d1a_S1_apa_protein_cis_vs_trans_371.tsv	release/figures/ed5_composite_v1.R  (consumer; producer not in release)	ED Fig 5	1314	no
+results_final/figures/ed5/v1ad3d313_S6_protein_beyond_rna_vs_dPDUI.tsv	artifact_store/b9b68344-d9ca-4c11-9dbd-334ef718d96d/v1ad3d313_S6_protein_beyond_rna_vs_dPDUI.tsv	release/figures/ed5_composite_v1.R  (consumer; producer not in release)	ED Fig 5	735641	no
+results_final/figures/ed5/02_protein_trajectories.tsv	1014/results/02_protein_trajectories.tsv	release/figures/ed5_composite_v1.R  (consumer; producer not in release)	ED Fig 5	3726612	no
+results_final/figures/ed5/ed5d_adjusted_or.tsv	1014/figure/data/ed5d_adjusted_or.tsv	release/figures/producers/ed5d_prep_adjusted_or.py	ED Fig 5	654	no
+results_final/figures/ed6/01_discovery_sample_size_pi1.tsv	1013/collect/01_discovery_sample_size_pi1.tsv	release/figures/ed6_composite_v2.R  (consumer; producer not in release)	ED Fig 6	1430	no
+results_final/figures/ed7/ed7a_variant_gene_pairs_v2.tsv	1014/figure/data/ed7a_variant_gene_pairs_v2.tsv	release/figures/producers/prep_fig3_ed7_v2.py	ED Fig 7	4625831	no
+results_final/figures/ed7/ed7_per_gene_recovery.tsv	1014/figure/data/ed7_per_gene_recovery.tsv	release/figures/ed7_composite_v1.R  (consumer; producer not in release)	ED Fig 7	103324	no
+results_final/figures/ed7/ed7e_lead_distance_by_stage.tsv	1014/figure/data/ed7e_lead_distance_by_stage.tsv	release/figures/producers/prep_fig3_ed7_v2.py	ED Fig 7	253668	no
+results_final/figures/ed8/S4_gating_eqtl_fixed_RNA.tsv	1014/figure/source_fig4/S4_gating_eqtl_fixed_RNA.tsv	release/figures/ed8_composite_v2.R  (consumer; producer not in release)	ED Fig 8 (G x Stage)	143116	no
+results_final/figures/ed8/fig4g_shared_set_1579.tsv	1014/figure/source_fig4/fig4g_shared_set_1579.tsv	release/figures/ed8_composite_v2.R  (consumer; producer not in release)	ED Fig 8 (G x Stage)	95350	no
+results_final/figures/ed8/fig4_atp2b1_saturation.tsv	1014/figure/source_fig4/fig4_atp2b1_saturation.tsv	release/figures/ed8_composite_v2.R  (consumer; producer not in release)	ED Fig 8 (G x Stage)	205	no
+results_final/figures/ed8/atp2b1_stage_diagnostics.tsv	1014/figure/source_fig4/atp2b1_stage_diagnostics.tsv	release/figures/ed8_composite_v2.R  (consumer; producer not in release)	ED Fig 8 (G x Stage)	751	no
+results_final/figures/ed8/interaction_hc3_core_groups.tsv	.rerun_stage_20261012/results/04_hc3_refit/interaction_hc3_core_groups.tsv	release/figures/ed8_composite_v2.R  (consumer; producer not in release)	ED Fig 8 (G x Stage)	222135	no
+results_final/figures/ed8/boundary_refit_hc3_core.tsv	1013/collect/atp2b1_saturation_refit/boundary_refit_hc3_core.tsv	release/figures/ed8_composite_v2.R  (consumer; producer not in release)	ED Fig 8 (G x Stage)	81170	no
+results_final/figures/ed9/sldsc_enrichment_processed.tsv	1013/collect/13_sldsc_binary/sldsc_enrichment_processed.tsv	release/figures/ed9_composite_v2.R  (consumer; producer not in release)	ED Fig 9 (sLDSC/MAGMA)	15723	no
+results_final/figures/ed9/sldsc_enrichment_summary_flagged.tsv	1014/sldsc_enrichment_summary_flagged.tsv	release/figures/ed9_composite_v2.R  (consumer; producer not in release)	ED Fig 9 (sLDSC/MAGMA)	15008	no
+results_final/figures/ed9/sldsc_ad2_summary.tsv	1014/sldsc_ad2_summary.tsv	release/figures/ed9_composite_v2.R  (consumer; producer not in release)	ED Fig 9 (sLDSC/MAGMA)	1421	no
+results_final/figures/ed9/magma_condition_hide_summary.tsv	1013/collect/15_magma/magma_condition_hide_summary.tsv	release/figures/ed9_composite_v2.R  (consumer; producer not in release)	ED Fig 9 (sLDSC/MAGMA)	14353	no
+results_final/figures/ed9/eur_scz_followup_summary.tsv	1013/collect/eur_scz_followup_summary.tsv	release/figures/ed9_composite_v2.R  (consumer; producer not in release)	ED Fig 9 (sLDSC/MAGMA)	375	no
+results_final/figures/ed9/magma_traj_summary_EUR_AD2.tsv	1014/magma_traj_summary_EUR_AD2.tsv	release/figures/ed9_composite_v2.R  (consumer; producer not in release)	ED Fig 9 (sLDSC/MAGMA)	1226	no
+results_final/figures/fig2/s22a_null_t_matrix.tsv.gz	1014/figure/data/s22_out_v4_df2/s22a_null_t.rds (RDS -> TSV)	release/figures/tools/export_s22a_null_matrix.R	Fig 2	17028306	no
+results_final/figures/ed6/S_replication_pi1.tsv	1014/figure/data/Supplementary_Tables_draft.xlsx (sheet S_replication_pi1)	release/figures/tools/export_sheets_from_workbook.py	ED Fig 6	2848	no
+results_final/figures/ed6/S_cell_composition.tsv	1014/figure/data/Supplementary_Tables_draft.xlsx (sheet S_cell_composition)	release/figures/tools/export_sheets_from_workbook.py	ED Fig 6	417457	no
+results_final/figures/ed9/S_MAGMA.tsv	1014/figure/data/Supplementary_Tables_draft.xlsx (sheet S_MAGMA)	release/figures/tools/export_sheets_from_workbook.py	ED Fig 9 (sLDSC/MAGMA)	6961	no

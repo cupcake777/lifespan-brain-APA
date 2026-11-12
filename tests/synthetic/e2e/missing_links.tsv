@@ -1,0 +1,437 @@
+link_type	file	final_category	consumer_scripts	consumer_modules	n_consumers	working_tree_location	writer_in_release	notes
+missing_producer	${LD_REF}.bim	templated_name	07_coloc/smr/run_smr.sh	07_coloc	1			name built from a variable or template; producer depends on that variable
+missing_producer	${LD_SRC}.bim	templated_name	07_coloc/smr/run_smr.sh	07_coloc	1			name built from a variable or template; producer depends on that variable
+missing_producer	${PREFIX}.prune.out	templated_name	07_coloc/smr/04_gwas_neff.sh	07_coloc	1			name built from a variable or template; producer depends on that variable
+missing_producer	${RUN_PREFIX}.SuSiE_summary.parquet	templated_name	04_qtl/apaqtl/qtl_DS.sh	04_qtl	1			name built from a variable or template; producer depends on that variable
+missing_producer	${STAGE}.training_detail.tsv	templated_name	06_disease/twas/submit_twas.sh	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	${annotation}.${chromosome}.annot.gz	templated_name	06_disease/sldsc/09_run_chb.sh	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	${geno_prefix}.pvar	templated_name	04_qtl/eqtl/02_qtl_mapping.sh	04_qtl	1			name built from a variable or template; producer depends on that variable
+missing_producer	${gwas_id}.prune.out	templated_name	06_disease/frozen/run_frozen_downstream.sh	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	${gwas_id}.pval.tsv	templated_name	06_disease/frozen/run_frozen_downstream.sh	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	${qtl}.${stage}.pairs.tsv	templated_name	04_qtl/eqtl/05_mashr.sh	04_qtl	1			name built from a variable or template; producer depends on that variable
+missing_producer	${qtl}.shared_phenotypes.txt	templated_name	04_qtl/eqtl/05_mashr.sh	04_qtl	1			name built from a variable or template; producer depends on that variable
+missing_producer	${stage}_eqtl.bed	templated_name	06_disease/sldsc/09_run_chb.sh	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	*.cis_qtl.txt.gz	hpc_tool_output_not_in_release	checks/m04_05_registry.py	checks	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	.cis_qtl_pairs.*.parquet	hpc_tool_output_not_in_release	04_qtl/apaqtl/qtl_DS.sh	04_qtl	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	.gsa.out	hpc_tool_output_not_in_release	06_disease/reconstructed/magma_gsa_sum.py	06_disease	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	.l2.ldscore.gz	hpc_tool_output_not_in_release	06_disease/sldsc/ldsc3.py	06_disease	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	00_manifest.tsv	candidate_missing_producer	work_10fin/current_before.py	work_10fin	1			
+missing_producer	01_apa_eqtl_overlap_sum.tsv	candidate_missing_producer	checks/m04_05_registry.py	checks	1			
+missing_producer	02_apa_trajectories_results.tsv	figure_data_producer_absent	figures/producers/s22_supp.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	02_protein_traj_results.tsv	figure_data_producer_absent	figures/ed5.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	03_apa_incremental_prot_tests.tsv	candidate_missing_producer	03_omics/03_integrate.R	03_omics	1			
+missing_producer	03_apa_incremental_prot_tests_results.tsv	figure_data_producer_absent	figures/producers/s22_supp.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	03_integrated_gene_cands.tsv	candidate_missing_producer	03_omics/04_enrichment.R	03_omics	1			
+missing_producer	03_sldsc_tau_star_handoff.tsv	candidate_missing_producer|being_reconstructed_by_other_track	checks/m04_05_registry.py	checks	1			S-LDSC summary (S-LDSC 2-stage BH track)
+missing_producer	04_disease_chains.tsv.gz	candidate_missing_producer	work_10fin/orig.py	work_10fin	1			
+missing_producer	04_multisite_sens.tsv	candidate_missing_producer	03_omics/03_integrate.R	03_omics	1			
+missing_producer	05_evidence_tiers.tsv.gz	candidate_missing_producer	work_10fin/orig.py	work_10fin	1			
+missing_producer	05_mash_posterior_apa.tsv	candidate_missing_producer	04_qtl/eqtl/06-1_build_master.R	04_qtl	1			
+missing_producer	08_enrich_two_levels_1016.tsv	figure_data_producer_absent	02_traj/followup/enrich_hier.R; figures/fig1.R	02_traj,figures	2			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	09_global_triad_correlations.tsv	figure_data_producer_absent	figures/producers/s22_supp.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	09_sample_boot_site_robust.tsv	figure_data_producer_absent	figures/ed3.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	1-s2.0-S0896627318302368-mmc5.xls	documented_external	figures/producers/ed5d_prep_or.py	figures	1			published supplement (EXTERNAL_INPUTS)
+missing_producer	1kg_hg38_filtered.bed	documented_external_reference_pattern	07_coloc/easycoloc/tools/checks/smoke_test_bootstrap_refs.R	07_coloc	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	41588_2026_2758_MOESM3_ESM.xlsx	candidate_missing_producer	04_qtl/followup/nan2026_audit.R	04_qtl	1			
+missing_producer	ARL3_mediation_rows.tsv	candidate_missing_producer	07_coloc/handoff/build_handoff.py	07_coloc	1			
+missing_producer	Allen_Brain_Atlas_10x_scRNA_2021.gmt	documented_external_reference_pattern	05_gxs/06_func_enrich.R	05_gxs	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	Brain_Frontal_Cortex_BA9.v11.apaQTLs.signif_pairs.parquet	hpc_tool_output_not_in_release	04_qtl/apaqtl/plot_figure.R	04_qtl	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	Brain_Frontal_Cortex_BA9.v11.covariates.txt	documented_external	07_coloc/func/05_coloc.R	07_coloc	1			GTEx v11 covariates (EXTERNAL_INPUTS)
+missing_producer	CHB_meta_1959_250827.RData	candidate_missing_producer	03_omics/03_integrate.R	03_omics	1			
+missing_producer	CHB_meta_1960_251108.RData	candidate_missing_producer	03_omics/03_integrate.R	03_omics	1			
+missing_producer	Chrname.txt	documented_external	00_geno/04_preQC.sh	00_geno	1			chromosome-name reference (external)
+missing_producer	DEMO.md	vendored_test_artifact	07_coloc/easycoloc/src/utils_bootstrap.R	07_coloc	1			EasyColoc demo fixture
+missing_producer	DONE_GWAS_rs2_locus_results.csv	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_test_output_dir_tools.R	07_coloc	1			
+missing_producer	Dapars2_result_temp.chr${i}.txt	templated_name	01_quant/apa/dapars2_merge.sh	01_quant	1			name built from a variable or template; producer depends on that variable
+missing_producer	EAS_interaction.tsv	candidate_missing_producer|being_reconstructed_by_other_track	04_qtl/eqtl/04-3_sldsc_inter.sh	04_qtl	1			S-LDSC interaction input named in 04 eqtl 04-3_sldsc_interaction.sh; no writer
+missing_producer	Fig5a_EUR_AD2_eqtl_sldsc.tsv	candidate_missing_producer|being_reconstructed_by_other_track	checks/m04_05_registry.py	checks	1			S-LDSC summary (S-LDSC 2-stage BH track)
+missing_producer	Figure6{panel}_*.json	templated_name	07_coloc/handoff/build_handoff.py	07_coloc	1			name built from a variable or template; producer depends on that variable
+missing_producer	GRCh38-cCREs.bed	candidate_missing_producer	04_qtl/eqtl/01_overlap.R	04_qtl	1			
+missing_producer	GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt	documented_external_reference_pattern	07_coloc/easycoloc/src/utils_bootstrap.R; 07_coloc/easycoloc/tools/bootstrap_references.R; 07_coloc/easycoloc/tools/checks/smoke_test_gtex_bootstrap.R	07_coloc	3			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	GTEx_v8_eQTL_summary.csv	documented_external_reference_pattern	07_coloc/easycoloc/src/utils_bootstrap.R; 07_coloc/easycoloc/tools/checks/smoke_test_gtex_bootstrap.R	07_coloc	2			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	GTEx_v8_sQTL_summary.csv	documented_external_reference_pattern	07_coloc/easycoloc/src/utils_bootstrap.R; 07_coloc/easycoloc/tools/checks/smoke_test_gtex_bootstrap.R	07_coloc	2			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	HGNC_L_ribosomal_proteins.txt	documented_external_reference_pattern	02_traj/followup/enrich_hier.R	02_traj	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	HGNC_Proteasome.tsv	documented_external_reference_pattern	02_traj/followup/enrich_hier.R	02_traj	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	HGNC_S_ribosomal_prots.tsv	documented_external_reference_pattern	02_traj/followup/enrich_hier.R	02_traj	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	Human.MitoCarta3.0.xls	documented_external_reference_pattern	02_traj/followup/enrich_hier.R	02_traj	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	Human_APA_Hippocampus.csv	candidate_missing_producer	07_coloc/func/12_autr_mirna_rbp.py	07_coloc	1			
+missing_producer	Human_Phenotype_Ontology.gmt	documented_external_reference_pattern	02_traj/05_func.R; 02_traj/fig_08.R; 05_gxs/06_func_enrich.R	02_traj,05_gxs	3			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	Human_RBP_Hippocampus.csv	candidate_missing_producer	07_coloc/func/12_autr_mirna_rbp.py	07_coloc	1			
+missing_producer	Human_miRNA_Hippocampus.csv	documented_external_reference_pattern	07_coloc/func/12_autr_mirna_rbp.py	07_coloc	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	Intron_ARE.csv	documented_external	07_coloc/func/03_run_plan.py	07_coloc	1			07 func reference set (config.yml)
+missing_producer	LifeStage.txt	candidate_missing_producer	05_gxs/02_group_eigenmt.py	05_gxs	1			
+missing_producer	MANIFEST.tsv	release_metadata	tests/check_portable_tree.sh	tests	1			self-check target of tests/check_portable_tree.sh
+missing_producer	MS_identified_information.txt	candidate_missing_producer	07_coloc/func/02b_protein_ev.py	07_coloc	1			
+missing_producer	POSTAR3_CLIPdb_module_browse_RBP_sub_info.csv	documented_external_reference_pattern	07_coloc/func/db_postar3.py	07_coloc	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	PolyA_DB_hg38.txt.gz	documented_external_reference_pattern	07_coloc/func/02_func.py	07_coloc	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	R2a_HID1_sample_data.tsv	candidate_missing_producer	07_coloc/followup/03_verify.sh	07_coloc	1			
+missing_producer	R4_intx_nan_exact_pairs.tsv	hpc_tool_output_not_in_release	07_coloc/followup/03_verify.sh	07_coloc	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	RBPDB_v1.3.1_proteins_human_2012-11-21.csv	documented_external_reference_pattern	05_gxs/13_finemap_mech.py; 07_coloc/func/02_mechanism.py; 07_coloc/func/11_inter_mech.py	05_gxs,07_coloc	3			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	README_data.md	candidate_missing_producer	tests/check_portable_tree.sh	tests	1			
+missing_producer	README_outputs.md	candidate_missing_producer	tests/check_portable_tree.sh	tests	1			
+missing_producer	S1_apa_prot_cis_vs_trans_371.tsv	figure_data_producer_absent	03_omics/fig2d_apa_prot.R; checks/m01_03_verify.py; figures/ed5.R; figures/fig2.R	03_omics,checks,figures	4			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	S1_apa_rna_cis_vs_trans_371.tsv	candidate_missing_producer	03_omics/fig2b_apa_rna.R; checks/m01_03_verify.py	03_omics,checks	2			
+missing_producer	S1_pair_results_371.tsv	figure_data_producer_absent	figures/fig2_panel_d.py	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	S6_prot_beyond_rna_vs_dPDUI.tsv	figure_data_producer_absent	figures/ed5.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	S_MAGMA.tsv	figure_data_producer_absent|being_reconstructed_by_other_track	figures/fig5_abc.R	figures	1			figure-data table consumed by figures/*.R; producer not in release; MAGMA summary (coloc/MAGMA track)
+missing_producer	SuSiE_summary.parquet	hpc_tool_output_not_in_release	07_coloc/func/01_qtl_ref.py	07_coloc	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	Supplementary_Tables_draft.xlsx	figure_data_producer_absent	04_qtl/followup/nan2026_summarize.py; figures/ed6.R; figures/export_sheets.py	04_qtl,figures	3			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	Supplementary_Tables_v27.xlsx	candidate_missing_producer	06_disease/frozen/build_twas_replacement.py	06_disease	1			
+missing_producer	a.meta	individual_level_input_not_shipped	05_gxs/reconstructed/recon_s4_gating.py	05_gxs	1			sample metadata or sample list (WITHHELD category; not shipped)
+missing_producer	aging_gene_sets.tsv	candidate_missing_producer	03_omics/04_enrichment.R	03_omics	1			
+missing_producer	all.827.meta	individual_level_input_not_shipped	04_qtl/eqtl/00_batch_correct.R; 04_qtl/eqtl/01_preprocess.R	04_qtl	2			sample metadata or sample list (WITHHELD category; not shipped)
+missing_producer	all.apa.brainspan.meta	documented_external_reference_pattern	02_traj/08_brainspan.R; 02_traj/11_brainspan_heat.R; 02_traj/12_ext_pattern.R; 02_traj/fig_12_c2_scatter.R	02_traj	4			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	all_pairs.txt.gz	hpc_tool_output_not_in_release	07_coloc/easycoloc/tools/checks/smoke_project_fixture.R	07_coloc	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	annotations.xlsx	documented_external	02_traj/followup/apa_function.R; 02_traj/followup/apa_t1_polyasite.R; 02_traj/followup/enrich_hier.R; 06_disease/magma/traj_apa.R	02_traj,06_disease	4			SynGO annotation workbook (external; cited in 02 followup)
+missing_producer	apa_gene_eqtl_classification.tsv	candidate_missing_producer	07_coloc/handoff/build_handoff.py	07_coloc	1			
+missing_producer	apa_gene_gwas_eqtl_classification.tsv	candidate_missing_producer	07_coloc/handoff/build_handoff.py	07_coloc	1			
+missing_producer	apa_twas_${SLURM_JOB_ID}_${gwas_id}_${twas_stage}.tsv	templated_name	06_disease/frozen/run_frozen_downstream.sh	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	args.annot	hpc_tool_output_not_in_release	06_disease/sldsc/ldsc3.py	06_disease	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	baseline.genes.out	candidate_missing_producer	02_traj/followup/apa_function.R; 02_traj/followup/apa_t5_tissue.R; 06_disease/magma/magma_go_plot.R; 06_disease/magma/magma_within.R; 06_disease/magma/plot_magma_figures.R; 06_disease/magma/run_enrichment.R; 06_disease/magma/traj_apa.R	02_traj,06_disease	7			
+missing_producer	c2.cp.reactome.v2024.1.Hs.symbols.gmt	documented_external_reference_pattern	05_gxs/06_func_enrich.R	05_gxs	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	c2.cp.wikipathways.v2024.1.Hs.symbols.gmt	documented_external_reference_pattern	05_gxs/06_func_enrich.R	05_gxs	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	c5.go.cc.v2024.1.Hs.symbols.gmt	documented_external_reference_pattern	05_gxs/06_func_enrich.R	05_gxs	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	chb_stage_eqtl_coloc_context.tsv	candidate_missing_producer|being_reconstructed_by_other_track	07_coloc/handoff/build_handoff.py	07_coloc	1			coloc summary (coloc track)
+missing_producer	chrList.txt	candidate_missing_producer	01_quant/apa/run_dapars2.sh	01_quant	1			
+missing_producer	chrname.txt	documented_external	00_geno/05_prep_impute.sh	00_geno	1			chromosome-name reference (external)
+missing_producer	chr{safe_chr}.tsv	templated_name	07_coloc/easycoloc/src/utils_format.R	07_coloc	1			name built from a variable or template; producer depends on that variable
+missing_producer	chunk_summary.tsv	hpc_tool_output_not_in_release	06_disease/twas/02_twas_train.py	06_disease	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	cibersortx_mixture_postnatal.tsv	external_tool_output_not_run	07_coloc/func/01_prepare.py	07_coloc	1			07 func 03_deconvolution.R records cibersortx_status not_run
+missing_producer	cibersortx_mixture_prenatal.tsv	external_tool_output_not_run	07_coloc/func/01_prepare.py	07_coloc	1			07 func 03_deconvolution.R records cibersortx_status not_run
+missing_producer	cibersortx_signature_postnatal.tsv	documented_external_reference_pattern	07_coloc/func/01_prepare.py; 07_coloc/func/03_deconvolution.R	07_coloc	2			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	cibersortx_signature_prenatal.tsv	documented_external_reference_pattern	07_coloc/func/01_prepare.py; 07_coloc/func/03_deconvolution.R	07_coloc	2			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	cohort_eqtl_gwas_coloc_long.tsv	figure_data_producer_absent|being_reconstructed_by_other_track	figures/fig6.R	figures	1			figure-data table consumed by figures/*.R; producer not in release; coloc summary (coloc track)
+missing_producer	coloc_keys_{out.name}.txt	templated_name	04_qtl/eqtl/02-1_extract.py	04_qtl	1			name built from a variable or template; producer depends on that variable
+missing_producer	coloc_post_apa_eqtl_handoff.tsv	candidate_missing_producer|being_reconstructed_by_other_track	checks/m04_05_registry.py	checks	1			coloc summary (coloc track)
+missing_producer	coloc_pre_apa_eqtl_handoff.tsv	candidate_missing_producer|being_reconstructed_by_other_track	checks/m04_05_registry.py	checks	1			coloc summary (coloc track)
+missing_producer	coloc_report_data.json	vendored_test_artifact	07_coloc/easycoloc/tools/checks/smoke_test_bootstrap_demo.R; 07_coloc/easycoloc/tools/checks/smoke_test_summary_report.R	07_coloc	2			EasyColoc tools/checks smoke-test output
+missing_producer	coloc_results.csv	hpc_tool_output_not_in_release	07_coloc/easycoloc/src/utils_report.R	07_coloc	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	dapars2_config.txt	documented_external_reference_pattern	01_quant/apa/prep_apa_inputs.sh; 01_quant/apa/run_dapars2.sh	01_quant	2			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	demo_locuscompare.json	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_test_plotting.R	07_coloc	1			
+missing_producer	ed1a_flow.tsv	figure_data_producer_absent	figures/ed1.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	ed2a_batch_stage.tsv	figure_data_producer_absent	figures/ed2.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	ed2b_method_scores.tsv	figure_data_producer_absent	figures/ed2.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	ed3a_masks.tsv	figure_data_producer_absent	figures/ed3.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	ed3b_seed.tsv	figure_data_producer_absent	figures/ed3.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	ed3c_events.tsv	figure_data_producer_absent	figures/ed3.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	ed3c_traj.tsv	figure_data_producer_absent	figures/ed3.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	ed4a_adjusted_sig.tsv	figure_data_producer_absent	figures/ed4.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	ed7c_seed_recovery.tsv	candidate_missing_producer	checks/m04_05_registry.py	checks	1			
+missing_producer	enrich_gene_set_manifest.tsv	candidate_missing_producer	03_omics/04_enrichment.R	03_omics	1			
+missing_producer	enrichment_GO_postnatal_only.tsv	candidate_missing_producer|being_reconstructed_by_other_track	06_disease/magma/plot_enrich_fig.R	06_disease	1			MAGMA GO summary; run_enrichment.R writes only prenatal_vs_postnatal
+missing_producer	enrichment_GO_shared.tsv	candidate_missing_producer|being_reconstructed_by_other_track	06_disease/magma/plot_enrich_fig.R	06_disease	1			MAGMA GO summary; run_enrichment.R writes only prenatal_vs_postnatal
+missing_producer	environment.yml	release_metadata	tests/check_portable_tree.sh	tests	1			self-check target of tests/check_portable_tree.sh
+missing_producer	eqtl_gwas_signal_sum.tsv	figure_data_producer_absent	figures/fig5_abc.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	eur.adult.meta	individual_level_input_not_shipped	02_traj/08_brainspan.R	02_traj	1			sample metadata or sample list (WITHHELD category; not shipped)
+missing_producer	eur_adult.SuSiE_summary.parquet	hpc_tool_output_not_in_release	04_qtl/apaqtl/cross_pop_fig.R	04_qtl	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	feedback.md	candidate_missing_producer	07_coloc/handoff/build_handoff.py	07_coloc	1			
+missing_producer	fig2d_qq_quantiles.tsv	figure_data_producer_absent	figures/fig2.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	fig3_apa_genes.tsv	figure_data_producer_absent	figures/fig3.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	fig3_cep41_seq.tsv	figure_data_producer_absent	figures/fig3_panel_c.py	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	fig3_hexamer_screen.tsv	figure_data_producer_absent	figures/fig3.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	fig3_locus_boxstats.tsv	figure_data_producer_absent	figures/fig3.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	fig3_pip_profile.tsv	figure_data_producer_absent	figures/fig3.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	fig4_atp2b1_saturation.tsv	candidate_missing_producer	checks/m04_05_registry.py	checks	1			
+missing_producer	fig4b_boxstats.tsv	figure_data_producer_absent	figures/fig4.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	fig4b_signcheck.tsv	figure_data_producer_absent	figures/fig4.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	fig4g_shared_set_1579.tsv	candidate_missing_producer	checks/m04_05_registry.py	checks	1			
+missing_producer	fig5_v4_eqtl_tracks.tsv	candidate_missing_producer	07_coloc/followup/fig5_eqtl_tracks.sh	07_coloc	1			
+missing_producer	fig6_boxstats.tsv	figure_data_producer_absent	figures/fig6.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	fig6_reg_tables_all.tsv	figure_data_producer_absent	figures/fig6.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	figure4_dynamic_input_screen.tsv	candidate_missing_producer	04_qtl/apaqtl/plot_fig4_dyn.py	04_qtl	1			read by QTL/plot_figure4_dynamic.py; no writer in release
+missing_producer	figure4_dynamic_input_wig_profile_qc.tsv	candidate_missing_producer	04_qtl/apaqtl/plot_fig4_dyn.py	04_qtl	1			read by QTL/plot_figure4_dynamic.py; no writer in release
+missing_producer	figure4_dynamic_input_wig_profile_samples.tsv	candidate_missing_producer	04_qtl/apaqtl/plot_fig4_dyn.py	04_qtl	1			read by QTL/plot_figure4_dynamic.py; no writer in release
+missing_producer	gencode.v40.smr_gene_list.txt	documented_external_reference_pattern	07_coloc/smr/03_plot_smr_style.R	07_coloc	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	gencode.v40.tx2gene.tsv	candidate_missing_producer	02_traj/05_func.R; 02_traj/fig_07.R; 02_traj/followup/apa_function.R; 02_traj/followup/apa_t4_celltype.R; 02_traj/followup/enrich_hier.R; 03_omics/01_universe.R; 06_disease/magma/traj_apa.R; 07_coloc/handoff/rep_chb_crossstage.R	02_traj,03_omics,06_disease,07_coloc	8			runtime-confirmed in dry run: 02 pipeline/05_func.R stops with this file missing; derived from external GENCODE v40 GTF; no producer in release
+missing_producer	gencode_v40_gene_symbol.tsv	documented_external_reference_pattern	07_coloc/func/01b_rbp_expr.py	07_coloc	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	gene.gtf.gz	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_project_fixture.R	07_coloc	1			
+missing_producer	gene_gwas_classification_1mb.tsv	candidate_missing_producer	07_coloc/handoff/build_handoff.py	07_coloc	1			
+missing_producer	genes.gtf.gz	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_test_bootstrap_refs.R	07_coloc	1			
+missing_producer	genes.xlsx	documented_external	02_traj/followup/apa_function.R; 02_traj/followup/apa_t1_polyasite.R; 02_traj/followup/enrich_hier.R; 06_disease/magma/traj_apa.R	02_traj,06_disease	4			reference workbook (external; not in release)
+missing_producer	genotype.postnatal.pvar	resolved_templated_writer	04_qtl/eqtl/01_overlap.R	04_qtl	1		04_qtl/eqtl/01_preprocess.R	pre_input/genotype.%s written by plink2 --make-pgen in 04 eqtl/01_preprocess.R (sprintf)
+missing_producer	genotype.prenatal.pvar	resolved_templated_writer	04_qtl/eqtl/01_overlap.R	04_qtl	1		04_qtl/eqtl/01_preprocess.R	pre_input/genotype.%s written by plink2 --make-pgen in 04 eqtl/01_preprocess.R (sprintf)
+missing_producer	genotype.psam	candidate_missing_producer	07_coloc/func/12_plot_hid1.py	07_coloc	1			read by 07 func 12_plot_hid1_mechanism.py; no writer of this prefix in release
+missing_producer	genotype.pvar	hpc_tool_output_not_in_release	07_coloc/func/08_plot_cases.py; 07_coloc/func/12_plot_hid1.py	07_coloc	2			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	glmnet_phenotype.tsv	candidate_missing_producer	06_disease/twas/02_twas_train.py	06_disease	1			
+missing_producer	gtex_eqtl_gwas_coloc_long.tsv	figure_data_producer_absent|being_reconstructed_by_other_track	figures/fig6.R	figures	1			figure-data table consumed by figures/*.R; producer not in release; coloc summary (coloc track)
+missing_producer	gwas_effective_tests.tsv	candidate_missing_producer	07_coloc/smr/run_smr.sh	07_coloc	1			
+missing_producer	gwas_manifest.tsv	candidate_missing_producer	06_disease/magma/magma_go_plot.R; 06_disease/magma/run_magma.sh; 06_disease/twas/05_twas_manhattan.py; 06_disease/twas/06_multi_gwas.py; 06_disease/twas/07_multi_overview.py; 06_disease/twas/08_inter_bridge.py	06_disease	6			
+missing_producer	gwas_source_checksum_manifest_20261028.tsv	candidate_missing_producer	06_disease/frozen/run_frozen_downstream.sh	06_disease	1			
+missing_producer	gxstage_strict_classes_local_checks.tsv	candidate_missing_producer	checks/m04_05_registry.py	checks	1			
+missing_producer	h.all.v2024.1.Hs.symbols.gmt	documented_external_reference_pattern	05_gxs/06_func_enrich.R	05_gxs	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	hg38_autr_candidate_intervals.fa	candidate_missing_producer	07_coloc/func/12_autr_mirna_rbp.py	07_coloc	1			derived FASTA read by 07 func 12_autr_mirna_rbp.py; no writer in release
+missing_producer	interaction_apa_qtl.bed	candidate_missing_producer	06_disease/sldsc/02_annot_bed_all.sh; 06_disease/sldsc/inter_sldsc.sbatch	06_disease	2			
+missing_producer	keep.sample	individual_level_input_not_shipped	07_coloc/easycoloc/tools/checks/smoke_project_fixture.R	07_coloc	1			sample metadata or sample list (WITHHELD category; not shipped)
+missing_producer	magma_condition_hide_sum.tsv	candidate_missing_producer|being_reconstructed_by_other_track	checks/m04_05_registry.py	checks	1			MAGMA summary (coloc/MAGMA track)
+missing_producer	magma_gsa_summary_enrichment.tsv	candidate_missing_producer|being_reconstructed_by_other_track	06_disease/magma/plot_magma_figures.R	06_disease	1			MAGMA summary (coloc/MAGMA track)
+missing_producer	magma_traj_sum_EUR_AD2.tsv	figure_data_producer_absent|being_reconstructed_by_other_track	figures/ed9.R	figures	1			figure-data table consumed by figures/*.R; producer not in release; MAGMA summary (coloc/MAGMA track)
+missing_producer	magma_traj_summary.tsv	present_in_worktree_no_release_producer|being_reconstructed_by_other_track	02_traj/followup/apa_function.R; 02_traj/followup/apa_t5_tissue.R; 06_disease/magma/traj_apa.R	02_traj,06_disease	3			MAGMA trajectory summary; server run per registry; hand-off copy only
+missing_producer	magma_warning_register.tsv	candidate_missing_producer|being_reconstructed_by_other_track	06_disease/magma/run_magma.sh	06_disease	1			MAGMA summary (coloc/MAGMA track)
+missing_producer	matched_sample_manifest_raw.tsv	figure_data_producer_absent	figures/ed5.R; figures/fig1.R; figures/fig2.R; figures/producers/s22_supp.R	figures	4			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	matrix_data.tsv	candidate_missing_producer	07_coloc/coloc/07_plot_matrix.R	07_coloc	1			
+missing_producer	merge_list.txt	candidate_missing_producer	07_coloc/easycoloc/src/utils_bootstrap.R	07_coloc	1			
+missing_producer	meta_all.txt	candidate_missing_producer	03_omics/prep_matched.R	03_omics	1			
+missing_producer	miRNATissueAtlas2_human_miRNA_rpmm.parquet	documented_external_reference_pattern	03_omics/07_story_data.R; 03_omics/s2_element.py	03_omics	2			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	mishap.txt	candidate_missing_producer	00_geno/04_preQC.sh	00_geno	1			
+missing_producer	missing.fa	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_test_chunked_harmonization.R	07_coloc	1			
+missing_producer	missing_global.yml	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_test_output_dir_tools.R	07_coloc	1			
+missing_producer	missing_gwas.yml	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_test_output_dir_tools.R	07_coloc	1			
+missing_producer	missing_qtl.yml	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_test_output_dir_tools.R	07_coloc	1			
+missing_producer	module06_manifest.tsv	candidate_missing_producer	tests/smoke_module06.sh	tests	1			
+missing_producer	nominal_eqtl_${stage}.tsv.gz	templated_name	07_coloc/followup/fig5_eqtl_tracks.sh	07_coloc	1			name built from a variable or template; producer depends on that variable
+missing_producer	old_new_comparison.tsv	candidate_missing_producer	07_coloc/handoff/build_handoff.py	07_coloc	1			
+missing_producer	ontologies.xlsx	documented_external	02_traj/followup/apa_function.R; 02_traj/followup/apa_t1_polyasite.R; 02_traj/followup/enrich_hier.R; 06_disease/magma/traj_apa.R	02_traj,06_disease	4			reference workbook (external; not in release)
+missing_producer	overlap_opposite_strand_subtract.bed	candidate_missing_producer	01_quant/apa/DaPars_Extract_Anno.py	01_quant	1			
+missing_producer	parallel_joblog.txt	candidate_missing_producer	01_quant/apa/dapars2_by_chr.sh	01_quant	1			
+missing_producer	pas.tsv.gz	candidate_missing_producer	checks/m04_05_registry.py	checks	1			
+missing_producer	plink_merge_list.txt	candidate_missing_producer	06_disease/magma/run_magma.sh	06_disease	1			
+missing_producer	postnatal.sig_QTL.txt.gz	candidate_missing_producer	checks/m04_05_registry.py	checks	1			
+missing_producer	postnatal_apa_qtl.bed	candidate_missing_producer	06_disease/sldsc/02_annot_bed_all.sh	06_disease	1			
+missing_producer	prenatal.sig_QTL.txt.gz	candidate_missing_producer	checks/m04_05_registry.py	checks	1			
+missing_producer	prenatal_apa_qtl.bed	candidate_missing_producer	06_disease/sldsc/02_annot_bed_all.sh	06_disease	1			
+missing_producer	previous115_interaction_robustness_summary.tsv	hpc_tool_output_not_in_release	05_gxs/04_hc3_refit.py	05_gxs	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	previous115_interaction_significant_groups.tsv	candidate_missing_producer	05_gxs/03_eigenmt_diag.py; 05_gxs/04_hc3_refit.py	05_gxs	2			
+missing_producer	prot_mod_rmOut.RData	candidate_missing_producer	03_omics/03_integrate.R	03_omics	1			
+missing_producer	prot_modresults_covadj_adj.RData	candidate_missing_producer	03_omics/03_integrate.R	03_omics	1			
+missing_producer	ps.sumstats	hpc_tool_output_not_in_release	06_disease/sldsc/ldscore/sumstats.py	06_disease	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	pseudobulk_markers_postnatal.parquet	hpc_tool_output_not_in_release	07_coloc/func/01_prepare.py; 07_coloc/func/03_deconvolution.R	07_coloc	2			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	pseudobulk_markers_prenatal.parquet	hpc_tool_output_not_in_release	07_coloc/func/01_prepare.py; 07_coloc/func/03_deconvolution.R	07_coloc	2			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	pyarrow.parquet	hpc_tool_output_not_in_release	04_qtl/eqtl/02-1_extract.py; 04_qtl/eqtl/03-1_prep.py; 04_qtl/eqtl/05_mashr.sh; 07_coloc/func/00_preflight.py	04_qtl,07_coloc	4			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	qc1.fam	tool_output_plink	00_geno/04_preQC.sh	00_geno	1			PLINK --out stem produced by 04_preQC.sh
+missing_producer	qc1_clean.fam	tool_output_plink	00_geno/04_preQC.sh	00_geno	1			PLINK --out stem produced by 04_preQC.sh
+missing_producer	qc3.fam	tool_output_plink	00_geno/04_preQC.sh	00_geno	1			PLINK --out stem produced by 04_preQC.sh
+missing_producer	qc7.ambig.remove.txt	candidate_missing_producer	00_geno/04_preQC.sh	00_geno	1			
+missing_producer	r4_fig4e_exact_match_models.tsv	figure_data_producer_absent	figures/fig4.R	figures	1			figure-data table consumed by figures/*.R; producer not in release
+missing_producer	raw.nochr.vcf.gz	candidate_missing_producer	00_geno/04_preQC.sh	00_geno	1			
+missing_producer	raw.vcf.gz	candidate_missing_producer	00_geno/04_preQC.sh	00_geno	1			
+missing_producer	rbp.tsv.gz	candidate_missing_producer	07_coloc/func/08_plot_cases.py	07_coloc	1			
+missing_producer	read.csv	false_positive	07_coloc/easycoloc/tools/checks/smoke_test_bootstrap_demo.R	07_coloc	1			R function name, not a file
+missing_producer	ref19.fa.gz	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_project_fixture.R	07_coloc	1			
+missing_producer	ref38.fa.gz	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_project_fixture.R	07_coloc	1			
+missing_producer	reference_bootstrap_manifest.json	candidate_missing_producer	07_coloc/easycoloc/tools/bootstrap_references.R	07_coloc	1			
+missing_producer	refseq.annotation.bed	documented_external_reference_pattern	01_quant/apa/prep_apa_inputs.sh	01_quant	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	refseq_3utr_annotation.bed	documented_external_reference_pattern	01_quant/apa/prep_apa_inputs.sh	01_quant	1			reference resource matched by name pattern (not shipped; see EXTERNAL_INPUTS)
+missing_producer	refseq_to_gene.txt	documented_external	01_quant/apa/prep_apa_inputs.sh	01_quant	1			DaPars2 reference table (external; not in release)
+missing_producer	representative_locus_eqtl_pp4.tsv	candidate_missing_producer	07_coloc/handoff/build_handoff.py	07_coloc	1			
+missing_producer	rerun_values.json	candidate_missing_producer	checks/m01_03_verify.py	checks	1			
+missing_producer	rerun_values.tsv	candidate_missing_producer	07_coloc/followup/coloc_pp4_summary.py	07_coloc	1			
+missing_producer	s.cis_qtl_pairs.*.parquet	hpc_tool_output_not_in_release	04_qtl/eqtl/05_mashr.sh	04_qtl	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	sample.Adult.final	withheld_sample_list	02_traj/08_brainspan.R; 04_qtl/apaqtl/cross_pop_fig.R; 05_gxs/05_external_comp.py	02_traj,04_qtl,05_gxs	3			per-sample list; WITHHELD apa.sample.*.final category
+missing_producer	samples.postnatal.txt	withheld_sample_list	04_qtl/apaqtl/plot_figure.R; 04_qtl/apaqtl/screen_fig4_pairs.R	04_qtl	2			per-sample list; WITHHELD apa.sample.*.final category
+missing_producer	samples.prenatal.txt	withheld_sample_list	04_qtl/apaqtl/plot_figure.R; 04_qtl/apaqtl/screen_fig4_pairs.R	04_qtl	2			per-sample list; WITHHELD apa.sample.*.final category
+missing_producer	seed_*_postnatal.cis_qtl.txt.gz	hpc_tool_output_not_in_release	04_qtl/recon_ed7_counts.py	04_qtl	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	shared_qtl_universe_ensg.tsv	candidate_missing_producer	04_qtl/eqtl/04-1_mediate.R	04_qtl	1			
+missing_producer	sig_pairs.txt.gz	hpc_tool_output_not_in_release	07_coloc/easycoloc/tools/checks/smoke_project_fixture.R	07_coloc	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	signal_lookup_1mb.tsv	candidate_missing_producer	07_coloc/handoff/build_handoff.py	07_coloc	1			
+missing_producer	significant_colocalizations_PP4_0.7.csv	candidate_missing_producer|being_reconstructed_by_other_track	07_coloc/easycoloc/tools/checks/smoke_test_bootstrap_demo.R; 07_coloc/easycoloc/tools/checks/smoke_test_summary_report.R	07_coloc	2			coloc summary (coloc track)
+missing_producer	significant_unique_trait_phenotype_PP4_0.7.csv	vendored_test_artifact	07_coloc/easycoloc/tools/checks/smoke_test_bootstrap_demo.R; 07_coloc/easycoloc/tools/checks/smoke_test_summary_report.R	07_coloc	2			EasyColoc tools/checks smoke-test output
+missing_producer	sldsc_baseline_h2_tau_sum.tsv	candidate_missing_producer|being_reconstructed_by_other_track	06_disease/reconstructed/sldsc_eur_z_gate.py	06_disease	1			S-LDSC summary (S-LDSC 2-stage BH track)
+missing_producer	sldsc_enrich_sum_flagged.tsv	figure_data_producer_absent|being_reconstructed_by_other_track	figures/ed9.R	figures	1			figure-data table consumed by figures/*.R; producer not in release; S-LDSC summary (S-LDSC 2-stage BH track)
+missing_producer	sldsc_qtl_annotations.tsv	candidate_missing_producer|being_reconstructed_by_other_track	04_qtl/eqtl/03-3_plot.R	04_qtl	1			S-LDSC summary (S-LDSC 2-stage BH track)
+missing_producer	sldsc_qtl_results.tsv	candidate_missing_producer|being_reconstructed_by_other_track	04_qtl/eqtl/03-3_plot.R	04_qtl	1			S-LDSC summary (S-LDSC 2-stage BH track)
+missing_producer	smr_gene_hits_source.tsv	candidate_missing_producer	07_coloc/smr/run_smr.sh	07_coloc	1			
+missing_producer	smr_gene_significant.tsv	candidate_missing_producer	07_coloc/smr/run_smr.sh	07_coloc	1			
+missing_producer	smr_keep.tsv	candidate_missing_producer	06_disease/frozen/run_frozen_downstream.sh	06_disease	1			
+missing_producer	smr_suggestive.tsv	candidate_missing_producer	07_coloc/smr/run_smr.sh	07_coloc	1			
+missing_producer	sort.rename.vcf.gz	candidate_missing_producer	00_geno/05_prep_impute.sh	00_geno	1			
+missing_producer	sort.rename_filtered.vcf.gz	candidate_missing_producer	00_geno/05_prep_impute.sh	00_geno	1			
+missing_producer	sort.vcf.gz	candidate_missing_producer	00_geno/05_prep_impute.sh	00_geno	1			
+missing_producer	summary_old_new.tsv	candidate_missing_producer	07_coloc/handoff/build_handoff.py	07_coloc	1			
+missing_producer	susie_convergence_audit.tsv	hpc_tool_output_not_in_release	07_coloc/coloc/audit_susie.R	07_coloc	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	susie_run_summary.tsv	hpc_tool_output_not_in_release	05_gxs/13_finemap_mech.py	05_gxs	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	susie_variant_pips.tsv	hpc_tool_output_not_in_release	05_gxs/13_finemap_mech.py	05_gxs	1			tensorQTL/SuSiE/LDSC/MAGMA/coloc-type output; server-side producer not in release
+missing_producer	toy_chr22.bed	candidate_missing_producer	07_coloc/easycoloc/tools/checks/smoke_test_bootstrap_demo.R	07_coloc	1			
+missing_producer	{GENOTYPE_PREFIX}.pgen	templated_name	05_gxs/04_hc3_refit.py; 05_gxs/atp2b1_refit.py	05_gxs	2			name built from a variable or template; producer depends on that variable
+missing_producer	{GENOTYPE_PREFIX}.psam	templated_name	05_gxs/04_hc3_refit.py; 05_gxs/atp2b1_refit.py	05_gxs	2			name built from a variable or template; producer depends on that variable
+missing_producer	{GENOTYPE_PREFIX}.pvar	templated_name	05_gxs/04_hc3_refit.py; 05_gxs/atp2b1_refit.py	05_gxs	2			name built from a variable or template; producer depends on that variable
+missing_producer	{GWAS_ID}.gwas_alignment_audit.tsv	templated_name	06_disease/twas/04_summarize.py	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	{gwas_cfg$id}_{qtl_id}_{locus_label_for_filename}_{gene_sym_for_filename}_locuscompare.json	templated_name	07_coloc/easycoloc/run_coloc.R	07_coloc	1			name built from a variable or template; producer depends on that variable
+missing_producer	{gwas_cfg$id}_{qtl_id}_{locus_label_for_filename}_{gene_sym_for_filename}_locuscompare_layout_validation.json	templated_name	07_coloc/easycoloc/run_coloc.R	07_coloc	1			name built from a variable or template; producer depends on that variable
+missing_producer	{gwas_id}.association_ranked.tsv	templated_name	06_disease/twas/05_twas_manhattan.py; 06_disease/twas/06_multi_gwas.py; 06_disease/twas/07_multi_overview.py; 06_disease/twas/08_inter_bridge.py	06_disease	4			name built from a variable or template; producer depends on that variable
+missing_producer	{gwas_id}.gwas_alignment_audit.tsv	templated_name	06_disease/frozen/03_prepare_gwas_and_run_spredixcan.py; 06_disease/twas/03_spredixcan.py	06_disease	2			name built from a variable or template; producer depends on that variable
+missing_producer	{gwas_id}.model_snps.allele_aligned.tsv	templated_name	06_disease/frozen/03_prepare_gwas_and_run_spredixcan.py; 06_disease/twas/03_spredixcan.py	06_disease	2			name built from a variable or template; producer depends on that variable
+missing_producer	{gwas_id}.spredixcan_run_summary.tsv	templated_name	06_disease/frozen/03_prepare_gwas_and_run_spredixcan.py; 06_disease/twas/03_spredixcan.py	06_disease	2			name built from a variable or template; producer depends on that variable
+missing_producer	{gwas_id}.stage_comparison.tsv	templated_name	06_disease/twas/08_inter_bridge.py	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	{prefix}.annotation.tsv	templated_name	06_disease/twas/01_twas_inputs.py	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	{prefix}.model_id_map.tsv	templated_name	06_disease/twas/01_twas_inputs.py	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	{prefix}.residualized_phenotype.tsv	templated_name	06_disease/twas/01_twas_inputs.py	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	{prefix}.{chrom}.bim	templated_name	04_qtl/followup/lead_af.py	04_qtl	1			name built from a variable or template; producer depends on that variable
+missing_producer	{rbp}_{tech}.csv	templated_name	07_coloc/func/db_postar3.py	07_coloc	1			name built from a variable or template; producer depends on that variable
+missing_producer	{sheet}.tsv	templated_name	figures/export_sheets.py	figures	1			name built from a variable or template; producer depends on that variable
+missing_producer	{stage}.annotation.tsv	templated_name	06_disease/twas/02_twas_train.py; 06_disease/twas/04_summarize.py	06_disease	2			name built from a variable or template; producer depends on that variable
+missing_producer	{stage}.cis_qtl_pairs.*.parquet	templated_name	04_qtl/eqtl/02-1_extract.py	04_qtl	1			name built from a variable or template; producer depends on that variable
+missing_producer	{stage}.model_id_map.tsv	templated_name	06_disease/frozen/build_twas_replacement.py	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	{stage}.residualized_phenotype.tsv	templated_name	06_disease/twas/02_twas_train.py	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	{stage}.training_detail.tsv	templated_name	06_disease/twas/02_twas_train.py	06_disease	1			name built from a variable or template; producer depends on that variable
+missing_producer	}_apa_eqtl.tsv	figure_data_producer_absent	figures/producers/prep_fig3_ed7.py	figures	1			figure-data table consumed by figures/*.R; producer not in release
+orphan_output_script	all.sample; common_variants.txt; post.sample; pre.sample	no_static_consumer_and_no_manuscript_map			0			script 00_geno/00_4_stage_filter.sh; unconsumed outputs listed in file column
+orphan_output_script	vcf_list.txt	no_static_consumer_and_no_manuscript_map			0			script 00_geno/02_merge_clean.sh; unconsumed outputs listed in file column
+orphan_output_script	recal_snp.vcf.gz	no_static_consumer_and_no_manuscript_map			0			script 00_geno/03_VQSR.sh; unconsumed outputs listed in file column
+orphan_output_script	qc.final; raw.nochr.setid.vcf.gz	no_static_consumer_and_no_manuscript_map			0			script 00_geno/04_preQC.sh; unconsumed outputs listed in file column
+orphan_output_script	temp_anno_extracted.bed	no_static_consumer_and_no_manuscript_map			0			script 01_quant/apa/DaPars_Extract_Anno.py; unconsumed outputs listed in file column
+orphan_output_script	s.txt	no_static_consumer_and_no_manuscript_map			0			script 01_quant/apa/Dapars2_Multi_Sample.py; unconsumed outputs listed in file column
+orphan_output_script	Dapars2_running_configure.txt	no_static_consumer_and_no_manuscript_map			0			script 01_quant/apa/dapars2_config.py; unconsumed outputs listed in file column
+orphan_output_script	3utr_location.txt	no_static_consumer_and_no_manuscript_map			0			script 01_quant/apa/extract_3utr.py; unconsumed outputs listed in file column
+orphan_output_script	wigFile_and_readDepth.txt	no_static_consumer_and_no_manuscript_map			0			script 01_quant/apa/prep_apa_inputs.sh; unconsumed outputs listed in file column
+orphan_output_script	cohort_overview.tsv	no_static_consumer_and_no_manuscript_map			0			script 01_quant/cohort_overview.R; unconsumed outputs listed in file column
+orphan_output_script	.final.int.tsv; as.matrix; count_filtered.tsv; expression_for_qtl.tsv; meta_after_sexcheck.tsv; metadata_final.tsv; norm_tmm_before_outlier_removal.tsv; norm_vst_before_outlier_removal.tsv; outlier_samples.txt; pca_for_qtl_k_values.tsv; pca_results_for_qtl.tsv; sex_check_plot_data.tsv	no_static_consumer_and_no_manuscript_map			0			script 01_quant/rna_pre_step01.r; unconsumed outputs listed in file column
+orphan_output_script	covariates.aligned.txt; final_shared_samples.txt; phenotype.bed	no_static_consumer_and_no_manuscript_map			0			script 01_quant/rna_pre_step02.r; unconsumed outputs listed in file column
+orphan_output_script	${matrix_prefix}.sample_manifest.tsv	no_static_consumer_and_no_manuscript_map			0			script 01_quant/rna_quant.sh; unconsumed outputs listed in file column
+orphan_output_script	10_batch9_holdout_clusters.tsv; 10_batch9_holdout_design.tsv; 10_batch9_holdout_discovery_stability.tsv; 10_batch9_holdout_events.tsv; 10_batch9_holdout_nulls.tsv; 10_batch9_replicate_qc.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/10_batch9_holdout.R; unconsumed outputs listed in file column
+orphan_output_script	08_external_mapping_qc.tsv; 11_brainspan_gene_heatmap.pdf; 11_brainspan_gene_heatmap.png; 11_brainspan_gene_heatmap_layout_validation.tsv; 11_brainspan_gene_heatmap_stats.tsv; 11_brainspan_gene_heatmap_sum.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/11_brainspan_heat.R; unconsumed outputs listed in file column
+orphan_output_script	08_brainspan_event_replication.tsv; 12_external_age_association.tsv; 12_external_c1c2_trend_sum.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/12_ext_pattern.R; unconsumed outputs listed in file column
+orphan_output_script	01_gam_model.pdf; 01_gam_model.png; 01_gam_model_layout_validation.tsv; 01_sample_support_profile.pdf; 01_sample_support_profile.png; 01_sample_support_profile_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_01b.R; unconsumed outputs listed in file column
+orphan_output_script	02_dynamic_site_filter_map.pdf; 02_dynamic_site_filter_map.png; 02_dynamic_site_filter_map_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_02.R; unconsumed outputs listed in file column
+orphan_output_script	03_pattern_heatmap.pdf; 03_pattern_heatmap.png; 03_pattern_heatmap_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_03.R; unconsumed outputs listed in file column
+orphan_output_script	04_pattern.pdf; 04_pattern.png; 04_pattern_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_04.R; unconsumed outputs listed in file column
+orphan_output_script	03_k_diagnostics.tsv; 05_clu_consensus.pdf; 05_clu_consensus.png; 05_clu_consensus_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_05.R; unconsumed outputs listed in file column
+orphan_output_script	06_cross_layer_trend.tsv; 06_crosslayer.pdf; 06_crosslayer.png; 06_crosslayer_layout_validation.tsv; 06_crosslayer_plot.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_06.R; unconsumed outputs listed in file column
+orphan_output_script	07_gene_direction.pdf; 07_gene_direction.png; 07_gene_direction_cluster_composition.tsv; 07_gene_direction_gene_composition.tsv; 07_gene_direction_specificity_null.tsv; 07_gene_direction_specificity_perms.tsv; 07_gene_direction_stats.tsv; 07_gene_direction_traj.tsv; 08_expr_apa_consistency.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_07.R; unconsumed outputs listed in file column
+orphan_output_script	08_enrich_layout_validation.tsv; 08_enrich_plot_data.tsv; 08_enrichment.pdf; 08_enrichment.png	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_08.R; unconsumed outputs listed in file column
+orphan_output_script	08_external_traj_replication.pdf; 08_external_traj_replication.png; 08_external_traj_replication_layout.tsv; 12_external_c1c2_trend_sum.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_08_brainspan.R; unconsumed outputs listed in file column
+orphan_output_script	09_loeuf_constraint.pdf; 09_loeuf_constraint.png; 09_loeuf_constraint_contrasts.tsv; 09_loeuf_constraint_layout_validation.tsv; 09_loeuf_constraint_sum.tsv; 11_loeuf_adj_models.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_09.R; unconsumed outputs listed in file column
+orphan_output_script	08_brainspan_event_replication.tsv; 12_c2_matched_window_concordance.tsv; 12_c2_matched_window_scatter.pdf; 12_c2_matched_window_scatter.png; 12_c2_matched_window_scatter_events.tsv; 12_c2_matched_window_scatter_layout_validation.tsv; 12_c2_matched_window_scatter_stats.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/fig_12_c2_scatter.R; unconsumed outputs listed in file column
+orphan_output_script	T2A_c1_vs_c2.tsv; T2B_nondynamic_tests.tsv; T2C_direction_index_fgsea.tsv; T5_magma_gene_z_models.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/followup/apa_function.R; unconsumed outputs listed in file column
+orphan_output_script	T3_traj_protein_mrna.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/followup/apa_t3_protein.R; unconsumed outputs listed in file column
+orphan_output_script	T4_celltype_adj_events.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/followup/apa_t4_celltype.R; unconsumed outputs listed in file column
+orphan_output_script	T5_gtex_tau_by_class.tsv; T5_magma_gene_z_models.tsv; T5_tissue_specificity.tsv; proteinatlas.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/followup/apa_t5_tissue.R; unconsumed outputs listed in file column
+orphan_output_script	ed3c_brainspan_concordance.png	no_static_consumer_and_no_manuscript_map			0			script 02_traj/followup/ed3c_brainspan.R; unconsumed outputs listed in file column
+orphan_output_script	README_handoff2.tsv; T2_kegg_to_brite.tsv; T2_term_to_goslim.tsv; T3_broad_sets_enrich.tsv; results_handoff2.md; s.png; s.tsv; s_fdr05.tsv; s_fdr10.tsv	no_static_consumer_and_no_manuscript_map			0			script 02_traj/followup/enrich_hier.R; unconsumed outputs listed in file column
+orphan_output_script	02_apa_trajectories.tsv	no_static_consumer_and_no_manuscript_map			0			script 03_omics/02_fit_traj.R; unconsumed outputs listed in file column
+orphan_output_script	.tsv.gz; 04_cv_all_pairs.tsv.gz; 04_cv_ranked_repeats.tsv; 04_cv_training_selection.tsv; 04_donor_boot_pairs.tsv; 04_protein_imputation.tsv; 04_ranking_sens.tsv; 04_robust_primary.tsv.gz; 04_robustness_summary.tsv; prot_source_provenance.tsv; protein_observed_mask.rds	no_static_consumer_and_no_manuscript_map			0			script 03_omics/03_integrate.R; unconsumed outputs listed in file column
+orphan_output_script	05_enrich_mapping_qc.tsv; 05_functional_enrich.tsv	no_static_consumer_and_no_manuscript_map			0			script 03_omics/04_enrichment.R; unconsumed outputs listed in file column
+orphan_output_script	04_gam_pair_coef_comp.tsv; 04_gam_sens_sum.tsv	no_static_consumer_and_no_manuscript_map			0			script 03_omics/05_gam_sensitivity.R; unconsumed outputs listed in file column
+orphan_output_script	09_atp2b1_triad_sum_results2.tsv; 09_global_triad_layout_validation_results3.tsv	no_static_consumer_and_no_manuscript_map			0			script 03_omics/09_triad_overview.R; unconsumed outputs listed in file column
+orphan_output_script	06_gam_shape_spearman_boot.tsv	no_static_consumer_and_no_manuscript_map			0			script 03_omics/10_gam_shape.R; unconsumed outputs listed in file column
+orphan_output_script	fig2b_apa_rna_pairs.png	no_static_consumer_and_no_manuscript_map			0			script 03_omics/fig2b_apa_rna.R; unconsumed outputs listed in file column
+orphan_output_script	fig2d_apa_protein_excess.png	no_static_consumer_and_no_manuscript_map			0			script 03_omics/fig2d_apa_prot.R; unconsumed outputs listed in file column
+orphan_output_script	as.matrix	no_static_consumer_and_no_manuscript_map			0			script 03_omics/prep_matched.R; unconsumed outputs listed in file column
+orphan_output_script	R1_SJ_sample_coverage.tsv; R1_SJ_sample_coverage_sum.tsv; R1_expr_TPM.tsv.gz; R1_expr_junction.tsv.gz; R1a_mediation_summary.tsv; R1b_cis_prot_models.tsv.gz; R1bc_cis_summary.tsv; R1c_cis_apa_mrna_models.tsv.gz; as.matrix; s.GeneRange.bed.gz; s.bed.gz; s.txt; s_apa_eqtl.tsv	no_static_consumer_and_no_manuscript_map			0			script 03_omics/r1_utr_expression.R; unconsumed outputs listed in file column
+orphan_output_script	S2_mirna_seed_rates_unresolved.tsv; s2_verification.tsv	no_static_consumer_and_no_manuscript_map			0			script 03_omics/s2_element.py; unconsumed outputs listed in file column
+orphan_output_script	S5_apa_vs_expression_coupling.tsv	no_static_consumer_and_no_manuscript_map			0			script 03_omics/s5_coupling.py; unconsumed outputs listed in file column
+orphan_output_script	02_overlap.tsv; 03_effect.tsv; 04_susie_cs_sizes.tsv; 04_susie_cs_summary.tsv; 04_susie_feature_cs_counts.tsv; 04_susie_pip_compare.tsv; 04_susie_variable_audit.tsv; crosspop_figure_manifest.tsv; crosspop_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/apaqtl/cross_pop_fig.R; unconsumed outputs listed in file column
+orphan_output_script	figure3_panelC.pdf; figure3_panelC.png; figure3_panelC_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/apaqtl/figure3_panelC.R; unconsumed outputs listed in file column
+orphan_output_script	phenotype.{stage_name}.GeneRange.bed	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/apaqtl/format.py; unconsumed outputs listed in file column
+orphan_output_script	figure4_dynamic.pdf; figure4_dynamic.png; figure4_dynamic.svg; figure4_dynamic_coverage_sample_qc.tsv; figure4_dynamic_coverage_source.tsv; figure4_dynamic_layout_validation.tsv; figure4_dynamic_phenotype_source.tsv; figure4_dynamic_summary.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/apaqtl/plot_fig4_dyn.py; unconsumed outputs listed in file column
+orphan_output_script	figure2a_intersection_summary.tsv; s_star_candidates.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/apaqtl/plot_figure.R; unconsumed outputs listed in file column
+orphan_output_script	downsample_audit_seed_composition.tsv; downsample_summary.txt; downsampled.samples.txt; s.bed; s.final; s.txt	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/apaqtl/preprocess_DS.R; unconsumed outputs listed in file column
+orphan_output_script	figure4_stage_specific_pair_screen.tsv; figure4_stage_specific_pair_shortlist.tsv; figure4_stage_specific_raw_pdui_summary.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/apaqtl/screen_fig4_pairs.R; unconsumed outputs listed in file column
+orphan_output_script	bridge_pairs.tsv; method_pca.png; method_selection.tsv; method_summary.png; ruv_control_genes.tsv; ruv_control_selection.tsv; s.bed; s.final; s.txt; sample_outlier_connectivity.png; sample_outlier_connectivity.tsv; sex_validation.png; sex_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/00_batch_correct.R; unconsumed outputs listed in file column
+orphan_output_script	fig1_gene_overlap_combined.png; fig2_qtl_pair_overlap_upset.png; fig3_lead_snp_distance.png; fig4_positional_enrichment.png	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/01_overlap.R; unconsumed outputs listed in file column
+orphan_output_script	as.matrix; outlier_detection.png; outlier_detection.tsv; preprocess_summary.tsv; s.bed; s.final; s.txt; sex_filtered_samples.csv; sex_validation_scatter.png; sex_validation_summary.csv; write.csv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/01_preprocess.R; unconsumed outputs listed in file column
+orphan_output_script	coloc_class_summary.tsv; coloc_post_apa_eqtl.tsv; coloc_pre_apa_eqtl.tsv; fig1_coloc_class_composition.png; fig2_coloc_pp_landscape.png; fig3_effect_direction_quadrant.png; s.sig_QTL.txt.gz; s.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/02-3_summary.R; unconsumed outputs listed in file column
+orphan_output_script	fig4_locuszoom_gallery.png; s.png; s.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/02-4_locus.R; unconsumed outputs listed in file column
+orphan_output_script	${stage_lower}.cis_qtl.txt.gz	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/02_qtl_mapping.sh; unconsumed outputs listed in file column
+orphan_output_script	j.out	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/02_run_coloc.sh; unconsumed outputs listed in file column
+orphan_output_script	extract_counts.tsv; phenotype_pos.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/04-1_inter_z.py; unconsumed outputs listed in file column
+orphan_output_script	.events.tsv.gz; .maxpip.tsv.gz; .tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/04-2_finemap_inter.R; unconsumed outputs listed in file column
+orphan_output_script	04_mediation_overview.pdf; 04_mediation_overview.png	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/04-2_visual.R; unconsumed outputs listed in file column
+orphan_output_script	j.out	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/04-3_sldsc_inter.sh; unconsumed outputs listed in file column
+orphan_output_script	${qtl}.strong_keys.txt; ${stage}.cis_qtl.txt.gz; 05_apa_isoform_switch.tsv; j.out	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/05_mashr.sh; unconsumed outputs listed in file column
+orphan_output_script	06_join.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/06-1_build_master.R; unconsumed outputs listed in file column
+orphan_output_script	06_summary.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/eqtl/06-2_rank_tracks.R; unconsumed outputs listed in file column
+orphan_output_script	fig3_acsf3_boxstats.tsv; s.GeneRange.bed.gz; s.bed.gz; s.txt	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/followup/fig3_acsf3.R; unconsumed outputs listed in file column
+orphan_output_script	fig3_locus_cov.tsv; s*.pgen; s.bed.gz; s.final; s.pgen; s.sig_QTL.txt.gz; s.txt	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/followup/fig3_extract.R; unconsumed outputs listed in file column
+orphan_output_script	lead_af_eas_eur.tsv; lead_af_eas_eur_summary.tsv; lead_variants_for_af.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/followup/lead_af.py; unconsumed outputs listed in file column
+orphan_output_script	.3aQTL.sumstats.txt.gz; R4_nan2026_model_sens.tsv; R4_nan2026_overlap_sens.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/followup/nan2026_audit.R; unconsumed outputs listed in file column
+orphan_output_script	.3aQTL.sumstats.txt.gz; R4_interaction_nan_exact_pairs.tsv; R4_interaction_nan_replication_rates.tsv; R4_nan2026_exact_match_keys.tsv; R4_nan2026_exact_model_outputs.tsv; R4_nan2026_nominal_matches.tsv.gz; R4_stage_nan_replication_rates.tsv; _matches.tsv	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/followup/nan2026_exact.R; unconsumed outputs listed in file column
+orphan_output_script	apaqtl_totals.reconstructed.tsv; ed7_per_gene_recovery.n_recovered_seeds.reconstructed.tsv; ed7c_seed_recovery.reconstructed.tsv; mediation_call_counts.reconstructed.tsv; run_summary_04.json	no_static_consumer_and_no_manuscript_map			0			script 04_qtl/recon_ed7_counts.py; unconsumed outputs listed in file column
+orphan_output_script	after.combat_rep.txt; as.matrix; pca_samples.txt; phenotype.GeneRange.bed; phenotype.bed; sample.final	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/00_preprocess.R; unconsumed outputs listed in file column
+orphan_output_script	interaction_stage_mapping_status.tsv	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/02_group_eigenmt.py; unconsumed outputs listed in file column
+orphan_output_script	interaction_eigenmt_aggregation_audit.tsv; interaction_eigenmt_diagnostic_gate.tsv; interaction_eigenmt_group_only_genes.tsv; interaction_eigenmt_meff_pair_ratio.tsv; interaction_eigenmt_meff_pair_ratio_summary.tsv; interaction_eigenmt_multisite_aggregation.tsv; interaction_eigenmt_site_count_mismat	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/03_eigenmt_diag.py; unconsumed outputs listed in file column
+orphan_output_script	interaction_external_component.tsv; interaction_external_component_summary.tsv	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/05_external_comp.py; unconsumed outputs listed in file column
+orphan_output_script	functional_enrichment_all_terms.tsv	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/06_func_enrich.R; unconsumed outputs listed in file column
+orphan_output_script	_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/07_visualization.R; unconsumed outputs listed in file column
+orphan_output_script	_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/08_rep_loci.R; unconsumed outputs listed in file column
+orphan_output_script	accepted_intx_core_groups.tsv	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/09_export_pairs.R; unconsumed outputs listed in file column
+orphan_output_script	clip.csv; susie_group_variant_mechanisms.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/13_finemap_mech.py; unconsumed outputs listed in file column
+orphan_output_script	example_plot_index.tsv; figure_overview.tsv; panel_2a_representative_examples.tsv; pattern_counts.tsv; prenatal_contribution_counts.tsv; separate_status_counts.tsv	no_static_consumer_and_no_manuscript_map			0			script 05_gxs/plot_fig.R; unconsumed outputs listed in file column
+orphan_output_script	{gwas_id}.csv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/frozen/03_prepare_gwas_and_run_spredixcan.py; unconsumed outputs listed in file column
+orphan_output_script	ST30_TWAS_replacement.tsv; TWAS_affected_counts.tsv; TWAS_affected_delta.tsv; TWAS_manuscript_totals.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/frozen/build_twas_replacement.py; unconsumed outputs listed in file column
+orphan_output_script	${gwas_id}.metrics.tsv; COMPLETE.tsv; input_provenance.tsv; smr_version.txt	no_static_consumer_and_no_manuscript_map			0			script 06_disease/frozen/run_frozen_downstream.sh; unconsumed outputs listed in file column
+orphan_output_script	binary_sldsc_frozen_full.tsv; joint_sldsc_frozen_full.tsv; magma_conditional_frozen_affected.tsv; magma_frozen_full.tsv; old_vs_frozen_results.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/frozen/summarize_frozen_results.R; unconsumed outputs listed in file column
+orphan_output_script	magma_gene_level_GO_interaction.tsv; magma_gene_level_GO_postnatal.tsv; magma_gene_level_GO_prenatal.tsv; magma_gene_level_go_enrichment.pdf; magma_gene_level_go_enrichment.png; magma_gene_level_go_enrichment_layout_validation.tsv; magma_gene_level_groups.tsv; magma_gene_level_gwas_qtl_counts.tsv; m	no_static_consumer_and_no_manuscript_map			0			script 06_disease/magma/magma_go_plot.R; unconsumed outputs listed in file column
+orphan_output_script	enrichment_figure.pdf; enrichment_figure.png	no_static_consumer_and_no_manuscript_map			0			script 06_disease/magma/plot_enrich_fig.R; unconsumed outputs listed in file column
+orphan_output_script	go_bp_gene_context_matrix.tsv; go_bp_gene_membership.tsv; go_bp_selected_context_foregrounds.tsv; go_bp_term_label_mapping.tsv; magma_figure_layout_validation.tsv; magma_go_bp_selected_contexts.pdf; magma_go_bp_selected_contexts.png; magma_go_bp_selected_contexts_plot_data.tsv; magma_qtl_development	no_static_consumer_and_no_manuscript_map			0			script 06_disease/magma/plot_magma_figures.R; unconsumed outputs listed in file column
+orphan_output_script	apa_qtl_gene_sets.overlap.tsv; apa_qtl_gene_sets.sum.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/magma/qtl_gene_sets.R; unconsumed outputs listed in file column
+orphan_output_script	T2A_c1_vs_c2.tsv; T2B_nondynamic_tests.tsv; T2C_direction_index_fgsea.tsv; T5_magma_gene_z_models.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/magma/traj_apa.R; unconsumed outputs listed in file column
+orphan_output_script	fig5a_sldsc_plot_data.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/reconstructed/fig5a_plot_data.py; unconsumed outputs listed in file column
+orphan_output_script	eur_h2_z_gate.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/reconstructed/sldsc_eur_z_gate.py; unconsumed outputs listed in file column
+orphan_output_script	sldsc_binary_fdr_two_stage.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/reconstructed/sldsc_two_stage.py; unconsumed outputs listed in file column
+orphan_output_script	twas_master_vs_ranked_reconcile.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/reconstructed/twas_reconcile.py; unconsumed outputs listed in file column
+orphan_output_script	j.out	no_static_consumer_and_no_manuscript_map			0			script 06_disease/run_module06.sh; unconsumed outputs listed in file column
+orphan_output_script	lifespan_apa_qtl.bed	no_static_consumer_and_no_manuscript_map			0			script 06_disease/sldsc/02_annot_bed_all.sh; unconsumed outputs listed in file column
+orphan_output_script	EAS_${TRAIT}.sumstats.gz; EUR_${TRAIT}.sumstats.gz	no_static_consumer_and_no_manuscript_map			0			script 06_disease/sldsc/05_format_all.sh; unconsumed outputs listed in file column
+orphan_output_script	enrichment_{annot}.png; sldsc_figure1_development_heatmap.png; sldsc_figure2_enrichment_forest.png; sldsc_figure3_tau_forest.png; sldsc_figure4_interaction_scan.png; sldsc_figure5_population_consistency.png; sldsc_figure6_stage_comparison.png; sldsc_figure7_significance_heatmap.png; sldsc_figure8_an	no_static_consumer_and_no_manuscript_map			0			script 06_disease/sldsc/08_plot_sldsc.py; unconsumed outputs listed in file column
+orphan_output_script	args.out	no_static_consumer_and_no_manuscript_map			0			script 06_disease/sldsc/ldsc3.py; unconsumed outputs listed in file column
+orphan_output_script	norm.pdf	no_static_consumer_and_no_manuscript_map			0			script 06_disease/sldsc/ldscore/regressions.py; unconsumed outputs listed in file column
+orphan_output_script	.cell_type_results.txt; args.out	no_static_consumer_and_no_manuscript_map			0			script 06_disease/sldsc/ldscore/sumstats.py; unconsumed outputs listed in file column
+orphan_output_script	EAS_${TRAIT}.sumstats.gz; EUR_${TRAIT}.sumstats.gz	no_static_consumer_and_no_manuscript_map			0			script 06_disease/sldsc/run_sldsc.sbatch; unconsumed outputs listed in file column
+orphan_output_script	input_audit.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/twas/01_twas_inputs.py; unconsumed outputs listed in file column
+orphan_output_script	{stage}_{gwas_id}.csv; {stage}_{gwas_id}.csv.gz	no_static_consumer_and_no_manuscript_map			0			script 06_disease/twas/03_spredixcan.py; unconsumed outputs listed in file column
+orphan_output_script	{GWAS_ID}.association_ranked.tsv; {GWAS_ID}.qc_metrics.tsv; {GWAS_ID}.stage_comparison.tsv; {GWAS_ID}.summary_report.tsv; {GWAS_ID}.top10_report.tsv; {GWAS_ID}.top_hits.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/twas/04_summarize.py; unconsumed outputs listed in file column
+orphan_output_script	{stem_name}.layout_check.tsv; {stem}.pdf; {stem}.png; {stem}.svg	no_static_consumer_and_no_manuscript_map			0			script 06_disease/twas/05_twas_manhattan.py; unconsumed outputs listed in file column
+orphan_output_script	overview_input_audit.tsv; overview_layout_check.tsv; twas_shared_signal_bubble.tsv; {stem}.pdf; {stem}.png; {stem}.svg	no_static_consumer_and_no_manuscript_map			0			script 06_disease/twas/07_multi_overview.py; unconsumed outputs listed in file column
+orphan_output_script	interaction_qtl_bridge_input_audit.tsv; interaction_qtl_twas_bridge_summary.md; interaction_qtl_twas_enrichment_by_stage.tsv; interaction_qtl_twas_overlap_hits.tsv; interaction_qtl_twas_stage_comparison.tsv; interaction_qtl_twas_stage_specificity.tsv; twas_interaction_qtl_annotated.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 06_disease/twas/08_inter_bridge.py; unconsumed outputs listed in file column
+orphan_output_script	detail.tsv; metadata.tsv; phenotype.tsv; weights.tsv	no_static_consumer_and_no_manuscript_map			0			script 06_disease/twas/glmnet_worker.R; unconsumed outputs listed in file column
+orphan_output_script	${STAGE}_manifest.tsv; a.out; chunk_manifest.tsv; j.out	no_static_consumer_and_no_manuscript_map			0			script 06_disease/twas/submit_twas.sh; unconsumed outputs listed in file column
+orphan_output_script	ILAE3_Caucasian_all_epilepsy_final.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/coloc/02_epilepsy_gwas.sh; unconsumed outputs listed in file column
+orphan_output_script	qualifying_loci.csv; summary_overview.pdf; summary_overview.png	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/coloc/03_plot_summary.R; unconsumed outputs listed in file column
+orphan_output_script	04_summary_tier1.pdf; 04_summary_tier1.png; _locuscompare.json	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/coloc/04_plot_tier1.R; unconsumed outputs listed in file column
+orphan_output_script	07_summary_matrix.pdf; 07_summary_matrix.png	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/coloc/07_plot_matrix.R; unconsumed outputs listed in file column
+orphan_output_script	_coloc.rds; _coloc.tsv; _comparison.tsv; _diagnostics.tsv; _highlighted_genes.tsv; _old_new_summary.tsv; _susie.csv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/coloc/audit_susie.R; unconsumed outputs listed in file column
+orphan_output_script	GWAS_A_postnatal_rs100_GENE1_locuscompare.pdf; GWAS_A_rs100_locus_results.csv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/examples/checks/check_report_web_cli.sh; unconsumed outputs listed in file column
+orphan_output_script	synthetic_locus_demo.pdf; synthetic_locus_demo.png	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/examples/synthetic_plot_demo.R; unconsumed outputs listed in file column
+orphan_output_script	QTL_summary.demo.csv; all_pairs_demo.txt; sig_pairs_demo.txt	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/src/utils_bootstrap.R; unconsumed outputs listed in file column
+orphan_output_script	.lifted.bed; .tsv.gz; .unmapped.bed; manifest.tsv; significant_colocalizations_PP4_{pp4_threshold}.csv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/src/utils_format.R; unconsumed outputs listed in file column
+orphan_output_script	_to_rsid.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/src/utils_plot.R; unconsumed outputs listed in file column
+orphan_output_script	_data.json	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/src/utils_report.R; unconsumed outputs listed in file column
+orphan_output_script	chr_{chrom}_snp{BUILD}_hash_table.rds	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/bed2rds.R; unconsumed outputs listed in file column
+orphan_output_script	01_qc_heatmap.png; 02_variant_retention.png; 03_eaf_distribution.png; harmony_QC_dbsnp_position_mismatches.tsv; harmony_QC_per_variant_flags.tsv.gz; harmony_QC_summary.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/build_harmony_qc_report.R; unconsumed outputs listed in file column
+orphan_output_script	output_manifest_summary.json	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/build_output_manifest.R; unconsumed outputs listed in file column
+orphan_output_script	output_manifest_summary.json	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/check_run_completion.R; unconsumed outputs listed in file column
+orphan_output_script	QTL_summary.csv; example.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/checks/smoke_project_fixture.R; unconsumed outputs listed in file column
+orphan_output_script	1kg_phase3_hg19_EAS.bed; 1kg_phase3_hg19_chr22.bed; 1kg_phase3_hg38_EAS.bed; 1kg_phase3_hg38_chr22.bed	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/checks/smoke_test_1kg_setup.R; unconsumed outputs listed in file column
+orphan_output_script	reference_sources.test.yml	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/checks/smoke_test_bootstrap_refs.R; unconsumed outputs listed in file column
+orphan_output_script	SMOKE_b38to38_harmonized.tsv; SMOKE_b38to38_harmonized.tsv.gz; input.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/checks/smoke_test_chunked_harmonization.R; unconsumed outputs listed in file column
+orphan_output_script	QTL_summary.csv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/checks/smoke_test_doctor.R; unconsumed outputs listed in file column
+orphan_output_script	one_col.sample; two_col.sample	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/checks/smoke_test_plink_keep_format.R; unconsumed outputs listed in file column
+orphan_output_script	demo_locuscompare_layout_validation.json	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/checks/smoke_test_plotting.R; unconsumed outputs listed in file column
+orphan_output_script	GWAS_A_postnatal_rs100_GENE1_locuscompare.pdf; extra_download.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/checks/smoke_test_report_web_data.R; unconsumed outputs listed in file column
+orphan_output_script	SMOKE_GWAS_postnatal_CCDC30_susie.csv; SMOKE_GWAS_rs10890255_locus_results.csv; SMOKE_GWAS_rs10890256_locus_results.csv; SMOKE_GWAS_rs2819340_locus_results.csv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/checks/smoke_test_summary_report.R; unconsumed outputs listed in file column
+orphan_output_script	_snp151_hash_table.json	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/dbsnp_hash_table_maker.py; unconsumed outputs listed in file column
+orphan_output_script	harmonized_gwas_manifest.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/harmonize_gwas.R; unconsumed outputs listed in file column
+orphan_output_script	_coloc.rds; _susie.csv; abf_vs_susie.pdf; abf_vs_susie.png; facet_locuszoom.pdf; facet_locuszoom.png; pp4_summary.pdf; pp4_summary.png	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/plot_summary.R; unconsumed outputs listed in file column
+orphan_output_script	_coloc.pdf; _coloc.png	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/rerun_plots.R; unconsumed outputs listed in file column
+orphan_output_script	*.pdf; *.png; *.rds; *_locus_results.csv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/easycoloc/tools/run_pipeline_managed.sh; unconsumed outputs listed in file column
+orphan_output_script	R2b_depth_cpm.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/followup/02_depth_12_bams.sh; unconsumed outputs listed in file column
+orphan_output_script	Fig5d_SCAF1_locuscompare.json; Fig5e_NRBP2_locuscompare.json; R1_SJ_sample_coverage_sum.tsv; R1_expr_TPM.tsv.gz; R1_expr_junction.tsv.gz; R1b_cis_prot_models.tsv.gz; R1c_cis_apa_mrna_models.tsv.gz; R2b_depth_cpm.tsv.gz; R4_intx_nan_replication_rates.tsv; R4_nan2026_exact_model_outputs.tsv; R4_nan202	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/followup/03_verify.sh; unconsumed outputs listed in file column
+orphan_output_script	cohort_af_arl3_window.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/followup/arl3_vcf_af.py; unconsumed outputs listed in file column
+orphan_output_script	cohort_dosage_keysnps.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/followup/arl3_vcf_geno.py; unconsumed outputs listed in file column
+orphan_output_script	$TSV.gz	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/followup/fig5_eqtl_tracks.sh; unconsumed outputs listed in file column
+orphan_output_script	fig5c_gwas_counts.tsv; fig5c_venn_counts.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/followup/fig5c_plot_data.py; unconsumed outputs listed in file column
+orphan_output_script	preflight_status.tsv; preflight_summary.json	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/00_preflight.py; unconsumed outputs listed in file column
+orphan_output_script	cell_reference_qc.tsv; provenance.tsv; signals.tsv.gz; signals_summary.tsv; software.tsv; variants.txt	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/01_prepare.py; unconsumed outputs listed in file column
+orphan_output_script	all_stages.high_pip.tsv.gz; all_stages.high_pip.variants.bed; all_stages.high_pip_{HIGH_PIP_TAG}.tsv.gz; all_stages.high_pip_{HIGH_PIP_TAG}.variants.bed; all_stages.phenotype_summary.tsv.gz; all_stages.phenotypes.bed; all_stages.top_variant_per_phenotype.tsv.gz; qtl_source_manifest.tsv; tested_apa_g	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/01_qtl_ref.py; unconsumed outputs listed in file column
+orphan_output_script	interaction.susie_qtl.standardized.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/01b_inter_qtl.py; unconsumed outputs listed in file column
+orphan_output_script	candidate_counts_by_tier.tsv; candidate_set_pip_0.5.tsv.gz; functional_interpretation_run_summary.json; pas_event_annotations.tsv.gz; pas_resolution_summary.tsv; reference_audit.tsv; tier2_candidates.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/02_func.py; unconsumed outputs listed in file column
+orphan_output_script	pas_detail.tsv.gz; rbp_detail.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/02_mechanism.py; unconsumed outputs listed in file column
+orphan_output_script	cell_deconvolution_qc.tsv; cell_proportion_associations.tsv; cell_qtl_covariate_correlation.layout_validation.tsv; cell_qtl_covariate_correlations.tsv; cell_qtl_covariate_qc_sum.tsv; cell_qtl_residual_associations.tsv.gz	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/03_deconvolution.R; unconsumed outputs listed in file column
+orphan_output_script	aparent_variant_scores.tsv; candidate_analysis_sets.tsv; dur_are_summary.tsv.gz; dur_rbp_consensus_summary.tsv.gz; dur_regulatory_load.tsv; evidence_chain_summary.tsv; long_utr.fa; mirna_dur_site_hits.tsv.gz; mirna_dur_site_summary.tsv.gz; pas_auxiliary_motif_delta.tsv.gz; pas_motif_delta.tsv.gz; rn	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/03_run_plan.py; unconsumed outputs listed in file column
+orphan_output_script	.tsv.gz; GTEx_v11_Brain_BA9_apaQTL.tsv.gz; Traits_diseases_associated_3aQTLs.txt.gz; case_competitors.tsv; case_posteriors.tsv; case_sensitivity.tsv; novel_competitors.tsv; novel_posteriors.tsv; novel_sensitivity.tsv; published_matches.tsv; published_summary.json; rosmap_grch37_input.bed; rosmap_grc	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/05_coloc.R; unconsumed outputs listed in file column
+orphan_output_script	Baseline_apaQTL_review.md; figure_layout_validation.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/05_report.py; unconsumed outputs listed in file column
+orphan_output_script	figure_mirna_mechanism_track.layout_validation.tsv; {OUT_PREFIX.name}.pdf; {OUT_PREFIX.name}.png; {TABLE_PREFIX}.plotted_sites.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/06_mirna_fig.py; unconsumed outputs listed in file column
+orphan_output_script	membership.tsv; tested_genes.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/07_enrichment.R; unconsumed outputs listed in file column
+orphan_output_script	case_apa_locus.meta.tsv; case_apa_locus.tsv.gz; case_eqtl_locus.meta.tsv; case_eqtl_locus.tsv.gz; case_locus_ld.tsv.gz; case_locus_source.tsv.gz; {base}.pdf; {base}.png; {base}.svg	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/08_plot_cases.py; unconsumed outputs listed in file column
+orphan_output_script	sldsc_enrichment_combined.pdf; sldsc_enrichment_combined.png	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/09_plot.R; unconsumed outputs listed in file column
+orphan_output_script	11_interaction_group_mechanisms.tsv; 11_interaction_mechanism_coverage.tsv; 11_interaction_variant_mechanisms.tsv.gz; 11_stage_clip_recheck.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/11_inter_mech.py; unconsumed outputs listed in file column
+orphan_output_script	12_autr_annotation_summary.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/12_autr_mirna_rbp.py; unconsumed outputs listed in file column
+orphan_output_script	hid1_mechanism_layout_validation.tsv; hid1_mechanism_samples.tsv.gz; hid1_mechanism_summary.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/12_plot_hid1.py; unconsumed outputs listed in file column
+orphan_output_script	download_log.txt; resp.json	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/db_postar3.py; unconsumed outputs listed in file column
+orphan_output_script	HID1_sequence_mechanism_layout_validation.tsv; {FIG_STEM}.pdf; {FIG_STEM}.png; {FIG_STEM}.svg	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/func/hid1_sequence.py; unconsumed outputs listed in file column
+orphan_output_script	Figure5c_disease_gene_matrix.pdf; Figure5c_disease_gene_matrix.png	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/handoff/05_disease_matrix.py; unconsumed outputs listed in file column
+orphan_output_script	.cis_qtl_pairs.txt.gz	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/handoff/rep_chb_crossstage.R; unconsumed outputs listed in file column
+orphan_output_script	Figure6d_ARL3_smr.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/handoff/run_handoff.sh; unconsumed outputs listed in file column
+orphan_output_script	{args.qtl_type}.qfile.txt	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/smr/01_make_besd.py; unconsumed outputs listed in file column
+orphan_output_script	_layout_validation.tsv; _source.tsv	no_static_consumer_and_no_manuscript_map			0			script 07_coloc/smr/05_plot_prenatal.R; unconsumed outputs listed in file column
+orphan_output_script	*.3aQTL.sumstats.txt.gz; nan2026_comparison_nan.xlsx; registry_m04.tsv; rows.json; values.json	no_static_consumer_and_no_manuscript_map			0			script checks/m04_05_registry.py; unconsumed outputs listed in file column

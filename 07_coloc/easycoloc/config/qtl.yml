@@ -1,0 +1,32 @@
+qtl_info:
+  build: "hg38"
+  file: "config/QTL_summary.csv"
+  columns:
+    id: "Type"
+    sample_size: "NumberRNASeqandGTSamples"
+    all_filename: "allPairsTabixFilename"
+    sig_filename: "sigPairsTabixFilename"
+
+QTL_all_header:
+  - "chr"
+  - "pos"
+  - "ref"
+  - "alt"
+  - "phenotype_id"
+  - "variant_id"
+  - "start_distance"
+  - "end_distance"
+  - "af"
+  - "ma_samples"
+  - "ma_count"
+  - "pval_nominal"
+  - "slope"
+  - "slope_se"
+
+QTL_cols:
+  phenotype: "phenotype_id"
+  chrom: "chr"
+  pos: "pos"
+  pval: "pval_nominal"
+  beta: "slope"
+  se: "slope_se"

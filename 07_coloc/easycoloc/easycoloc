@@ -1,0 +1,511 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "${repo_root}"
+
+show_help() {
+  cat <<'EOF'
+EasyColoc CLI
+
+Usage:
+  ./easycoloc <command> [options]
+
+Commands:
+  run        Run the main pipeline (`--managed` for wrapped execution)
+  quick      Run exactly one configured GWAS x QTL pair
+  doctor     Validate configs, core inputs and external dependencies
+  init       Scaffold a minimal EasyColoc analysis project
+  harmonize  Generate harmonized GWAS cache files without running coloc
+  finalize   Merge/report/check outputs after shard runs
+  clean      List or delete safe intermediate files
+  check      Check whether a run completed successfully
+  status     Summarize per-GWAS progress and output counts
+  monitor    Print the latest runtime heartbeat and output snapshot
+  watch      Poll an output directory repeatedly and append snapshots to a log
+  manifest   Build an output manifest for an existing results directory
+  harmony-qc Build an HTML QC report for harmonized GWAS caches
+  report     Launch the local interactive web report for an existing results directory
+  report-web Launch the local interactive web report for an existing results directory
+  refs       List required and optional reference resources
+  bootstrap-refs  Materialize shared references into a project-local layout
+  smoke      Run repository smoke tests
+  demo       Render the minimal synthetic plot demo
+  help       Show this help text
+
+Common run options:
+  --global PATH
+  --gwas PATH
+  --qtl PATH
+  --output-dir PATH
+  --shard-index N
+  --shard-count N
+  --shard-by locus|gwas
+  --emit-slurm-array-template
+
+Quick run:
+  ./easycoloc quick PROJECT_DIR --gwas-id ID --qtl-id ID
+  ./easycoloc quick PROJECT_DIR --list
+EOF
+}
+
+set_config_envs() {
+  local global_cfg="$1"
+  local gwas_cfg="$2"
+  local qtl_cfg="$3"
+  if [[ -n "${global_cfg}" ]]; then
+    export EASYCOLOC_GLOBAL_CONFIG="${global_cfg}"
+  fi
+  if [[ -n "${gwas_cfg}" ]]; then
+    export EASYCOLOC_GWAS_CONFIG="${gwas_cfg}"
+  fi
+  if [[ -n "${qtl_cfg}" ]]; then
+    export EASYCOLOC_QTL_CONFIG="${qtl_cfg}"
+  fi
+}
+
+parse_common_flags() {
+  local global_cfg=""
+  local gwas_cfg=""
+  local qtl_cfg=""
+  local output_dir=""
+  local managed="false"
+  local shard_index=""
+  local shard_count=""
+  local shard_by=""
+  local emit_slurm_array_template="false"
+  local passthrough=()
+
+  COMMON_PASSTHROUGH=()
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --global)
+        global_cfg="${2:?missing value for --global}"
+        shift 2
+        ;;
+      --gwas)
+        gwas_cfg="${2:?missing value for --gwas}"
+        shift 2
+        ;;
+      --qtl)
+        qtl_cfg="${2:?missing value for --qtl}"
+        shift 2
+        ;;
+      --output-dir)
+        output_dir="${2:?missing value for --output-dir}"
+        shift 2
+        ;;
+      --managed)
+        managed="true"
+        shift
+        ;;
+      --shard-index)
+        shard_index="${2:?missing value for --shard-index}"
+        shift 2
+        ;;
+      --shard-count)
+        shard_count="${2:?missing value for --shard-count}"
+        shift 2
+        ;;
+      --shard-by)
+        shard_by="${2:?missing value for --shard-by}"
+        shift 2
+        ;;
+      --emit-slurm-array-template)
+        emit_slurm_array_template="true"
+        shift
+        ;;
+      --help|-h)
+        passthrough+=("--help")
+        shift
+        ;;
+      *)
+        passthrough+=("$1")
+        shift
+        ;;
+    esac
+  done
+
+  COMMON_GLOBAL_CFG="${global_cfg}"
+  COMMON_GWAS_CFG="${gwas_cfg}"
+  COMMON_QTL_CFG="${qtl_cfg}"
+  COMMON_OUTPUT_DIR="${output_dir}"
+  COMMON_MANAGED="${managed}"
+  COMMON_SHARD_INDEX="${shard_index}"
+  COMMON_SHARD_COUNT="${shard_count}"
+  COMMON_SHARD_BY="${shard_by}"
+  COMMON_EMIT_SLURM_ARRAY_TEMPLATE="${emit_slurm_array_template}"
+  if (( ${#passthrough[@]} > 0 )); then
+    COMMON_PASSTHROUGH=("${passthrough[@]}")
+  fi
+}
+
+emit_slurm_array_template() {
+  local shard_count="$1"
+  local shard_by="$2"
+  local output_dir="$3"
+  if [[ -z "${shard_count}" ]]; then
+    shard_count="8"
+  fi
+  if [[ -z "${shard_by}" ]]; then
+    shard_by="locus"
+  fi
+  if [[ -z "${output_dir}" ]]; then
+    output_dir="/path/to/results"
+  fi
+  cat <<EOF
+#!/usr/bin/env bash
+#SBATCH --job-name=easycoloc
+#SBATCH --array=1-${shard_count}
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+#SBATCH --time=24:00:00
+#SBATCH --output=easycoloc_%A_%a.out
+#SBATCH --error=easycoloc_%A_%a.err
+
+set -euo pipefail
+
+./easycoloc run --managed \\
+  --global /path/to/config/global.yml \\
+  --gwas /path/to/config/gwas.yml \\
+  --qtl /path/to/config/qtl.yml \\
+  --output-dir ${output_dir} \\
+  --shard-by ${shard_by} \\
+  --shard-count ${shard_count} \\
+  --shard-index "\${SLURM_ARRAY_TASK_ID}"
+
+# Run once after all array tasks finish:
+# ./easycoloc finalize ${output_dir}
+EOF
+}
+
+set_shard_envs() {
+  local shard_index="$1"
+  local shard_count="$2"
+  local shard_by="$3"
+  if [[ -n "${shard_index}" ]]; then
+    export EASYCOLOC_SHARD_INDEX="${shard_index}"
+    export EASYCOLOC_SHARD_MODE="shard"
+  fi
+  if [[ -n "${shard_count}" ]]; then
+    export EASYCOLOC_SHARD_COUNT="${shard_count}"
+    export EASYCOLOC_SHARD_MODE="shard"
+  fi
+  if [[ -n "${shard_by}" ]]; then
+    export EASYCOLOC_SHARD_BY="${shard_by}"
+  fi
+}
+
+cmd="${1:-help}"
+if [[ $# -gt 0 ]]; then
+  shift
+fi
+
+case "${cmd}" in
+  quick)
+    quick_project=""
+    quick_global_cfg=""
+    quick_gwas_cfg=""
+    quick_qtl_cfg=""
+    quick_gwas_id=""
+    quick_qtl_id=""
+    quick_output_dir=""
+    quick_list="false"
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --project)
+          quick_project="${2:?missing value for --project}"
+          shift 2
+          ;;
+        --global)
+          quick_global_cfg="${2:?missing value for --global}"
+          shift 2
+          ;;
+        --gwas)
+          quick_gwas_cfg="${2:?missing value for --gwas}"
+          shift 2
+          ;;
+        --qtl)
+          quick_qtl_cfg="${2:?missing value for --qtl}"
+          shift 2
+          ;;
+        --gwas-id)
+          quick_gwas_id="${2:?missing value for --gwas-id}"
+          shift 2
+          ;;
+        --qtl-id)
+          quick_qtl_id="${2:?missing value for --qtl-id}"
+          shift 2
+          ;;
+        --output-dir)
+          quick_output_dir="${2:?missing value for --output-dir}"
+          shift 2
+          ;;
+        --list)
+          quick_list="true"
+          shift
+          ;;
+        --help|-h)
+          cat <<'EOF'
+Usage:
+  ./easycoloc quick PROJECT_DIR --gwas-id ID --qtl-id ID [--output-dir PATH]
+  ./easycoloc quick --project PROJECT_DIR --gwas-id ID --qtl-id ID [--output-dir PATH]
+  ./easycoloc quick PROJECT_DIR --list
+
+The quick command validates the selected pair, keeps the full harmonization and
+reference checks, and runs it with managed logging in an isolated output directory.
+Use --global/--gwas/--qtl instead of PROJECT_DIR for explicit config paths.
+EOF
+          exit 0
+          ;;
+        *)
+          if [[ -z "${quick_project}" && "$1" != --* ]]; then
+            quick_project="$1"
+            shift
+          else
+            echo "[QUICK] unknown argument: $1" >&2
+            exit 1
+          fi
+          ;;
+      esac
+    done
+
+    if [[ -n "${quick_project}" ]]; then
+      if [[ -n "${quick_global_cfg}${quick_gwas_cfg}${quick_qtl_cfg}" ]]; then
+        echo "[QUICK] PROJECT_DIR cannot be combined with --global/--gwas/--qtl" >&2
+        exit 1
+      fi
+      quick_project="$(cd "${quick_project}" 2>/dev/null && pwd -P)" || {
+        echo "[QUICK] project directory not found: ${quick_project}" >&2
+        exit 1
+      }
+      quick_global_cfg="${quick_project}/config/global.yml"
+      quick_gwas_cfg="${quick_project}/config/gwas.yml"
+      quick_qtl_cfg="${quick_project}/config/qtl.yml"
+    fi
+    set_config_envs "${quick_global_cfg}" "${quick_gwas_cfg}" "${quick_qtl_cfg}"
+
+    if [[ "${quick_list}" == "true" ]]; then
+      Rscript -e 'source("src/utils_config.R"); cfg <- easycoloc_read_configs(); qtl <- data.table::fread(cfg$qtl$qtl_info$file); id_col <- cfg$qtl$qtl_info$columns$id; cat("GWAS IDs:\n"); cat(paste0("  ", vapply(cfg$gwas$datasets, function(x) as.character(x$id), character(1))), sep = "\n"); cat("QTL IDs:\n"); cat(paste0("  ", unique(as.character(qtl[[id_col]]))), sep = "\n")'
+      exit 0
+    fi
+    if [[ -z "${quick_gwas_id}" || -z "${quick_qtl_id}" ]]; then
+      echo "[QUICK] --gwas-id and --qtl-id are required; use --list to show configured IDs" >&2
+      exit 1
+    fi
+    if [[ "${quick_gwas_id}" == *,* || "${quick_qtl_id}" == *,* ]]; then
+      echo "[QUICK] exactly one --gwas-id and one --qtl-id are allowed" >&2
+      exit 1
+    fi
+
+    export EASYCOLOC_GWAS_ID="${quick_gwas_id}"
+    export EASYCOLOC_QTL_ID="${quick_qtl_id}"
+    if [[ -z "${quick_output_dir}" ]]; then
+      quick_output_base="$(Rscript -e 'source("src/utils_config.R"); cfg <- easycoloc_read_configs(); cat(normalizePath(cfg$global$output_dir, mustWork = FALSE))')"
+      quick_safe_gwas="$(printf '%s' "${quick_gwas_id}" | tr -c 'A-Za-z0-9._-' '_')"
+      quick_safe_qtl="$(printf '%s' "${quick_qtl_id}" | tr -c 'A-Za-z0-9._-' '_')"
+      quick_output_dir="${quick_output_base}/quick/${quick_safe_gwas}__${quick_safe_qtl}"
+    fi
+    export EASYCOLOC_OUTPUT_DIR="${quick_output_dir}"
+
+    echo "[QUICK] pair: ${quick_gwas_id} x ${quick_qtl_id}"
+    echo "[QUICK] output: ${quick_output_dir}"
+    echo "[QUICK] validating selected inputs"
+    Rscript tools/doctor_easycoloc.R
+    echo "[QUICK] validation passed; starting managed run"
+    exec "${repo_root}/tools/run_pipeline_managed.sh"
+    ;;
+  run)
+    parse_common_flags "$@"
+    set_config_envs "${COMMON_GLOBAL_CFG}" "${COMMON_GWAS_CFG}" "${COMMON_QTL_CFG}"
+    set_shard_envs "${COMMON_SHARD_INDEX}" "${COMMON_SHARD_COUNT}" "${COMMON_SHARD_BY}"
+    if [[ "${COMMON_EMIT_SLURM_ARRAY_TEMPLATE}" == "true" ]]; then
+      emit_slurm_array_template "${COMMON_SHARD_COUNT}" "${COMMON_SHARD_BY}" "${COMMON_OUTPUT_DIR}"
+      exit 0
+    fi
+    if [[ "${COMMON_MANAGED}" == "true" ]]; then
+      managed_args=()
+      if [[ -n "${COMMON_GLOBAL_CFG}" ]]; then
+        managed_args+=(--global "${COMMON_GLOBAL_CFG}")
+      fi
+      if [[ -n "${COMMON_GWAS_CFG}" ]]; then
+        managed_args+=(--gwas "${COMMON_GWAS_CFG}")
+      fi
+      if [[ -n "${COMMON_QTL_CFG}" ]]; then
+        managed_args+=(--qtl "${COMMON_QTL_CFG}")
+      fi
+      if [[ -n "${COMMON_OUTPUT_DIR}" ]]; then
+        managed_args+=(--output-dir "${COMMON_OUTPUT_DIR}")
+      fi
+      if [[ -n "${COMMON_SHARD_INDEX}" ]]; then
+        managed_args+=(--shard-index "${COMMON_SHARD_INDEX}")
+      fi
+      if [[ -n "${COMMON_SHARD_COUNT}" ]]; then
+        managed_args+=(--shard-count "${COMMON_SHARD_COUNT}")
+      fi
+      if [[ -n "${COMMON_SHARD_BY}" ]]; then
+        managed_args+=(--shard-by "${COMMON_SHARD_BY}")
+      fi
+      if (( ${#COMMON_PASSTHROUGH[@]} > 0 )); then
+        managed_args+=("${COMMON_PASSTHROUGH[@]}")
+      fi
+      if (( ${#managed_args[@]} > 0 )); then
+        exec "${repo_root}/tools/run_pipeline_managed.sh" "${managed_args[@]}"
+      else
+        exec "${repo_root}/tools/run_pipeline_managed.sh"
+      fi
+    fi
+    if [[ -n "${COMMON_OUTPUT_DIR}" ]]; then
+      export EASYCOLOC_OUTPUT_DIR="${COMMON_OUTPUT_DIR}"
+    fi
+    if (( ${#COMMON_PASSTHROUGH[@]} > 0 )); then
+      exec Rscript run_coloc.R "${COMMON_PASSTHROUGH[@]}"
+    else
+      exec Rscript run_coloc.R
+    fi
+    ;;
+  doctor)
+    parse_common_flags "$@"
+    set_config_envs "${COMMON_GLOBAL_CFG}" "${COMMON_GWAS_CFG}" "${COMMON_QTL_CFG}"
+    if (( ${#COMMON_PASSTHROUGH[@]} > 0 )); then
+      exec Rscript tools/doctor_easycoloc.R "${COMMON_PASSTHROUGH[@]}"
+    else
+      exec Rscript tools/doctor_easycoloc.R
+    fi
+    ;;
+  harmonize)
+    parse_common_flags "$@"
+    set_config_envs "${COMMON_GLOBAL_CFG}" "${COMMON_GWAS_CFG}" "${COMMON_QTL_CFG}"
+    if (( ${#COMMON_PASSTHROUGH[@]} > 0 )); then
+      exec Rscript tools/harmonize_gwas.R "${COMMON_PASSTHROUGH[@]}"
+    else
+      exec Rscript tools/harmonize_gwas.R
+    fi
+    ;;
+  finalize)
+    exec Rscript tools/finalize_run.R "$@"
+    ;;
+  clean)
+    exec Rscript tools/clean_intermediates.R "$@"
+    ;;
+  init)
+    force="false"
+    preset="project"
+    target_dir=""
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --preset)
+          preset="${2:?missing value for --preset}"
+          shift 2
+          ;;
+        --force)
+          force="true"
+          shift
+          ;;
+        --help|-h)
+          cat <<'EOF'
+Usage: ./easycoloc init TARGET_DIR [--force]
+EOF
+          exit 0
+          ;;
+        *)
+          if [[ -z "${target_dir}" ]]; then
+            target_dir="$1"
+            shift
+          else
+            echo "[INIT] unexpected argument: $1" >&2
+            exit 1
+          fi
+          ;;
+      esac
+    done
+    if [[ "${preset}" != "project" ]]; then
+      echo "[INIT] unsupported preset: ${preset}" >&2
+      exit 1
+    fi
+    if [[ -z "${target_dir}" ]]; then
+      echo "[INIT] TARGET_DIR is required" >&2
+      exit 1
+    fi
+    mkdir -p "${target_dir}"
+    target_dir="$(cd "${target_dir}" && pwd -P)"
+    if [[ -e "${target_dir}" && -n "$(ls -A "${target_dir}" 2>/dev/null)" && "${force}" != "true" ]]; then
+      echo "[INIT] target exists and is not empty: ${target_dir}" >&2
+      echo "[INIT] rerun with --force to overwrite" >&2
+      exit 1
+    fi
+    mkdir -p "${target_dir}/config" "${target_dir}/data/gwas" "${target_dir}/data/qtl" "${target_dir}/results" "${target_dir}/temp"
+    cp "${repo_root}/config/global.yml" "${target_dir}/config/global.yml"
+    cp "${repo_root}/config/gwas.yml" "${target_dir}/config/gwas.yml"
+    cp "${repo_root}/config/qtl.yml" "${target_dir}/config/qtl.yml"
+    cat > "${target_dir}/README.md" <<EOF
+# EasyColoc Analysis Project
+
+Edit \`config/*.yml\`, then run from the EasyColoc repository root:
+
+\`\`\`bash
+./easycoloc doctor --global ${target_dir}/config/global.yml --gwas ${target_dir}/config/gwas.yml --qtl ${target_dir}/config/qtl.yml
+./easycoloc run --managed --global ${target_dir}/config/global.yml --gwas ${target_dir}/config/gwas.yml --qtl ${target_dir}/config/qtl.yml
+\`\`\`
+EOF
+    echo "[INIT] wrote minimal project to ${target_dir}"
+    echo "[INIT] next: edit ${target_dir}/config/*.yml and run ./easycoloc doctor --global ${target_dir}/config/global.yml --gwas ${target_dir}/config/gwas.yml --qtl ${target_dir}/config/qtl.yml"
+    ;;
+  check)
+    exec Rscript tools/check_run_completion.R "$@"
+    ;;
+  status)
+    exec Rscript tools/summarize_run_status.R "$@"
+    ;;
+  monitor)
+    exec Rscript tools/monitor_easycoloc.R "$@"
+    ;;
+  watch)
+    exec "${repo_root}/tools/watch_output_dir.sh" "$@"
+    ;;
+  manifest)
+    exec Rscript tools/build_output_manifest.R "$@"
+    ;;
+  harmony-qc)
+    exec Rscript tools/build_harmony_qc_report.R "$@"
+    ;;
+  report-web)
+    exec "${repo_root}/tools/start_report_web.sh" "$@"
+    ;;
+  report)
+    exec "${repo_root}/tools/start_report_web.sh" "$@"
+    ;;
+  refs)
+    parse_common_flags "$@"
+    set_config_envs "${COMMON_GLOBAL_CFG}" "${COMMON_GWAS_CFG}" "${COMMON_QTL_CFG}"
+    if (( ${#COMMON_PASSTHROUGH[@]} > 0 )); then
+      exec Rscript tools/list_reference_requirements.R "${COMMON_PASSTHROUGH[@]}"
+    else
+      exec Rscript tools/list_reference_requirements.R
+    fi
+    ;;
+  bootstrap-refs)
+    parse_common_flags "$@"
+    set_config_envs "${COMMON_GLOBAL_CFG}" "${COMMON_GWAS_CFG}" "${COMMON_QTL_CFG}"
+    if (( ${#COMMON_PASSTHROUGH[@]} > 0 )); then
+      exec Rscript tools/bootstrap_references.R "${COMMON_PASSTHROUGH[@]}"
+    else
+      exec Rscript tools/bootstrap_references.R
+    fi
+    ;;
+  smoke)
+    exec "${repo_root}/tools/run_smoke_checks.sh"
+    ;;
+  demo)
+    exec Rscript examples/synthetic_plot_demo.R
+    ;;
+  help|-h|--help)
+    show_help
+    ;;
+  *)
+    echo "[CLI] unknown command: ${cmd}" >&2
+    show_help >&2
+    exit 1
+    ;;
+esac

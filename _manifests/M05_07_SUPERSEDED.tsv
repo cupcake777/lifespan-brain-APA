@@ -1,0 +1,23 @@
+superseded_path	superseded_by	reason	action
+1016/followup_1011/05_gxstage_interaction/atp2b1_saturation_refit.py	release/05_gxstage_interaction/followup/saturation_refit/atp2b1_saturation_refit.py (copy of 1013/scripts/atp2b1_saturation_refit.py)	Identical except one added header comment line; one copy kept	not_copied
+1013/scripts/atp2b1_saturation_refit.py	(kept; this is the canonical copy)	n/a	copied_as_followup
+1016/followup_1011/07_locus_colocalization_smr/arl3/arl3_eas_scz_rerun.R	1016/registry_1017/m06_07/arl3_rerun/arl3_eas_scz_rerun.R	Follow-up copy with APA_ROOT path override only; registered copy copied	not_copied
+1016/followup_1011/07_locus_colocalization_smr/arl3/arl3_bd_rerun.R	1016/registry_1017/m06_07/arl3_rerun/arl3_bd_rerun.R	Follow-up copy with APA_ROOT path override only	not_copied
+1016/followup_1011/07_locus_colocalization_smr/arl3/arl3_prepare.py	1016/registry_1017/m06_07/arl3_rerun/arl3_prepare.py	Follow-up copy with APA_ROOT path override only	not_copied
+1016/followup_1011/07_locus_colocalization_smr/arl3/vcf_af_arl3.py	1016/arl3_bd_coloc/vcf_af_arl3.py (kept)	Differs from the 1016/arl3_bd_coloc copy; content not compared in this pass; registered copy kept	not_copied
+1016/followup_1011/07_locus_colocalization_smr/arl3/vcf_geno_keysnps.py	1016/arl3_bd_coloc/vcf_geno_keysnps.py (kept)	Follow-up copy; content not compared in this pass	not_copied
+1016/followup_1011/registry_checks/m06_07__build_registry.py	1016/registry_1017/m06_07/build_registry.py (kept as followup/registry_checks)	Follow-up copy of the registry builder	not_copied
+1016/followup_1011/registry_checks/m06_07__check_m06_07.py	1016/registry_1017/m06_07/check_m06_07.py (kept as followup/registry_checks)	Follow-up copy of the registry check	not_copied
+1013/collect/03_sldsc_tau_star.tsv	1015/handoff_eqtl_1015/03_sldsc_tau_star.tsv	Registry rows cite the 1015 file; the two differ (byte 356)	not_copied
+1014/magma_gsa_summary_flagged.tsv	1013/collect/15_magma/magma_gsa_summary.tsv	Registry cites the 1013 file; flagged copy differs from it	not_copied
+1014/sldsc_enrichment_summary_flagged.tsv	1013/collect/13_sldsc_binary/sldsc_enrichment_processed.tsv	Flagged copy; registry R091-R100 requires regeneration of the processed table, not this copy	not_copied
+1016/handoff_apa_function_1016/magma_traj_summary.tsv	1014/magma_traj_summary.tsv (copied)	Byte-identical duplicate	not_copied
+1016/handoff_module07_1016/figure_sources/Figure5c_magma_gsa_summary.tsv	1016/handoff_module07_1016/figure_sources/Figure5c_disease_gene_matrix.tsv	Prior Fig 5C MAGMA source replaced by the disease gene matrix (handoff README)	copied_kept_for_provenance
+1010/interaction/scripts/13_annotate_finemap_mechanisms.py (staging)	newest/1011/05_gxstage_interaction/scripts/13_annotate_finemap_mechanisms_v2.py	Lead instruction: staging copy not copied; the v2 copy in the 1011 tree is used	not_copied
+1010/interaction/scripts/04_hc3_refit.py	newest/1011/05_gxstage_interaction/scripts/04_hc3_refit.py	Same byte size as 1011 copy; duplicate	not_copied
+1016/handoff_module07_1016/assemble_main_figures.py	1016/handoff_module07_1016/assemble_main_figures_v2.py	Assembly script (not an M05–07 producer); v2 is the later version by timestamp	not_copied
+1016/registry_1017/_number_registry_pre1019.tsv	1016/registry_1017/number_registry.tsv	Pre-1019 registry snapshot	not_copied
+newest/1011/07_locus_colocalization_smr/func/scripts/hid1_sequence_mechanism.py	newest/1011/07_locus_colocalization_smr/func/scripts/hid1_sequence_mechanism_v2.py	Fig 3E producer is the _v2 (1014 SOURCE_MANIFEST)	kept_for_provenance
+newest/1011/06_disease_heritability_geneset/sLDSC/08_plot_sldsc_enrichment.py (also _v2, _v3, _v4)	newest/1011/06_disease_heritability_geneset/sLDSC/08_plot_sldsc_enrichment_v5.py	Fig 5A producer is v5 (1014 SOURCE_MANIFEST); earlier versions kept because the frozen 1011 base is copied verbatim	kept_for_provenance
+newest/1011/06_disease_heritability_geneset/MAGMA/plot_magma_enrichment_within_gwas.R	newest/1011/06_disease_heritability_geneset/MAGMA/plot_magma_enrichment_within_gwas_v2.R	Fig 5C producer is v2 (1014 SOURCE_MANIFEST); kept for provenance	kept_for_provenance
+newest/1011/07_locus_colocalization_smr/coloc/06_plot_coloc_summary.R	newest/1011/07_locus_colocalization_smr/coloc/06_plot_summary.R	Not in 1014 main-figure SOURCE_MANIFEST; Fig 5D producer is 06_plot_summary.R	kept_for_provenance

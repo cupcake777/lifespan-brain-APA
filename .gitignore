@@ -1,8 +1,10 @@
-# Generated figures and local configuration
-outputs/
+# Local configuration and generated output
 config/paths.local.sh
+/outputs/
+/data/
+/logs/
 
-# R/Python artifacts
+# R and Python artifacts
 .Rhistory
 .RData
 __pycache__/

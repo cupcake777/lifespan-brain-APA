@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use EasyColoc, please cite this software using the metadata below."
+title: "EasyColoc"
+type: software
+version: "1.0.0"
+license: "MIT"
+repository-code: "https://github.com/cupcake777/EasyColoc"
+abstract: "EasyColoc is a GWAS-to-QTL colocalization pipeline with harmonization, ABF and SuSiE coloc, runtime monitoring, and report generation."
+authors:
+  - name: "EasyColoc Team"
+keywords:
+  - colocalization
+  - GWAS
+  - QTL
+  - SuSiE
+  - bioinformatics

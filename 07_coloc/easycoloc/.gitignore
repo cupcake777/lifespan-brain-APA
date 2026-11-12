@@ -1,0 +1,57 @@
+# R session files
+.Rhistory
+.RData
+.Rproj.user/
+
+# Temporary/cache directories
+temp/
+harmony/
+results/
+reference_bootstrap_manifest.tsv
+reference_bootstrap_manifest.json
+examples/minimal/output/
+config/local/*
+r_environment.yml
+docs/superpowers/
+!config/local/README.md
+
+# PLINK intermediate files
+*.log
+*.qassoc
+*.clumped
+*.nosex
+Rplots.pdf
+nohup.out*
+
+# Local log directories
+logs/*
+!logs/README.md
+slurm-*.out
+slurm-*.err
+
+# Debug/test scripts (if regenerated)
+debug_*.R
+test_*.R
+patch_*.R
+scripts/debug/
+
+# Local development docs
+docs/notes/
+docs/optimization/
+
+# OS files
+.DS_Store
+._*
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+.claude/
+.codex
+*.swp
+*.swo
+*~
+web/node_modules/
+web/dist/
+.mem

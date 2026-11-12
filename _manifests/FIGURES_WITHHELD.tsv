@@ -1,0 +1,6 @@
+path	reason
+04_stage_specific_apaqtl/followup/fig3/fig3_v6_cep41_depth.sh	per-individual: sample IDs selected by genotype and per-sample BAM coverage (Fig 3d); kept outside the release in release_withheld_20261026/
+04_stage_specific_apaqtl/followup/fig3/fig3_v6_depth.sh	per-individual: sample IDs selected by genotype and per-sample BAM coverage (Fig 3d); kept outside the release in release_withheld_20261026/
+04_stage_specific_apaqtl/followup/fig3/bam_cov_bundle.tar.gz	per-individual: sample IDs selected by genotype and per-sample BAM coverage (Fig 3d); kept outside the release in release_withheld_20261026/
+04_stage_specific_apaqtl/followup/fig3/bam_cov_bundle	per-individual: sample IDs selected by genotype and per-sample BAM coverage (Fig 3d); kept outside the release in release_withheld_20261026/
+figures/tools/vision_review.py	internal figure-QA helper (calls external vision APIs; reads local key-file paths); not needed to reproduce any figure

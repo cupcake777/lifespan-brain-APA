@@ -1,0 +1,8 @@
+stage	mediation_call	N
+postnatal	EXP -> APA	24
+postnatal	No mediation	449
+postnatal	Partial mediation	135
+prenatal	APA -> EXP	2
+prenatal	EXP -> APA	10
+prenatal	No mediation	127
+prenatal	Partial mediation	25
